@@ -16,6 +16,7 @@
 		EC5105C325FB906C00BF07BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5105C225FB906C00BF07BB /* Assets.xcassets */; };
 		EC5105CE25FB906D00BF07BB /* GameChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105CD25FB906D00BF07BB /* GameChallengeTests.swift */; };
 		EC5105D925FB906D00BF07BB /* GameChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */; };
+		EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EC5105F025FB923600BF07BB /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		EC5105D425FB906D00BF07BB /* GameChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChallengeUITests.swift; sourceTree = "<group>"; };
 		EC5105DA25FB906D00BF07BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC5105F025FB923600BF07BB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		EC5105A925FB906B00BF07BB = {
 			isa = PBXGroup;
 			children = (
+				EC5105F025FB923600BF07BB /* .swiftlint.yml */,
 				EC5105B425FB906B00BF07BB /* GameChallenge */,
 				EC5105CC25FB906D00BF07BB /* GameChallengeTests */,
 				EC5105D725FB906D00BF07BB /* GameChallengeUITests */,
@@ -101,6 +104,9 @@
 		EC5105B425FB906B00BF07BB /* GameChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				EC5105EC25FB90E000BF07BB /* Components */,
+				EC5105EB25FB90D800BF07BB /* Helpers */,
+				EC5105EA25FB90CE00BF07BB /* Entities */,
 				EC5105B525FB906B00BF07BB /* AppDelegate.swift */,
 				EC5105B725FB906B00BF07BB /* GameScene.sks */,
 				EC5105B925FB906B00BF07BB /* Actions.sks */,
@@ -131,6 +137,27 @@
 			path = GameChallengeUITests;
 			sourceTree = "<group>";
 		};
+		EC5105EA25FB90CE00BF07BB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		EC5105EB25FB90D800BF07BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EC5105EC25FB90E000BF07BB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +168,7 @@
 				EC5105AE25FB906B00BF07BB /* Sources */,
 				EC5105AF25FB906B00BF07BB /* Frameworks */,
 				EC5105B025FB906B00BF07BB /* Resources */,
+				EC5105E925FB908500BF07BB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -234,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */,
 				EC5105C125FB906B00BF07BB /* Main.storyboard in Resources */,
 				EC5105B825FB906B00BF07BB /* GameScene.sks in Resources */,
 				EC5105C325FB906C00BF07BB /* Assets.xcassets in Resources */,
@@ -256,6 +285,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC5105E925FB908500BF07BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC5105AE25FB906B00BF07BB /* Sources */ = {
