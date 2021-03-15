@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class Card : SKSpriteNode {
+class Card: SKSpriteNode {
     
     var frontTexture: SKTexture?
     var backTexture: SKTexture
