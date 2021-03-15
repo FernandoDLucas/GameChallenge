@@ -17,6 +17,10 @@
 		EC5105CE25FB906D00BF07BB /* GameChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105CD25FB906D00BF07BB /* GameChallengeTests.swift */; };
 		EC5105D925FB906D00BF07BB /* GameChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */; };
 		EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EC5105F025FB923600BF07BB /* .swiftlint.yml */; };
+		ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E4B25FF84B500E699C4 /* Cards.swift */; };
+		ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5025FF859D00E699C4 /* EntityCard.swift */; };
+		ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5525FF862900E699C4 /* AssocietedCard.swift */; };
+		ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5D25FF866800E699C4 /* SpellCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChallengeUITests.swift; sourceTree = "<group>"; };
 		EC5105DA25FB906D00BF07BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5105F025FB923600BF07BB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		ECA67E4B25FF84B500E699C4 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		ECA67E5025FF859D00E699C4 /* EntityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCard.swift; sourceTree = "<group>"; };
+		ECA67E5525FF862900E699C4 /* AssocietedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssocietedCard.swift; sourceTree = "<group>"; };
+		ECA67E5D25FF866800E699C4 /* SpellCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +148,10 @@
 		EC5105EA25FB90CE00BF07BB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				ECA67E4B25FF84B500E699C4 /* Cards.swift */,
+				ECA67E5025FF859D00E699C4 /* EntityCard.swift */,
+				ECA67E5525FF862900E699C4 /* AssocietedCard.swift */,
+				ECA67E5D25FF866800E699C4 /* SpellCard.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -311,9 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
 				EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */,
+				ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */,
+				ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */,
+				ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
