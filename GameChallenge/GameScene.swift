@@ -34,6 +34,8 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        addChild(EntityCard(defense: "12"))
     }
     
     func touchDown(atPoint pos: CGPoint) {
