@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105B525FB906B00BF07BB /* AppDelegate.swift */; };
-		EC5105B825FB906B00BF07BB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EC5105B725FB906B00BF07BB /* GameScene.sks */; };
-		EC5105BA25FB906B00BF07BB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = EC5105B925FB906B00BF07BB /* Actions.sks */; };
 		EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BB25FB906B00BF07BB /* GameScene.swift */; };
 		EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BD25FB906B00BF07BB /* GameViewController.swift */; };
 		EC5105C125FB906B00BF07BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5105BF25FB906B00BF07BB /* Main.storyboard */; };
@@ -21,8 +19,9 @@
 		ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5025FF859D00E699C4 /* EntityCard.swift */; };
 		ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5525FF862900E699C4 /* AssocietedCard.swift */; };
 		ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5D25FF866800E699C4 /* SpellCard.swift */; };
-		ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */; };
 		ECA67E6925FF89FD00E699C4 /* OnHandHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */; };
+		ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */; };
+		ECA67E912600D04700E699C4 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E902600D04700E699C4 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +44,6 @@
 /* Begin PBXFileReference section */
 		EC5105B225FB906B00BF07BB /* GameChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5105B525FB906B00BF07BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC5105B725FB906B00BF07BB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		EC5105B925FB906B00BF07BB /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		EC5105BB25FB906B00BF07BB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		EC5105BD25FB906B00BF07BB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EC5105C025FB906B00BF07BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +62,7 @@
 		ECA67E5D25FF866800E699C4 /* SpellCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellCard.swift; sourceTree = "<group>"; };
 		ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnHandHelper.swift; sourceTree = "<group>"; };
 		ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenseComponent.swift; sourceTree = "<group>"; };
+		ECA67E902600D04700E699C4 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +118,6 @@
 				EC5105EB25FB90D800BF07BB /* Helpers */,
 				EC5105EA25FB90CE00BF07BB /* Entities */,
 				EC5105B525FB906B00BF07BB /* AppDelegate.swift */,
-				EC5105B725FB906B00BF07BB /* GameScene.sks */,
-				EC5105B925FB906B00BF07BB /* Actions.sks */,
 				EC5105BB25FB906B00BF07BB /* GameScene.swift */,
 				EC5105BD25FB906B00BF07BB /* GameViewController.swift */,
 				EC5105BF25FB906B00BF07BB /* Main.storyboard */,
@@ -164,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */,
+				ECA67E902600D04700E699C4 /* Grid.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -282,9 +279,7 @@
 			files = (
 				EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */,
 				EC5105C125FB906B00BF07BB /* Main.storyboard in Resources */,
-				EC5105B825FB906B00BF07BB /* GameScene.sks in Resources */,
 				EC5105C325FB906C00BF07BB /* Assets.xcassets in Resources */,
-				EC5105BA25FB906B00BF07BB /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +327,7 @@
 				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
 				ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
+				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
 				EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */,
 				ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */,

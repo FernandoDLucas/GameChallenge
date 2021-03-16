@@ -7,9 +7,9 @@
 
 import SpriteKit
 
-class OnHandHelper{
+class OnHandHelper {
     
-    let listOfCards : [Card]
+    let listOfCards: [Card]
     
     init(cards: [Card]) {
         self.listOfCards = cards

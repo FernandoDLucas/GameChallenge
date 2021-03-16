@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class AssocietedCard : Card {
+class AssocietedCard: Card {
     
     //    var defenseComponent: DefenseComponent
     //    var attackComponent: PowerComponent

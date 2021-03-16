@@ -7,14 +7,14 @@
 
 import SpriteKit
 
-class EntityCard : Card {
+class EntityCard: Card {
     
     var defenseComponent = DefenseComponent()
 //    var attackComponent: PowerComponent
 //    var passiveComponent: PassiveComponent
 //    var costComponent: CostComponent
     
-    init(defense: String){
+    init(defense: String) {
         super.init()
         self.defenseComponent.labelNode.text = defense
         defenseComponent.position = CGPoint(x: 26, y: -40)

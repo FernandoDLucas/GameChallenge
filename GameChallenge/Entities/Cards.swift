@@ -13,8 +13,8 @@ class Card: SKSpriteNode {
     var backTexture: SKTexture
     var faceUp: Bool = false
     
-    init(){
-        self.backTexture = SKTexture(imageNamed: "frontTexture")
+    init() {
+        self.backTexture = SKTexture(imageNamed: "papa")
         super.init(texture: backTexture, color: .clear, size: backTexture.size())
     }
     
