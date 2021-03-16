@@ -14,7 +14,7 @@ class Grid: SKSpriteNode {
     var blockHeight: CGFloat!
 
     convenience init?(blockWidth: CGFloat, blockHeight: CGFloat, rows: Int, cols: Int) {
-        guard let texture = Grid.gridTexture(blockWidth:blockWidth, blockHeight: blockHeight, rows: rows, cols: cols) else {
+        guard let texture = Grid.gridTexture(blockWidth: blockWidth, blockHeight: blockHeight, rows: rows, cols: cols) else {
             return nil
         }
         self.init(texture: texture, color: SKColor.clear, size: texture.size())
@@ -25,7 +25,6 @@ class Grid: SKSpriteNode {
     }
 
     class func gridTexture(blockWidth: CGFloat, blockHeight: CGFloat, rows: Int, cols: Int) -> SKTexture? {
-        // Add 1 to the height and width to ensure the borders are within the sprite
         let size = CGSize(width: CGFloat(cols)*blockWidth+1.0, height: CGFloat(rows)*blockHeight+1.0)
         UIGraphicsBeginImageContext(size)
 
@@ -35,13 +34,11 @@ class Grid: SKSpriteNode {
         let bezierPath = UIBezierPath()
         let offset: CGFloat = 0.5
         
-        // Draw vertical lines
         for i in 0...cols {
             let x = CGFloat(i)*blockWidth + offset
             bezierPath.move(to: CGPoint(x: x, y: 0))
             bezierPath.addLine(to: CGPoint(x: x, y: size.height))
         }
-        // Draw horizontal lines
         for i in 0...rows {
             let y = CGFloat(i)*blockHeight + offset
             bezierPath.move(to: CGPoint(x: 0, y: y))
@@ -62,6 +59,6 @@ class Grid: SKSpriteNode {
         let xOffset = blockWidth / 2.0 + 0.5
         let x = CGFloat(col) * blockWidth - (blockWidth * CGFloat(cols)) / 2.0 + xOffset
         let y = CGFloat(rows - row - 1) * blockHeight - (blockHeight * CGFloat(rows)) / 2.0 + yOffset
-        return CGPoint(x: x, y: y)
+        return CGPoint(x: self.position.x +  x, y: self.position.y + y)
     }
 }

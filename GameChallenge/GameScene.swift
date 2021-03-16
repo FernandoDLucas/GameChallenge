@@ -19,12 +19,16 @@ class GameScene: SKScene {
         addChild(bg)
     
         let card = EntityCard(defense: "12")
-        addChild(card)
+        let card2 = EntityCard(defense: "11")
         
-//        let grid = Grid(blockWidth: 546/5, blockHeight: 292/4, rows: 4, cols: 5)!
         let grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.8)/5, blockHeight: (UIScreen.main.bounds.height*0.7)/4, rows: 4, cols: 5)!
-        grid.position = CGPoint(x: 100, y: 50)
+        grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         addChild(grid)
+        
+        // pega a posicao do quadro no grid e repassa para a carta
+        card.position = grid.gridPosition(row: 2, col: 1)
+        let displayCard = DisplayCardHelper(cards: [card, card2], texture: nil, size: self.size)
+        addChild(displayCard)
     }
     
     func touchDown(atPoint pos: CGPoint) {
