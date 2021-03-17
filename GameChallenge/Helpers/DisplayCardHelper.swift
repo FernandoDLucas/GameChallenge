@@ -10,57 +10,57 @@ import SpriteKit
 class DisplayCardHelper: SKSpriteNode {
     
     private var cards: [Card]
+    private var superView: SKView
     
-    init(cards: [Card], texture: SKTexture?, size: CGSize) {
+    init(cards: [Card], texture: SKTexture?, superView: SKView) {
         self.cards = cards
+        self.superView = superView
+        let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
+        
         super.init(texture: texture, color: .clear, size: size)
         
-        updateUI()
+        position = CGPoint.init(x: superView.center.x, y: 0)
+        setAllPositions(cards: cards)
+        addAllCards(cards: cards)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addChildHelper(cards: [Card]) {
+        
+    func addAllCards(cards: [Card]) {
         for card in cards {
             addChild(card)
         }
     }
     
     func addCard(card: Card) {
-        if self.cards.count < 8 {
         cards.append(card)
-        removeAllChildren()
-        updateUI()
-        }
+        addChild(card)
+        setAllPositions(cards: cards)
     }
     
     func removeCardAt(indice: Int) {
-        cards.remove(at: indice)
-        removeAllChildren()
-        updateUI()
+        if !cards.isEmpty {
+            let cardRemoved = cards.remove(at: indice)
+            removeCard(card: cardRemoved)
+            setAllPositions(cards: cards)
+        }
     }
     
     func removeCard(card: Card) {
-        removeAllChildren()
-        cards.removeAll { myCard -> Bool in
-            myCard == card
-        }
-        updateUI()
+        cards = cards.filter({ $0 != card})
+        card.removeFromParent()
+        setAllPositions(cards: cards)
     }
-    
-    func updateUI() {
-        addPosition(cards: self.cards, xCenter: getXCenterPosition())
-        addChildHelper(cards: self.cards)
-    }
-    
-    func addPosition(cards: [Card], xCenter: CGFloat) {
+
+    func setAllPositions(cards: [Card]) {
+        let xCenter = CGFloat.zero
         let middle = cards.count / 2
         let isPair = cards.count % 2 == 0
         let yPosition = CGFloat(30)
         var xPosition = xCenter
-    
+        
         if !cards.isEmpty {
             let cardWidth = CGFloat(cards[0].size.width)
             if isPair {
@@ -83,21 +83,18 @@ class DisplayCardHelper: SKSpriteNode {
                 for ind in (0 ..< middle).reversed() {
                     xPosition -= (cardWidth * 0.5)
                     cards[ind].position = CGPoint(x: xPosition, y: yPosition)
-                   
+                    
                 }
-           
+                
                 xPosition = xCenter
                 for ind in (middle + 1)..<cards.count {
                     xPosition += (cardWidth * 0.5)
                     cards[ind].position = CGPoint(x: xPosition, y: yPosition)
-                   
+                    
                 }
             }
         }
         
     }
-    
-    func getXCenterPosition() -> CGFloat {
-         size.width / 2
-    }
+
 }

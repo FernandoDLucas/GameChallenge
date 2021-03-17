@@ -24,7 +24,7 @@ class GameScene: SKScene {
         
         let card = EntityCard(cost: 10, power: 3, defense: 7, passives: [CreateCardsPassive(on: self, cards: cardCreated)])
         
-        self.displayCard = DisplayCardHelper(cards: [card], texture: nil, size: self.size)
+        self.displayCard = DisplayCardHelper(cards: [card], texture: nil, superView: view)
         
         let grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.8)/5, blockHeight: (UIScreen.main.bounds.height*0.7)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
