@@ -32,7 +32,7 @@ class GameScene: SKScene {
         
         // pega a posicao do quadro no grid e repassa para a carta
         addChild(displayCard!)
-        
+        JSONService().decode()
         DispatchQueue.main.asyncAfter(deadline: .now()+2) {
             card.passiveComponent.passives?.first?.activate()
         }

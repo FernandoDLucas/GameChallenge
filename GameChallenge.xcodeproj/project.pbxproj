@@ -28,6 +28,9 @@
 		ECDDB0B826022544000ED6BE /* PassiveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0B726022544000ED6BE /* PassiveComponent.swift */; };
 		ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0BC260226DD000ED6BE /* Passive.swift */; };
 		ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */; };
+		ECDDB0D32602430A000ED6BE /* Cards.json in Resources */ = {isa = PBXBuildFile; fileRef = ECDDB0D22602430A000ED6BE /* Cards.json */; };
+		ECDDB0D926024447000ED6BE /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0D826024447000ED6BE /* JSONService.swift */; };
+		ECDDB0E12602445E000ED6BE /* JSONStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0E02602445E000ED6BE /* JSONStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		ECDDB0B726022544000ED6BE /* PassiveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveComponent.swift; sourceTree = "<group>"; };
 		ECDDB0BC260226DD000ED6BE /* Passive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passive.swift; sourceTree = "<group>"; };
 		ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatCardsPassive.swift; sourceTree = "<group>"; };
+		ECDDB0D22602430A000ED6BE /* Cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cards.json; sourceTree = "<group>"; };
+		ECDDB0D826024447000ED6BE /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
+		ECDDB0E02602445E000ED6BE /* JSONStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 		EC5105B425FB906B00BF07BB /* GameChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				ECDDB0D726024421000ED6BE /* Services */,
 				EC5105EC25FB90E000BF07BB /* Components */,
 				EC5105EB25FB90D800BF07BB /* Helpers */,
 				EC5105EA25FB90CE00BF07BB /* Entities */,
@@ -135,6 +142,7 @@
 				EC5105BF25FB906B00BF07BB /* Main.storyboard */,
 				EC5105C225FB906C00BF07BB /* Assets.xcassets */,
 				EC5105C425FB906C00BF07BB /* Info.plist */,
+				ECDDB0D22602430A000ED6BE /* Cards.json */,
 			);
 			path = GameChallenge;
 			sourceTree = "<group>";
@@ -189,6 +197,15 @@
 				ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ECDDB0D726024421000ED6BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ECDDB0D826024447000ED6BE /* JSONService.swift */,
+				ECDDB0E02602445E000ED6BE /* JSONStruct.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +315,7 @@
 				EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */,
 				EC5105C125FB906B00BF07BB /* Main.storyboard in Resources */,
 				EC5105C325FB906C00BF07BB /* Assets.xcassets in Resources */,
+				ECDDB0D32602430A000ED6BE /* Cards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,12 +361,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
+				ECDDB0D926024447000ED6BE /* JSONService.swift in Sources */,
 				AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */,
 				ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */,
 				ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
 				ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */,
+				ECDDB0E12602445E000ED6BE /* JSONStruct.swift in Sources */,
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
 				ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */,

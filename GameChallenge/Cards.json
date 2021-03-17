@@ -1,0 +1,18 @@
+{
+    "Cards" : [
+        {
+            "ID": 1,
+            "CardName" : "Teste",
+            "CostValue" : 3,
+            "DefenseValue": 7,
+            "PowerValue" : 1,
+       },
+        {
+            "ID": 2,
+            "CardName" : "Teste2",
+            "CostValue" : 3,
+            "DefenseValue": 7,
+            "PowerValue" : 1,
+       }
+    ]
+}
