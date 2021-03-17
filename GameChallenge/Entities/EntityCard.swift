@@ -10,13 +10,16 @@ import SpriteKit
 class EntityCard: Card {
     
     var defenseComponent = DefenseComponent()
-//    var attackComponent: PowerComponent
-//    var passiveComponent: PassiveComponent
-//    var costComponent: CostComponent
+    var powerComponent = PowerComponent()
+    var passiveComponent = PassiveComponent()
+    var costComponent = CostComponent()
     
-    init(defense: String) {
+    init(cost: Int, power: Int, defense: Int, passives: [Passive]) {
         super.init()
-        self.defenseComponent.labelNode.text = defense
+        self.defenseComponent.defenseValue = defense
+        self.powerComponent.powerValue = power
+        self.costComponent.costValue = cost
+        self.passiveComponent.passives = passives
         defenseComponent.position = CGPoint(x: 26, y: -40)
         addChild(defenseComponent)
     }

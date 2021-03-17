@@ -25,6 +25,9 @@
 		ECA67E912600D04700E699C4 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E902600D04700E699C4 /* Grid.swift */; };
 		ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0952600F913000ED6BE /* PowerComponent.swift */; };
 		ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB09A2600F966000ED6BE /* CostComponent.swift */; };
+		ECDDB0B826022544000ED6BE /* PassiveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0B726022544000ED6BE /* PassiveComponent.swift */; };
+		ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0BC260226DD000ED6BE /* Passive.swift */; };
+		ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		ECA67E902600D04700E699C4 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		ECDDB0952600F913000ED6BE /* PowerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerComponent.swift; sourceTree = "<group>"; };
 		ECDDB09A2600F966000ED6BE /* CostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostComponent.swift; sourceTree = "<group>"; };
+		ECDDB0B726022544000ED6BE /* PassiveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveComponent.swift; sourceTree = "<group>"; };
+		ECDDB0BC260226DD000ED6BE /* Passive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passive.swift; sourceTree = "<group>"; };
+		ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatCardsPassive.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +184,9 @@
 				ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */,
 				ECDDB0952600F913000ED6BE /* PowerComponent.swift */,
 				ECDDB09A2600F966000ED6BE /* CostComponent.swift */,
+				ECDDB0B726022544000ED6BE /* PassiveComponent.swift */,
+				ECDDB0BC260226DD000ED6BE /* Passive.swift */,
+				ECDDB0C126022781000ED6BE /* CreatCardsPassive.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -339,13 +348,16 @@
 				ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
+				ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */,
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
+				ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */,
 				EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */,
 				ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */,
 				ECA67E6925FF89FD00E699C4 /* OnHandHelper.swift in Sources */,
 				ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */,
 				ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */,
+				ECDDB0B826022544000ED6BE /* PassiveComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
