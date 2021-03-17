@@ -10,9 +10,11 @@ import SpriteKit
 class DisplayCardHelper: SKSpriteNode {
     
     private var cards: [Card]
+    private var superView: SKView
     
     init(cards: [Card], texture: SKTexture?, superView: SKView) {
         self.cards = cards
+        self.superView = superView
         let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
         
         super.init(texture: texture, color: .clear, size: size)
