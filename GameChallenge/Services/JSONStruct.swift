@@ -10,10 +10,6 @@ import Foundation
 struct JSONCards: Decodable {
     
     var Cards: [CardStruct]
-    
-//    enum CodingKeys: String, CodingKey{
-//        case Cards = "Cards"
-//    }
 }
 
 struct CardStruct: Decodable {
@@ -22,13 +18,6 @@ struct CardStruct: Decodable {
     var CostValue: Int
     var DefenseValue: Int
     var PowerValue: Int
-    
-//    enum CodingKeys: String, CodingKey{
-//        case ID = "ID"
-//        case CardName = "CardName"
-//        case CostValue = "CostValue"
-//        case DefenseValue = "DefenseValue"
-//        case PowerValue = "PowerValue"
-//    }
-
+    var Passive: String
+    var CardType : String
 }
