@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BDA9A3C26038BF200E781AF /* DeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A3B26038BF200E781AF /* DeckHelper.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
 		EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105B525FB906B00BF07BB /* AppDelegate.swift */; };
 		EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BB25FB906B00BF07BB /* GameScene.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BDA9A3B26038BF200E781AF /* DeckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckHelper.swift; sourceTree = "<group>"; };
 		AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCardHelper.swift; sourceTree = "<group>"; };
 		EC5105B225FB906B00BF07BB /* GameChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5105B525FB906B00BF07BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */,
 				ECA67E902600D04700E699C4 /* Grid.swift */,
 				AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */,
+				0BDA9A3B26038BF200E781AF /* DeckHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */,
 				ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
+				0BDA9A3C26038BF200E781AF /* DeckHelper.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
 				ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */,
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
