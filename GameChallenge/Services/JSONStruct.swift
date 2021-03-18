@@ -19,5 +19,5 @@ struct CardStruct: Decodable {
     var DefenseValue: Int
     var PowerValue: Int
     var Passive: String
-    var CardType : String
+    var CardType: String
 }
