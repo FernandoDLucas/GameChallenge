@@ -18,9 +18,11 @@ class DeckHelper: SKSpriteNode {
         self.quantity = deck.count
     
         let size = CGSize(width: 70, height: 10)
-        super.init(texture: texture, size: size)
+        super.init(texture: texture, color: .clear, size: size)
     }
     
+    //Mudar a visualização de acordo com a quantidade de cartas
+    //Escolher uma carta aleatória e entregar ao DisplayCardHelper
     
     func changeViewDeck() {
         switch quantity {
@@ -32,6 +34,9 @@ class DeckHelper: SKSpriteNode {
             print("Full")
         }
     }
+    
+    //func
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
