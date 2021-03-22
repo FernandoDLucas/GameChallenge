@@ -8,34 +8,66 @@
 import SpriteKit
 
 class DeckHelper: SKSpriteNode {
-    var deck: [Card]
+    var listOfCards: [Card]
     var superView: SKView
-    var quantity: Int
     
-    init(listOfCards: [Card], texture: SKTexture?, superView: SKView) {
-        self.deck = listOfCards
-        self.superView = superView
-        self.quantity = deck.count
-    
-        let size = CGSize(width: 70, height: 10)
-        super.init(texture: texture, color: .clear, size: size)
-    }
-    
-    //Mudar a visualização de acordo com a quantidade de cartas
-    //Escolher uma carta aleatória e entregar ao DisplayCardHelper
-    
-    func changeViewDeck() {
-        switch quantity {
-        case 10:
-            print("Half-full")
-        case 5:
-            print("Half-empty")
-        default:
-            print("Full")
+    override var isUserInteractionEnabled: Bool {
+        get {
+            return true
+        }
+        set {
+            // ignore
         }
     }
     
-    //func
+    init(listOfCards: [Card], texture: SKTexture?, superView: SKView) {
+        self.listOfCards = listOfCards
+        self.superView = superView
+    
+        let size = CGSize(width: 40, height: 52)
+        super.init(texture: texture, color: .blue, size: size)
+        self.position = CGPoint(x: superView.frame.size.width - 48, y: superView.frame.size.height - 107)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        popCard()
+    }
+    
+//    func move(object: SKSpriteNode) {
+//        SKAction.move(to: CGPoint(x: , y: ),
+//                                       duration: TimeInterval())
+//        object.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+//
+//    }
+    
+    //Escolher uma carta aleatória e entregar ao DisplayCardHelper
+    func popCard() {
+        //add textura frente e verso na ultima
+        if !listOfCards.isEmpty {
+            let card = listOfCards.removeLast()
+            card.flip()
+            addChild(card)
+            card.flip()
+            // animacao
+            
+            if let scene = scene as? GameScene {
+                card.removeFromParent()
+                scene.displayCard?.addCard(card: card)
+            }
+        }
+        
+    }
+    
+    
+    //Mudar a visualização de acordo com a quantidade de cartas
+    func changeViewDeck() {
+        if listOfCards.isEmpty {
+            self.color = .white
+        } else if listOfCards.count == 15 {
+            self.color = .green
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
