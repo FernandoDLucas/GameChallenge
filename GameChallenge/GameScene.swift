@@ -13,6 +13,7 @@ class GameScene: SKScene {
     private var label: SKLabelNode?
     private var spinnyNode: SKShapeNode?
     var displayCard: DisplayCardHelper?
+    var grid: Grid!
     
     override func didMove(to view: SKView) {
         let bg = SKSpriteNode(imageNamed: "background")
@@ -22,7 +23,7 @@ class GameScene: SKScene {
         print(Cards.count)
         self.displayCard = DisplayCardHelper(cards: Cards, texture: nil, superView: view)
         
-        let grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.8)/5, blockHeight: (UIScreen.main.bounds.height*0.7)/4, rows: 4, cols: 5)!
+        grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.8)/5, blockHeight: (UIScreen.main.bounds.height*0.7)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         addChild(grid)
         
