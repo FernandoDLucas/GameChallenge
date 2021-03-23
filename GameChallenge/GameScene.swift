@@ -18,7 +18,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         let bg = SKSpriteNode(imageNamed: "background")
         bg.anchorPoint = CGPoint.zero
-     //   addChild(bg)
+        addChild(bg)
         let Cards = BuildCards().buildAllCards()
         print(Cards.count)
         self.displayCard = DisplayCardHelper(cards: Cards, texture: nil, superView: view)
