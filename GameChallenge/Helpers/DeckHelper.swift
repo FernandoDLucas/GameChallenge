@@ -10,8 +10,7 @@ import SpriteKit
 class DeckHelper: SKSpriteNode {
     var listOfCards: [Card]
     var superView: SKView
-    private let sizeDeck = CGSize(width: 40, height: 52)
-    
+
     override var isUserInteractionEnabled: Bool {
         get {
             return true
@@ -25,7 +24,7 @@ class DeckHelper: SKSpriteNode {
         self.listOfCards = listOfCards
         self.superView = superView
         
-        super.init(texture: texture, color: .gray, size: sizeDeck)
+        super.init(texture: texture, color: .gray, size: DECK_SIZE)
         self.position = CGPoint(x: superView.frame.size.width - 48, y: superView.frame.size.height - 107)
         //inclinação da carta de acordo com números ímpares e pares, embora a posiçao seja a mesma
         
@@ -35,7 +34,7 @@ class DeckHelper: SKSpriteNode {
     func addCardsInScene() {
         for (index, card) in listOfCards.enumerated() {
             card.flip()
-            card.size = sizeDeck
+            card.size = CARD_DECK_SIZE
             if index % 2 == 0 {
                 card.zRotation = CGFloat(-0.25)
             }
@@ -51,10 +50,12 @@ class DeckHelper: SKSpriteNode {
             
             if let scene = scene as? GameScene {
                 let move = SKAction.move(to: CGPoint(x: -superView.frame.width/2, y: -(superView.frame.height - scene.displayCard.size.height)), duration: 0.30)
-                let moveDone = SKAction.removeFromParent()
-                card.run(SKAction.sequence([move, moveDone]))
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.30) {
+                let zoom = SKAction.scale(to: 2, duration: 0.2)
+              
+                card.run(SKAction.sequence([zoom, move]))
+                self.removeAllActions()
+    
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.50) {
                     let copyCard = card.createCopy()
                     copyCard.size = CGSize(width: 102, height: 141)
                     card.removeFromParent()
