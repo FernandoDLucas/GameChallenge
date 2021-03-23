@@ -12,6 +12,8 @@ class Grid: SKSpriteNode {
     var cols: Int!
     var blockWidth: CGFloat!
     var blockHeight: CGFloat!
+    var indexFree: (Int, Int) = (3,0)
+    var Cards: [Card] = []
 
     convenience init?(blockWidth: CGFloat, blockHeight: CGFloat, rows: Int, cols: Int) {
         guard let texture = Grid.gridTexture(blockWidth: blockWidth, blockHeight: blockHeight, rows: rows, cols: cols) else {
