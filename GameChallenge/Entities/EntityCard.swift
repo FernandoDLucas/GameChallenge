@@ -14,12 +14,12 @@ class EntityCard: Card {
     var passiveComponent = PassiveComponent()
     var costComponent = CostComponent()
     
-    init(cost: Int, power: Int, defense: Int, passives: [Passive]) {
+    init(cost: Int, power: Int, defense: Int, passiveDescription: String) {
         super.init()
         self.defenseComponent.defenseValue = defense
         self.powerComponent.powerValue = power
         self.costComponent.costValue = cost
-        self.passiveComponent.passives = passives
+        self.passiveComponent.labelNode.text = passiveDescription
         defenseComponent.position = CGPoint(x: 26, y: -40)
         addChild(defenseComponent)
     }
