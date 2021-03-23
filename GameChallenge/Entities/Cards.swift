@@ -118,7 +118,6 @@ class Card: SKSpriteNode {
 
         if self.enlarged { return }
         
-    
         if let parent = self.parent as? DisplayCardHelper, let scene = self.scene as? GameScene {
            
             if scene.grid.intersects(self), !parent.intersects(self) {
@@ -134,7 +133,7 @@ class Card: SKSpriteNode {
                 self.position = savedPosition
                 self.removeAction(forKey: "pickup" )
                 
-                self.run ( SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+                self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
             
             }
         }
