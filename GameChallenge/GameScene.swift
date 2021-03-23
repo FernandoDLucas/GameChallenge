@@ -12,13 +12,13 @@ class GameScene: SKScene {
     
     private var label: SKLabelNode?
     private var spinnyNode: SKShapeNode?
-    var displayCard: DisplayCardHelper?
+    var displayCard: DisplayCardHelper!
     var grid: Grid!
+    var deck: DeckHelper!
     
     override func didMove(to view: SKView) {
-        let bg = SKSpriteNode(imageNamed: "background")
-        bg.anchorPoint = CGPoint.zero
-        addChild(bg)
+        self.backgroundColor = .white
+        
         let Cards = BuildCards().buildAllCards()
         print(Cards.count)
         self.displayCard = DisplayCardHelper(cards: Cards, texture: nil, superView: view)
@@ -29,5 +29,9 @@ class GameScene: SKScene {
         
         // pega a posicao do quadro no grid e repassa para a carta
         addChild(displayCard!)
+        
+        let cards2 = BuildCards().buildAllCards()
+        deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
+        addChild(deck)
     }
 }

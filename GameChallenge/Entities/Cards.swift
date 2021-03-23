@@ -15,9 +15,9 @@ enum CardLevel: CGFloat {
 
 class Card: SKSpriteNode {
     
-    var frontTexture: SKTexture?
+    var frontTexture: SKTexture
     var backTexture: SKTexture
-    var faceUp: Bool = false
+    var faceUp: Bool = true
     private var initialPosition = CGPoint.zero
     private var savedPosition = CGPoint.zero
     var enlarged = false
@@ -33,8 +33,9 @@ class Card: SKSpriteNode {
     }
     
     init() {
-        self.backTexture = SKTexture(imageNamed: "papa")
-        super.init(texture: backTexture, color: .clear, size: backTexture.size())
+        self.frontTexture = SKTexture(imageNamed: "frontTextureCard")
+        self.backTexture = SKTexture(imageNamed: "backTextureCard")
+        super.init(texture: frontTexture, color: .clear, size: CGSize(width: 102, height: 141))
         zPosition = CardLevel.board.rawValue
     }
     
@@ -83,24 +84,24 @@ class Card: SKSpriteNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch.tapCount > 1 {
-              self.enlarge()
-              return
+            if let parent = parent as? DeckHelper {
+                parent.popCard()
             }
-
-            if self.enlarged { return }
+        
             if let _ = parent as? DisplayCardHelper {
+                for touch in touches where touch.tapCount > 1 {
+                  self.enlarge()
+                  return
+                }
+
+                if self.enlarged { return }
+                
                 savedPosition = self.position
                 initialZPosition = self.zPosition
                 self.zPosition = CardLevel.moving.rawValue
                 self.removeAction(forKey: "drop" )
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
-        }
-        
-        // verificar se carta está no deck, se estiver fazer animação de flip
-        // self.flip()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

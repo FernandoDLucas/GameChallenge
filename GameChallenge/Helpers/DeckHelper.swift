@@ -10,6 +10,7 @@ import SpriteKit
 class DeckHelper: SKSpriteNode {
     var listOfCards: [Card]
     var superView: SKView
+    private let sizeDeck = CGSize(width: 40, height: 52)
     
     override var isUserInteractionEnabled: Bool {
         get {
@@ -23,23 +24,21 @@ class DeckHelper: SKSpriteNode {
     init(listOfCards: [Card], texture: SKTexture?, superView: SKView) {
         self.listOfCards = listOfCards
         self.superView = superView
-
-        let size = CGSize(width: 40, height: 52)
-        super.init(texture: texture, color: .blue, size: size)
+        
+        super.init(texture: texture, color: .gray, size: sizeDeck)
         self.position = CGPoint(x: superView.frame.size.width - 48, y: superView.frame.size.height - 107)
         //inclinação da carta de acordo com números ímpares e pares, embora a posiçao seja a mesma
         
         addCardsInScene()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        popCard()
-    }
-    
     func addCardsInScene() {
-        for card in listOfCards {
+        for (index, card) in listOfCards.enumerated() {
             card.flip()
-           // card.zRotation = CGFloat(1)
+            card.size = sizeDeck
+            if index % 2 == 0 {
+                card.zRotation = CGFloat(-0.25)
+            }
             addChild(card)
         }
     }
@@ -51,10 +50,16 @@ class DeckHelper: SKSpriteNode {
             card.flip()
             
             if let scene = scene as? GameScene {
-                let move = SKAction.move(to: CGPoint(x: superView.frame.width/2, y: scene.displayCard!.position.y/2), duration: 2)
+                let move = SKAction.move(to: CGPoint(x: -superView.frame.width/2, y: -(superView.frame.height - scene.displayCard.size.height)), duration: 0.30)
                 let moveDone = SKAction.removeFromParent()
                 card.run(SKAction.sequence([move, moveDone]))
-                scene.displayCard?.addCard(card: card)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.30) {
+                    let copyCard = card.createCopy()
+                    copyCard.size = CGSize(width: 102, height: 141)
+                    card.removeFromParent()
+                    scene.displayCard.addCard(card: copyCard)
+                }
             }
         }
     }
