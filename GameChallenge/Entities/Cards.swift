@@ -124,10 +124,7 @@ class Card: SKSpriteNode {
                 
                 let card = self.createCopy()
                 parent.removeCard(card: self)
-                /* adicionar carta no grid
-                scene.grid.addCard(card: card)
-                 */
-              
+                scene.boardHelper?.addCardToBoard(add: card)
             } else {
                 self.zPosition = initialZPosition
                 self.position = savedPosition
