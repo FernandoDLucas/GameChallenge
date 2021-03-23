@@ -35,9 +35,11 @@ class DisplayCardHelper: SKSpriteNode {
     }
     
     func addCard(card: Card) {
-        cards.append(card)
-        addChild(card)
-        setAllPositions(cards: cards)
+        if cards.count < 8 {
+            cards.append(card)
+            addChild(card)
+            setAllPositions(cards: cards)
+        }
     }
     
     func removeCardAt(indice: Int) {
