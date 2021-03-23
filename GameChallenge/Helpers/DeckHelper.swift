@@ -3,7 +3,7 @@
 //  GameChallenge
 //
 //  Created by Kellyane Nogueira on 18/03/21.
-//
+// swiftlint:disable unused_setter_value
 
 import SpriteKit
 
