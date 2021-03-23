@@ -33,9 +33,11 @@ class Card: SKSpriteNode {
     }
     
     init() {
+
         self.frontTexture = SKTexture(imageNamed: "frontTextureCard")
         self.backTexture = SKTexture(imageNamed: "backTextureCard")
         super.init(texture: frontTexture, color: .clear, size: CGSize(width: 102, height: 141))
+
         zPosition = CardLevel.board.rawValue
     }
     
