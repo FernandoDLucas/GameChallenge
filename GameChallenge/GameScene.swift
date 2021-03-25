@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var grid: Grid!
     var itemsPlayer: ItemsPlayer!
     var itemsEnemy: ItemsEnemy!
+    var surrender: Surrender!
     
     override func didMove(to view: SKView) {
 
@@ -37,6 +38,9 @@ class GameScene: SKScene {
         
         itemsEnemy = ItemsEnemy(superView: view)
         addChild(itemsEnemy)
+        
+        surrender = Surrender(superView: view)
+        addChild(surrender)
         
     }
 }
