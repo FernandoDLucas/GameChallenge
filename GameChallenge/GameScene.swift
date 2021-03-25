@@ -14,7 +14,8 @@ class GameScene: SKScene {
     private var spinnyNode: SKShapeNode?
     var displayCard: DisplayCardHelper!
     var grid: Grid!
-    var deck: DeckHelper!
+    var itemsPlayer: ItemsPlayer!
+    var itemsEnemy: ItemsEnemy!
     
     override func didMove(to view: SKView) {
 
@@ -22,7 +23,7 @@ class GameScene: SKScene {
         
         let Cards = BuildCards().buildAllEntities()
 
-        self.displayCard = DisplayCardHelper(cards: Cards, texture: nil, superView: view)
+        self.displayCard = DisplayCardHelper(cards: Cards, superView: view)
         
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
@@ -31,8 +32,11 @@ class GameScene: SKScene {
         // pega a posicao do quadro no grid e repassa para a carta
         addChild(displayCard!)
         
-        let cards2 = BuildCards().buildAllEntities()
-        deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
-        addChild(deck)
+        itemsPlayer = ItemsPlayer(superView: view)
+        addChild(itemsPlayer)
+        
+        itemsEnemy = ItemsEnemy(superView: view)
+        addChild(itemsEnemy)
+        
     }
 }

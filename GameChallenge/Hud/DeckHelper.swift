@@ -9,7 +9,6 @@ import SpriteKit
 
 class DeckHelper: SKSpriteNode {
     var listOfCards: [Card]
-    var superView: SKView
 
     override var isUserInteractionEnabled: Bool {
         get {
@@ -20,13 +19,9 @@ class DeckHelper: SKSpriteNode {
         }
     }
     
-    init(listOfCards: [Card], texture: SKTexture?, superView: SKView) {
+    init(listOfCards: [Card], texture: SKTexture?) {
         self.listOfCards = listOfCards
-        self.superView = superView
-        
         super.init(texture: texture, color: .gray, size: DECK_SIZE)
-        self.position = CGPoint(x: superView.frame.size.width - 48, y: superView.frame.size.height - 107)
-        //inclinação da carta de acordo com números ímpares e pares, embora a posiçao seja a mesma
         
         addCardsInScene()
     }
@@ -48,7 +43,7 @@ class DeckHelper: SKSpriteNode {
             let card = listOfCards.removeLast()
             card.flip()
             
-            if let scene = scene as? GameScene {
+            if let scene = scene as? GameScene, let superView = scene.view {
                 let move = SKAction.move(to: CGPoint(x: -superView.frame.width/2, y: -(superView.frame.height - scene.displayCard.size.height)), duration: 0.30)
                 let zoom = SKAction.scale(to: 2, duration: 0.2)
               

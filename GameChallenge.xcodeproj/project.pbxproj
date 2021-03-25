@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0BDA9A3C26038BF200E781AF /* DeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A3B26038BF200E781AF /* DeckHelper.swift */; };
+		0BDA9A6E260B582F00E781AF /* itemsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */; };
+		0BDA9A74260B655C00E781AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A73260B655C00E781AF /* Item.swift */; };
+		0BDA9A8D260B818800E781AF /* ItemsEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
 		AFC650B5260A37060009D78F /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC650B4260A37060009D78F /* Sizes.swift */; };
 		EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105B525FB906B00BF07BB /* AppDelegate.swift */; };
@@ -55,6 +58,9 @@
 
 /* Begin PBXFileReference section */
 		0BDA9A3B26038BF200E781AF /* DeckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckHelper.swift; sourceTree = "<group>"; };
+		0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemsPlayer.swift; sourceTree = "<group>"; };
+		0BDA9A73260B655C00E781AF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsEnemy.swift; sourceTree = "<group>"; };
 		AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCardHelper.swift; sourceTree = "<group>"; };
 		AFC650B4260A37060009D78F /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		EC5105B225FB906B00BF07BB /* GameChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BDA9A72260B643800E781AF /* Hud */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA9A3B26038BF200E781AF /* DeckHelper.swift */,
+				0BDA9A73260B655C00E781AF /* Item.swift */,
+			);
+			path = Hud;
+			sourceTree = "<group>";
+		};
 		EC5105A925FB906B00BF07BB = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +153,7 @@
 		EC5105B425FB906B00BF07BB /* GameChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				0BDA9A72260B643800E781AF /* Hud */,
 				ECDDB0D726024421000ED6BE /* Services */,
 				EC5105EC25FB90E000BF07BB /* Components */,
 				EC5105EB25FB90D800BF07BB /* Helpers */,
@@ -188,8 +204,9 @@
 				ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */,
 				ECA67E902600D04700E699C4 /* Grid.swift */,
 				AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */,
-				0BDA9A3B26038BF200E781AF /* DeckHelper.swift */,
 				AFC650B4260A37060009D78F /* Sizes.swift */,
+				0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */,
+				0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -372,12 +389,15 @@
 				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
 				ECDDB0D926024447000ED6BE /* JSONService.swift in Sources */,
 				AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */,
+				0BDA9A8D260B818800E781AF /* ItemsEnemy.swift in Sources */,
 				ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */,
 				ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */,
+				0BDA9A74260B655C00E781AF /* Item.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				AFC650B5260A37060009D78F /* Sizes.swift in Sources */,
 				0BDA9A3C26038BF200E781AF /* DeckHelper.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
+				0BDA9A6E260B582F00E781AF /* itemsPlayer.swift in Sources */,
 				ECDDB0BD260226DD000ED6BE /* Passive.swift in Sources */,
 				ECDDB0E12602445E000ED6BE /* JSONStruct.swift in Sources */,
 				EC7EA90F260386240090DEDD /* CardBuilder.swift in Sources */,
