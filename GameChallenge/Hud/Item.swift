@@ -10,12 +10,11 @@ import SpriteKit
 class Item: SKSpriteNode {
     private var label = SKLabelNode()
     
-    init(value: Int, texture: SKTexture, size: CGSize) {
+    init(value: Int, texture: SKTexture, size: CGSize, positionLabel: CGPoint = CGPoint(x: 0, y: 0)) {
         super.init(texture: texture, color: .clear, size: size)
-        label.text = convertToString(value)
-        label.position = CGPoint(x: 0, y: 0)
-        
-        formatLabel()
+      
+        let text = convertToString(value)
+        formatLabel(text: text, position: positionLabel)
         addChild(label)
     }
     
@@ -27,13 +26,15 @@ class Item: SKSpriteNode {
         label.text = convertToString(newValue)
     }
     
-    func formatLabel() {
+    func formatLabel(text: String, position: CGPoint) {
         label.fontColor = .black
         label.zPosition = 12
-        label.fontSize = 18
+        label.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
         label.numberOfLines = 1
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
+        label.position = position
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

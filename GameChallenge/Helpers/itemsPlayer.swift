@@ -17,6 +17,7 @@ class ItemsPlayer: SKSpriteNode {
         self.superView = superView
         
         super.init(texture: SKTexture(imageNamed: "bgPlayer"), color: .clear, size: TABLEAU_SIZE)
+        
         self.position = CGPoint(x: superView.frame.size.width - (size.width/2 + 6), y: superView.frame.size.height/2)
         self.setupMana()
         self.setupLife()
@@ -26,7 +27,7 @@ class ItemsPlayer: SKSpriteNode {
     
     private func setupMana() {
         let textureMana = SKTexture(imageNamed: "manaPlayer")
-        self.mana = Item(value: 1, texture: textureMana, size: MANA_SIZE)
+        self.mana = Item(value: 1, texture: textureMana, size: MANA_SIZE, positionLabel: CGPoint(x: -1, y: -5))
         mana.position = CGPoint(x: 0, y: -12)
         mana.zPosition = 10
         addChild(mana)
@@ -34,7 +35,7 @@ class ItemsPlayer: SKSpriteNode {
     
     private func setupLife() {
         let textureLife = SKTexture(imageNamed: "lifeEnemy")
-        self.life = Item(value: 5, texture: textureLife, size: LIFE_SIZE)
+        self.life = Item(value: 5, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
         life.position = CGPoint(x: 0, y: (LIFE_SIZE.height/2 + 15))
         life.zPosition = 10
         addChild(life)
