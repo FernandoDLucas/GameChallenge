@@ -20,7 +20,6 @@ class DisplayCardHelper: SKSpriteNode {
         super.init(texture: textureDisplay, color: .clear, size: size)
         
         position = CGPoint.init(x: superView.center.x, y: 0)
-        zPosition = 0
         setAllPositions(cards: cards)
         addAllCards(cards: cards)
     }
