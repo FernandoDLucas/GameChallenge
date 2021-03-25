@@ -19,7 +19,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
 
-        self.backgroundColor = .white
+        self.backgroundColor = .background
         
         let Cards = BuildCards().buildAllEntities()
 

@@ -27,9 +27,8 @@ class Item: SKSpriteNode {
     }
     
     func formatLabel(text: String, position: CGPoint) {
-        label.fontColor = .black
         label.zPosition = 12
-        label.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+        label.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.text])
         label.numberOfLines = 1
         label.verticalAlignmentMode = .center
         label.horizontalAlignmentMode = .center
