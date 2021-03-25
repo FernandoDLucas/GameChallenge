@@ -53,4 +53,3 @@ class ItemsEnemy: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

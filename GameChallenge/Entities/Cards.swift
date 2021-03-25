@@ -8,7 +8,7 @@
 import SpriteKit
 
 enum CardLevel: CGFloat {
-    case board = 0
+    case board = 10
     case moving = 100
     case enlarged = 200
 }
