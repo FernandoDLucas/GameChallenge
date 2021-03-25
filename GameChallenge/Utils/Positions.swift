@@ -7,5 +7,5 @@
 
 import UIKit
 enum Zpositions: CGFloat {
-    case grid = 0, tableau, surrender, cactus, display
+    case grid = 0, tableau, surrender, cactus, display, mainButton
 }

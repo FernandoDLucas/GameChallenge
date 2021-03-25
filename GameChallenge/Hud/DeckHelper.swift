@@ -52,7 +52,7 @@ class DeckHelper: SKSpriteNode {
     
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.50) {
                     let copyCard = card.createCopy()
-                    copyCard.size = CGSize(width: 102, height: 141)
+                    copyCard.size = CARD_HAND_SIZE
                     card.removeFromParent()
                     scene.displayCard.addCard(card: copyCard)
                 }

@@ -18,7 +18,7 @@ class ItemsPlayer: SKSpriteNode {
         
         super.init(texture: SKTexture(imageNamed: "bgPlayer"), color: .clear, size: TABLEAU_SIZE)
         
-        self.position = CGPoint(x: superView.frame.size.width - (size.width/2 + 6), y: superView.frame.size.height/2)
+        self.position = CGPoint(x: superView.frame.size.width - (size.width/2 + 6), y: superView.frame.size.height/2 + 20)
         self.setupMana()
         self.setupLife()
         self.setupDeck()
