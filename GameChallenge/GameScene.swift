@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var displayCard: DisplayCardHelper!
     var grid: Grid!
     var deck: DeckHelper!
+    var boardHelper: BoardHelper!
     
     override func didMove(to view: SKView) {
 
@@ -27,11 +28,11 @@ class GameScene: SKScene {
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         addChild(grid)
-        
+        self.boardHelper = BoardHelper(grid: self.grid)
         // pega a posicao do quadro no grid e repassa para a carta
         addChild(displayCard!)
         
-        let cards2 = BuildCards().buildAllCards()
+        let cards2 = BuildCards().buildAllEntities()
         deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
         addChild(deck)
     }

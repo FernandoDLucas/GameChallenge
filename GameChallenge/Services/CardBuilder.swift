@@ -11,8 +11,8 @@ class BuildCards {
 
     let service = JSONService()
 
-    func buildAllEntities () -> [EntityCard]{
-        var cards : [EntityCard] = []
+    func buildAllEntities () -> [EntityCard] {
+        var cards: [EntityCard] = []
         if let result = service.decode() {
             result.Cards.forEach {
                 switch $0.CardType {
@@ -26,8 +26,8 @@ class BuildCards {
         return cards
     }
     
-    func buildAllAssociateds () -> [AssocietedCard]{
-        var cards : [AssocietedCard] = []
+    func buildAllAssociateds () -> [AssocietedCard] {
+        var cards: [AssocietedCard] = []
         if let result = service.decode() {
             result.Cards.forEach {
                 switch $0.CardType {
@@ -41,8 +41,8 @@ class BuildCards {
         return cards
     }
     
-    func buildAllSpells () -> [SpellCard]{
-        var cards : [SpellCard] = []
+    func buildAllSpells () -> [SpellCard] {
+        var cards: [SpellCard] = []
         if let result = service.decode() {
             result.Cards.forEach {
                 switch $0.CardType {
