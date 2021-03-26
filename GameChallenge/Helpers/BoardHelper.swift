@@ -11,11 +11,11 @@ class Cell {
     var index: Int
     var x: Int
     var y: Int
-    var free : Bool = true
+    var free: Bool = true
     var card: Card?
-    var node = SKSpriteNode(imageNamed: "backTexture")
+    var node = SKSpriteNode(imageNamed: "bgCardInGame")
     
-    init(index: Int, x: Int, y: Int, free: Bool){
+    init(index: Int, x: Int, y: Int, free: Bool) {
         self.index = index
         self.x = x
         self.y = y
@@ -49,6 +49,7 @@ extension BoardHelper {
         cells[freeIndex].card = card
         cells[freeIndex].free = false
         grid.addChild(card)
+        card.changeTexture(to: "bgCardInGame", size: CGSize(width: grid.blockWidth, height: grid.blockHeight))
     }
     
     func hadSpaceOnBoard() -> Bool {
@@ -100,7 +101,7 @@ extension BoardHelper {
         } else { return false }
     }
     
-    func reactivateCell(cell: Cell){
+    func reactivateCell(cell: Cell) {
         cell.free = true
     }
 }

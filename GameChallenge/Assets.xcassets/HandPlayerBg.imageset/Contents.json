@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "papa.png",
+      "filename" : "HandPlayerBg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "HandPlayerBg@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "HandPlayerBg@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
