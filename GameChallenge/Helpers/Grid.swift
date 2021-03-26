@@ -12,8 +12,6 @@ class Grid: SKSpriteNode {
     var cols: Int!
     var blockWidth: CGFloat!
     var blockHeight: CGFloat!
-    var indexFree: (Int, Int) = (3,0)
-    var Cards: [Card] = []
 
     convenience init?(blockWidth: CGFloat, blockHeight: CGFloat, rows: Int, cols: Int) {
         guard let texture = Grid.gridTexture(blockWidth: blockWidth, blockHeight: blockHeight, rows: rows, cols: cols) else {
@@ -57,10 +55,16 @@ class Grid: SKSpriteNode {
     }
 
     func gridPosition(row: Int, col: Int) -> CGPoint {
-        let yOffset = blockHeight / 2.0 + 0.5
-        let xOffset = blockWidth / 2.0 + 0.5
+        let yOffset = blockHeight / 2.0
+        let xOffset = blockWidth / 2.0
         let x = CGFloat(col) * blockWidth - (blockWidth * CGFloat(cols)) / 2.0 + xOffset
         let y = CGFloat(rows - row - 1) * blockHeight - (blockHeight * CGFloat(rows)) / 2.0 + yOffset
-        return CGPoint(x: self.position.x +  x, y: self.position.y + y)
+        return CGPoint(x: x, y: y)
+    }
+    
+    func attackPositions() -> [CGPoint] {
+        var array: [CGPoint] = []
+        for i in 0...5 { array.append(gridPosition(row: 0, col: i)) }
+        return array
     }
 }

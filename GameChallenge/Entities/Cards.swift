@@ -22,6 +22,8 @@ class Card: SKSpriteNode {
     private var savedPosition = CGPoint.zero
     var enlarged = false
     var initialZPosition = CGFloat.zero
+    var onAttack: Bool = false
+    var cell: Cell?
     
     override var isUserInteractionEnabled: Bool {
         get {
@@ -97,6 +99,16 @@ class Card: SKSpriteNode {
                 self.removeAction(forKey: "drop" )
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
+            
+            if let _ = parent as? Grid{
+                if !onAttack{
+                    savedPosition = self.position
+                    initialZPosition = self.zPosition
+                    self.zPosition = CardLevel.moving.rawValue
+                    self.removeAction(forKey: "drop" )
+                    self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
+                }
+            }
         }
         
         // verificar se carta está no deck, se estiver fazer animação de flip
@@ -109,30 +121,76 @@ class Card: SKSpriteNode {
             if let myParent = parent as? DisplayCardHelper {
                 let location = touch.location(in: myParent)
                 self.position = location
-               
+            }
+            if let myParent = parent as? Grid, let scene = self.scene as? GameScene{
+                let location = touch.location(in: myParent)
+                self.position = location
+                self.onAttack = false
+                self.cell?.free = true
             }
         }
     }
+
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         if self.enlarged { return }
         
         if let parent = self.parent as? DisplayCardHelper, let scene = self.scene as? GameScene {
-           
+
             if scene.grid.intersects(self), !parent.intersects(self) {
-                
                 let card = self.createCopy()
-                parent.removeCard(card: self)
-                scene.boardHelper?.addCardToBoard(add: card)
+                if scene.boardHelper.hadSpaceOnBoard() {
+                    parent.removeCard(card: self)
+                    scene.boardHelper.addCardToBoard(add: card)
+                } else {
+                    self.zPosition = initialZPosition
+                    self.position = savedPosition
+                    self.removeAction(forKey: "pickup" )
+                    self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+                }
+
             } else {
                 self.zPosition = initialZPosition
                 self.position = savedPosition
                 self.removeAction(forKey: "pickup" )
-                
                 self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
-            
+
             }
+        }
+        
+        if let parent = self.parent as? Grid, let scene = self.scene as? GameScene {
+            let attackCells = scene.boardHelper.attackNodes()
+            
+            attackCells.forEach {
+                if self.intersects($0.node) {
+                    scene.boardHelper.addCardToAttack(add: self, to: $0)
+                    self.cell = $0
+                }
+            }
+            
+            if !onAttack {
+                self.zPosition = initialZPosition
+                self.position = savedPosition
+                self.removeAction(forKey: "pickup" )
+                self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+            }
+//            for i in 0..<5 {
+//                if self.intersects(attackCells[i]) && scene.boardHelper.hadSpaceOnAttack(index: i) {
+//                    self.position = attackCells[i].position
+//                    self.removeAction(forKey: "pickup" )
+//                    self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+//                    scene.boardHelper.deactivateAttackCell(index: i)
+//                    onAttack = true
+//                    break
+//                } else {
+//                    self.zPosition = initialZPosition
+//                    self.position = savedPosition
+//                    self.removeAction(forKey: "pickup" )
+//                    self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+//                    onAttack = false
+//                }
+//            }
         }
     }
 }
