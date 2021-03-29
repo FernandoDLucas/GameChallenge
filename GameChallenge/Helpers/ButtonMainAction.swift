@@ -12,17 +12,27 @@ class ButtonMainAction: SKSpriteNode {
     
     init(superView: SKView) {
         super.init(texture: nil, color: .clear, size: MAIN_BUTTON_SIZE)
-        formatLabel(text: "passar")
+        formatLabel(text: "Passar")
         label.position = CGPoint(x: 0, y: 0)
+        
+//        self.blendMode = SKBlendMode.alpha
+//        self.colorBlendFactor = 1
+//        self.color = .black
+//        self.alpha = 0.75
+        
+//        self.lightingBitMask = 0b0001
+//        self.shadowCastBitMask = 0b0001
         
         let shapeNode = SKShapeNode(circleOfRadius: size.height / 2)
         shapeNode.fillColor = .action
         shapeNode.strokeColor = .action
+        shapeNode.blendMode = .replace
+        //shapeNode.glowWidth = 1
        
         addChild(shapeNode)
         addChild(label)
         
-        position = CGPoint(x: superView.frame.width - (size.width / 2 + 16), y: size.height / 2 + 20)
+        position = CGPoint(x: superView.frame.width - (size.width / 2 + 16), y: size.height / 2 + 12)
     
     }
     

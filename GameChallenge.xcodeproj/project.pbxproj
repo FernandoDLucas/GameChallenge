@@ -11,6 +11,7 @@
 		0BDA9A6E260B582F00E781AF /* itemsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */; };
 		0BDA9A74260B655C00E781AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A73260B655C00E781AF /* Item.swift */; };
 		0BDA9A8D260B818800E781AF /* ItemsEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */; };
+		0BDA9A95260E056B00E781AF /* AttackScythe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A94260E056B00E781AF /* AttackScythe.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
 		AFBB2C79260CC09B001D2A87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C78260CC09B001D2A87 /* Colors.swift */; };
 		AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C81260CC692001D2A87 /* Surrender.swift */; };
@@ -66,6 +67,7 @@
 		0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemsPlayer.swift; sourceTree = "<group>"; };
 		0BDA9A73260B655C00E781AF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsEnemy.swift; sourceTree = "<group>"; };
+		0BDA9A94260E056B00E781AF /* AttackScythe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackScythe.swift; sourceTree = "<group>"; };
 		AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCardHelper.swift; sourceTree = "<group>"; };
 		AFBB2C78260CC09B001D2A87 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AFBB2C81260CC692001D2A87 /* Surrender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surrender.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */,
 				AFBB2C81260CC692001D2A87 /* Surrender.swift */,
 				AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */,
+				0BDA9A94260E056B00E781AF /* AttackScythe.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				EC7EA90F260386240090DEDD /* CardBuilder.swift in Sources */,
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
+				0BDA9A95260E056B00E781AF /* AttackScythe.swift in Sources */,
 				ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */,
 				EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */,
 				AFBB2C8C260CD0DB001D2A87 /* Positions.swift in Sources */,

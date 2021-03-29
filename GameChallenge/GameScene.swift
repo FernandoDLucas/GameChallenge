@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var surrender: Surrender!
     var cactus: Cactus!
     var mainButton: ButtonMainAction!
+    var attack: AttackScythe!
     
     override func didMove(to view: SKView) {
 
@@ -29,6 +30,10 @@ class GameScene: SKScene {
         grid.zPosition = Zpositions.grid.rawValue
        
         addChild(grid)
+        
+        attack = AttackScythe(superView: view)
+        attack.zPosition = Zpositions.attack.rawValue
+        addChild(attack)
         
         itemsPlayer = ItemsPlayer(superView: view)
         itemsPlayer.zPosition = Zpositions.tableau.rawValue

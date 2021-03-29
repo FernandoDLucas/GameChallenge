@@ -34,7 +34,7 @@ class ItemsPlayer: SKSpriteNode {
     }
     
     private func setupLife() {
-        let textureLife = SKTexture(imageNamed: "lifeEnemy")
+        let textureLife = SKTexture(imageNamed: "lifePlayer")
         self.life = Item(value: 5, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
         life.position = CGPoint(x: 0, y: (LIFE_SIZE.height/2 + 15))
         life.zPosition = 10

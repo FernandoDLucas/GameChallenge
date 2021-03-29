@@ -17,6 +17,7 @@ let SURRENDER_SIZE = CGSize(width: 86, height: 65)
 let HAND_CARD_ENEMY_SIZE = CGSize(width: 56, height: 38.4)
 let CACTUS_SIZE = CGSize(width: 76, height: 110)
 let MAIN_BUTTON_SIZE = CGSize(width: 95, height: 95)
+let ATTACK_SCYTHE_SIZE = CGSize(width: 85, height: 85)
 
 let DISPLAY_CARD_HEIGHT = CGFloat(112.11)
 let GRID_SPACING_LEFT = CGFloat(95)
