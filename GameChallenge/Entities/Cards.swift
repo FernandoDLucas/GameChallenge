@@ -54,14 +54,25 @@ class Card: SKSpriteNode {
         card.texture = self.texture
         return card
     }
-    
+        
     func flip() {
-        if faceUp {
-            self.texture = backTexture
-        } else {
-            self.texture = frontTexture
+      let firstHalfFlip = SKAction.scaleX(to: 0.0, duration: 0.25)
+      let secondHalfFlip = SKAction.scaleX(to: 1.0, duration: 0.25)
+      
+      setScale(1.0)
+      
+      if faceUp {
+        run(firstHalfFlip) {
+          self.texture = self.backTexture
+          self.run(secondHalfFlip)
         }
-        faceUp = !faceUp
+      } else {
+        run(firstHalfFlip) {
+          self.texture = self.frontTexture
+          self.run(secondHalfFlip)
+        }
+      }
+      faceUp = !faceUp
     }
     
     func enlarge() {
