@@ -35,6 +35,7 @@
 		ECA67E6925FF89FD00E699C4 /* OnHandHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */; };
 		ECA67E7125FF9BA900E699C4 /* DefenseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */; };
 		ECA67E912600D04700E699C4 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E902600D04700E699C4 /* Grid.swift */; };
+		ECC3AA052608DBF5008488EF /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC3AA042608DBF5008488EF /* BoardHelper.swift */; };
 		ECDDB0962600F913000ED6BE /* PowerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0952600F913000ED6BE /* PowerComponent.swift */; };
 		ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB09A2600F966000ED6BE /* CostComponent.swift */; };
 		ECDDB0B826022544000ED6BE /* PassiveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDB0B726022544000ED6BE /* PassiveComponent.swift */; };
@@ -97,6 +98,7 @@
 		ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnHandHelper.swift; sourceTree = "<group>"; };
 		ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenseComponent.swift; sourceTree = "<group>"; };
 		ECA67E902600D04700E699C4 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		ECC3AA042608DBF5008488EF /* BoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
 		ECDDB0952600F913000ED6BE /* PowerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerComponent.swift; sourceTree = "<group>"; };
 		ECDDB09A2600F966000ED6BE /* CostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostComponent.swift; sourceTree = "<group>"; };
 		ECDDB0B726022544000ED6BE /* PassiveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassiveComponent.swift; sourceTree = "<group>"; };
@@ -228,11 +230,16 @@
 				ECA67E6825FF89FD00E699C4 /* OnHandHelper.swift */,
 				ECA67E902600D04700E699C4 /* Grid.swift */,
 				AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */,
+
 				0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */,
 				0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */,
 				AFBB2C81260CC692001D2A87 /* Surrender.swift */,
 				AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */,
 				0BDA9A94260E056B00E781AF /* AttackScythe.swift */,
+
+				ECC3AA042608DBF5008488EF /* BoardHelper.swift */,
+				0BDA9A3B26038BF200E781AF /* DeckHelper.swift */,
+
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -412,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC3AA052608DBF5008488EF /* BoardHelper.swift in Sources */,
 				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
 				ECDDB0D926024447000ED6BE /* JSONService.swift in Sources */,
 				AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */,

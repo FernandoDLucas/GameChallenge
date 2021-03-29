@@ -18,6 +18,9 @@ class GameScene: SKScene {
     var cactus: Cactus!
     var mainButton: ButtonMainAction!
     var attack: AttackScythe!
+    var deck: DeckHelper!
+    var boardHelper: BoardHelper!
+
     
     override func didMove(to view: SKView) {
 
@@ -28,7 +31,6 @@ class GameScene: SKScene {
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         grid.zPosition = Zpositions.grid.rawValue
-       
         addChild(grid)
         
         attack = AttackScythe(superView: view)
@@ -49,6 +51,10 @@ class GameScene: SKScene {
       
         self.displayCard = DisplayCardHelper(cards: Cards, superView: view)
         displayCard.zPosition = Zpositions.display.rawValue
+
+        self.boardHelper = BoardHelper(grid: self.grid)
+        // pega a posicao do quadro no grid e repassa para a carta
+
         addChild(displayCard!)
      
         surrender = Surrender(superView: view)
@@ -59,5 +65,9 @@ class GameScene: SKScene {
         mainButton.zPosition = Zpositions.mainButton.rawValue
         addChild(mainButton)
     
+        let cards2 = BuildCards().buildAllEntities()
+        deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
+        addChild(deck)
+
     }
 }

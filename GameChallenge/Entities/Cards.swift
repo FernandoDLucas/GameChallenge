@@ -22,6 +22,8 @@ class Card: SKSpriteNode {
     private var savedPosition = CGPoint.zero
     var enlarged = false
     var initialZPosition = CGFloat.zero
+    var onAttack: Bool = false
+    var cell: Cell?
     
     override var isUserInteractionEnabled: Bool {
         get {
@@ -34,7 +36,7 @@ class Card: SKSpriteNode {
     
     init() {
 
-        self.frontTexture = SKTexture(imageNamed: "frontTextureCard")
+        self.frontTexture = SKTexture(imageNamed: "backTextureCard")
         self.backTexture = SKTexture(imageNamed: "backTextureCard")
         super.init(texture: frontTexture, color: .clear, size: CARD_HAND_SIZE)
 
@@ -95,6 +97,13 @@ class Card: SKSpriteNode {
         setScale(2.0)
       }
     }
+    
+    func changeTexture(to newTexture: String, size: CGSize) {
+        let texture = SKTexture(imageNamed: newTexture)
+        self.size = size
+        let action = SKAction.setTexture(texture)
+        self.run(action)
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             if let parent = parent as? DeckHelper {
@@ -115,40 +124,79 @@ class Card: SKSpriteNode {
                 self.removeAction(forKey: "drop" )
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
-    }
-    
+            
+            if let _ = parent as? Grid {
+                if !onAttack {
+                    savedPosition = self.position
+                    initialZPosition = self.zPosition
+                    self.zPosition = CardLevel.moving.rawValue
+                    self.removeAction(forKey: "drop" )
+                    self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
+                }
+            }
+        }
+        
+        // verificar se carta está no deck, se estiver fazer animação de flip
+        // self.flip()
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.enlarged { return }
         for touch in touches {
             if let myParent = parent as? DisplayCardHelper {
                 let location = touch.location(in: myParent)
                 self.position = location
-               
+            }
+            if let myParent = parent as? Grid, let scene = self.scene as? GameScene {
+                let location = touch.location(in: myParent)
+                self.position = location
+                self.onAttack = false
+                self.cell?.free = true
             }
         }
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         if self.enlarged { return }
         
         if let parent = self.parent as? DisplayCardHelper, let scene = self.scene as? GameScene {
-           
+
             if scene.grid.intersects(self), !parent.intersects(self) {
-                
                 let card = self.createCopy()
-                parent.removeCard(card: self)
-                /* adicionar carta no grid
-                scene.grid.addCard(card: card)
-                 */
-              
+                if scene.boardHelper.hadSpaceOnBoard() {
+                    parent.removeCard(card: self)
+                    scene.boardHelper.addCardToBoard(add: card)
+                } else {
+                    self.zPosition = initialZPosition
+                    self.position = savedPosition
+                    self.removeAction(forKey: "pickup" )
+                    self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+                }
+
             } else {
                 self.zPosition = initialZPosition
                 self.position = savedPosition
                 self.removeAction(forKey: "pickup" )
-                
                 self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
+
+            }
+        }
+        
+        if let parent = self.parent as? Grid, let scene = self.scene as? GameScene {
+            let attackCells = scene.boardHelper.attackNodes()
             
+            attackCells.forEach {
+                if self.intersects($0.node) {
+                    scene.boardHelper.addCardToAttack(add: self, to: $0)
+                    self.cell = $0
+                }
+            }
+            
+            if !onAttack {
+                self.zPosition = initialZPosition
+                self.position = savedPosition
+                self.removeAction(forKey: "pickup" )
+                self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
             }
         }
     }
