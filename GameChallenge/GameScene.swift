@@ -32,7 +32,7 @@ class GameScene: SKScene {
         // pega a posicao do quadro no grid e repassa para a carta
         addChild(displayCard!)
         
-        let cards2 = BuildCards().buildAllEntities()
+        let cards2 = BuildCards().buildAllCards()
         deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
         addChild(deck)
     }

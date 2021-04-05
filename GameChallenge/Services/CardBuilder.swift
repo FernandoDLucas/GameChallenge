@@ -11,6 +11,14 @@ class BuildCards {
 
     let service = JSONService()
 
+    func buildAllCards () -> [Card] {
+        var cards: [Card] = []
+        cards += self.buildAllEntities()
+        cards += self.buildAllSpells()
+        cards += self.buildAllAssociateds()
+        cards.shuffle()
+        return cards
+    }
     func buildAllEntities () -> [EntityCard] {
         var cards: [EntityCard] = []
         if let result = service.decode() {

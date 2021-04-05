@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BDA9A3C26038BF200E781AF /* DeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A3B26038BF200E781AF /* DeckHelper.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
+		EC19ED21260E218B00FA4FD1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19ED20260E218B00FA4FD1 /* Component.swift */; };
 		EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105B525FB906B00BF07BB /* AppDelegate.swift */; };
 		EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BB25FB906B00BF07BB /* GameScene.swift */; };
 		EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BD25FB906B00BF07BB /* GameViewController.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		0BDA9A3B26038BF200E781AF /* DeckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckHelper.swift; sourceTree = "<group>"; };
 		AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCardHelper.swift; sourceTree = "<group>"; };
+		EC19ED20260E218B00FA4FD1 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		EC5105B225FB906B00BF07BB /* GameChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5105B525FB906B00BF07BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC5105BB25FB906B00BF07BB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		EC5105EC25FB90E000BF07BB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC19ED20260E218B00FA4FD1 /* Component.swift */,
 				ECA67E7025FF9BA900E699C4 /* DefenseComponent.swift */,
 				ECDDB0952600F913000ED6BE /* PowerComponent.swift */,
 				ECDDB09A2600F966000ED6BE /* CostComponent.swift */,
@@ -384,6 +387,7 @@
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
 				ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */,
+				EC19ED21260E218B00FA4FD1 /* Component.swift in Sources */,
 				EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */,
 				ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */,
 				ECA67E6925FF89FD00E699C4 /* OnHandHelper.swift in Sources */,

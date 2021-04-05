@@ -18,9 +18,11 @@ class CostComponent: SKSpriteNode {
     }
     
     init() {
-        self.costTexture = SKTexture(imageNamed: "elipse")
+        self.costTexture = SKTexture(imageNamed: "costCard")
+        labelNode.fontColor = .red
         labelNode.fontSize = 8
         super.init(texture: costTexture, color: .clear, size: costTexture.size())
+        self.zPosition = 11
         addChild(labelNode)
     }
     
@@ -36,3 +38,10 @@ class CostComponent: SKSpriteNode {
         costValue += value
     }
 }
+
+extension CostComponent : Component {
+    func returnSelf() -> SKSpriteNode {
+        return self
+    }
+}
+

@@ -20,11 +20,23 @@ class EntityCard: Card {
         self.powerComponent.powerValue = power
         self.costComponent.costValue = cost
         self.passiveComponent.labelNode.text = passiveDescription
-        defenseComponent.position = CGPoint(x: 26, y: -40)
-        addChild(defenseComponent)
+        setPositions()
+       addChildren([defenseComponent, powerComponent, costComponent])
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setPositions() {
+        defenseComponent.position = CGPoint(x: self.size.width*0.4, y: -self.size.height*0.375)
+        powerComponent.position = CGPoint(x: -(self.size.width*0.375), y: -(self.size.height*0.375))
+        costComponent.position = CGPoint(x: -self.size.width*0.8/2, y: (self.size.height*0.4))
+    }
+    
+    func addChildren(_ children: [Component]) {
+        children.forEach {
+            addChild($0.returnSelf())
+        }
     }
 }
