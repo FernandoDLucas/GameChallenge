@@ -10,13 +10,13 @@ import SpriteKit
 class PassiveComponent: SKSpriteNode {
     
     let labelNode = SKLabelNode(text: "0")
-    var passives: [Passive]?
+    var passives: Passive?
     
     init() {
-        super.init(texture: .none, color: .clear, size: CGSize(width: 200, height: 200))
-        labelNode.fontColor = .red
-        labelNode.fontSize = 8
-        self.zPosition = 11
+        super.init(texture: .none, color: .clear, size: CGSize(width: 70, height: 70))
+        labelNode.fontColor = .white
+        labelNode.fontSize = 12
+        labelNode.fontName = "TimesNewRomanPSMT"
         addChild(labelNode)
     }
     
