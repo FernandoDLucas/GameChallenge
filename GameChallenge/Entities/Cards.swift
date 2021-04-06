@@ -36,8 +36,8 @@ class Card: SKSpriteNode {
     
     init() {
 
-        self.frontTexture = SKTexture(imageNamed: "backTextureCard")
-        self.backTexture = SKTexture(imageNamed: "backTextureCard")
+        self.frontTexture = SKTexture(imageNamed: "bgCardSpell")
+        self.backTexture = SKTexture(imageNamed: "backCard")
         super.init(texture: frontTexture, color: .clear, size: CARD_HAND_SIZE)
 
         zPosition = CardLevel.board.rawValue
@@ -146,7 +146,7 @@ class Card: SKSpriteNode {
                 let location = touch.location(in: myParent)
                 self.position = location
             }
-            if let myParent = parent as? Grid, let scene = self.scene as? GameScene {
+            if let myParent = parent as? Grid, let _ = self.scene as? GameScene {
                 let location = touch.location(in: myParent)
                 self.position = location
                 self.onAttack = false
@@ -182,7 +182,7 @@ class Card: SKSpriteNode {
             }
         }
         
-        if let parent = self.parent as? Grid, let scene = self.scene as? GameScene {
+        if let _ = self.parent as? Grid, let scene = self.scene as? GameScene {
             let attackCells = scene.boardHelper.attackNodes()
             
             attackCells.forEach {
