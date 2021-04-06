@@ -21,7 +21,7 @@ class GameScene: SKScene {
 
         self.backgroundColor = .white
         
-        let Cards = BuildCards().buildAllEntities()
+        let Cards = BuildCards().buildAllSpells()
 
         self.displayCard = DisplayCardHelper(cards: Cards, texture: nil, superView: view)
         
@@ -32,7 +32,7 @@ class GameScene: SKScene {
 
         addChild(displayCard!)
         
-        let cards2 = BuildCards().buildAllCards()
+        let cards2 = BuildCards().buildAllSpells()
         deck = DeckHelper(listOfCards: cards2, texture: nil, superView: view)
         addChild(deck)
     }
