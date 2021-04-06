@@ -43,7 +43,8 @@ class GameScene: SKScene {
         cactus.zPosition = Zpositions.cactus.rawValue
         addChild(cactus)
       
-        self.displayCard = DisplayCardHelper(cards: Cards, superView: view)
+        let spellCards = BuildCards().buildAllSpells()
+        self.displayCard = DisplayCardHelper(cards: spellCards, superView: view)
         displayCard.zPosition = Zpositions.display.rawValue
 
         self.boardHelper = BoardHelper(grid: self.grid)
