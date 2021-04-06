@@ -19,6 +19,7 @@ class CreateCardsPassive {
     func create() {
         scene?.displayCard?.addCard(card: cards!)
     }
+    
 }
 
 extension CreateCardsPassive: Passive {

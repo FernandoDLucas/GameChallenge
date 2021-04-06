@@ -29,7 +29,7 @@ class GameScene: SKScene {
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         addChild(grid)
         self.boardHelper = BoardHelper(grid: self.grid)
-        // pega a posicao do quadro no grid e repassa para a carta
+
         addChild(displayCard!)
         
         let cards2 = BuildCards().buildAllCards()
