@@ -44,7 +44,7 @@ extension BoardHelper {
     func addCardToBoard(add card: Card) {
         guard let freeCell = cells.first(where: {$0.free == true}) else {return}
         guard let freeIndex = cells.firstIndex(where: {$0.free == true}) else {return}
-        var freePosition = grid.gridPosition(row: freeCell.x, col: freeCell.y)
+        let freePosition = grid.gridPosition(row: freeCell.x, col: freeCell.y)
         card.position = freePosition
         cells[freeIndex].card = card
         cells[freeIndex].free = false
