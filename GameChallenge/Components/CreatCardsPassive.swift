@@ -9,9 +9,9 @@ import SpriteKit
 
 class CreateCardsPassive {
     var scene: GameScene?
-    var cards: Card?
+    var cards: SpellCard?
     
-    convenience init(on scene: GameScene, cards: Card) {
+    convenience init(on scene: GameScene, cards: SpellCard) {
         self.init()
         self.scene = scene
         self.cards = cards

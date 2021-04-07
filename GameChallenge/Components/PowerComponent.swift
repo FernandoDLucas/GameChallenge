@@ -9,7 +9,7 @@ import SpriteKit
 
 class PowerComponent: SKSpriteNode {
         
-    let powerTexture: SKTexture
+    var powerTexture: SKTexture?
     let labelNode = SKLabelNode(text: "0")
     var powerValue: Int = 0 {
         didSet {
@@ -20,8 +20,7 @@ class PowerComponent: SKSpriteNode {
     init() {
         self.powerTexture = SKTexture(imageNamed: "powerCard")
         labelNode.fontSize = 8
-        super.init(texture: powerTexture, color: .clear, size: powerTexture.size())
-        self.zPosition = 11
+        super.init(texture: powerTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)
     }
     

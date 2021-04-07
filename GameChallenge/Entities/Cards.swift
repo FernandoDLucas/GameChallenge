@@ -8,7 +8,7 @@
 import SpriteKit
 
 enum CardLevel: CGFloat {
-    case board = 0
+    case board = 10
     case moving = 100
     case enlarged = 200
 }
@@ -36,9 +36,9 @@ class Card: SKSpriteNode {
     
     init() {
 
-        self.frontTexture = SKTexture(imageNamed: "backTextureCard")
-        self.backTexture = SKTexture(imageNamed: "backTextureCard")
-        super.init(texture: frontTexture, color: .clear, size: CGSize(width: 102, height: 141))
+        self.frontTexture = SKTexture(imageNamed: "bgCardSpell")
+        self.backTexture = SKTexture(imageNamed: "backCard")
+        super.init(texture: frontTexture, color: .clear, size: CARD_HAND_SIZE)
 
         zPosition = CardLevel.board.rawValue
     }
@@ -56,14 +56,25 @@ class Card: SKSpriteNode {
         card.texture = self.texture
         return card
     }
-    
+        
     func flip() {
-        if faceUp {
-            self.texture = backTexture
-        } else {
-            self.texture = frontTexture
+      let firstHalfFlip = SKAction.scaleX(to: 0.0, duration: 0.25)
+      let secondHalfFlip = SKAction.scaleX(to: 1.0, duration: 0.25)
+      
+      setScale(1.0)
+      
+      if faceUp {
+        run(firstHalfFlip) {
+          self.texture = self.backTexture
+          self.run(secondHalfFlip)
         }
-        faceUp = !faceUp
+      } else {
+        run(firstHalfFlip) {
+          self.texture = self.frontTexture
+          self.run(secondHalfFlip)
+        }
+      }
+      faceUp = !faceUp
     }
     
     func enlarge() {
@@ -135,7 +146,7 @@ class Card: SKSpriteNode {
                 let location = touch.location(in: myParent)
                 self.position = location
             }
-            if let myParent = parent as? Grid, let scene = self.scene as? GameScene {
+            if let myParent = parent as? Grid, let _ = self.scene as? GameScene {
                 let location = touch.location(in: myParent)
                 self.position = location
                 self.onAttack = false
@@ -171,7 +182,7 @@ class Card: SKSpriteNode {
             }
         }
         
-        if let parent = self.parent as? Grid, let scene = self.scene as? GameScene {
+        if let _ = self.parent as? Grid, let scene = self.scene as? GameScene {
             let attackCells = scene.boardHelper.attackNodes()
             
             attackCells.forEach {

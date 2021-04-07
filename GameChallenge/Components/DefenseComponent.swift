@@ -9,7 +9,7 @@ import SpriteKit
 
 class DefenseComponent: SKSpriteNode {
         
-    let defenseTexture: SKTexture
+    var defenseTexture: SKTexture?
     let labelNode = SKLabelNode(text: "0")
     var defenseValue: Int = 0 {
         didSet {
@@ -20,8 +20,7 @@ class DefenseComponent: SKSpriteNode {
     init() {
         self.defenseTexture = SKTexture(imageNamed: "defenseCard")
         labelNode.fontSize = 8
-        super.init(texture: defenseTexture, color: .clear, size: defenseTexture.size())
-        self.zPosition = 11
+        super.init(texture: defenseTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)
     }
     

@@ -9,15 +9,15 @@ import SpriteKit
 
 class DisplayCardHelper: SKSpriteNode {
     
-    private var cards: [Card]
+    private var cards: [SpellCard]
     private var superView: SKView
     
-    init(cards: [Card], texture: SKTexture?, superView: SKView) {
+    init(cards: [SpellCard], superView: SKView) {
         self.cards = cards
         self.superView = superView
         let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
-        
-        super.init(texture: texture, color: .clear, size: size)
+        let textureDisplay = SKTexture(imageNamed: "HandPlayerBg")
+        super.init(texture: textureDisplay, color: .clear, size: size)
         
         position = CGPoint.init(x: superView.center.x, y: 0)
         setAllPositions(cards: cards)
@@ -28,13 +28,13 @@ class DisplayCardHelper: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func addAllCards(cards: [Card]) {
+    func addAllCards(cards: [SpellCard]) {
         for card in cards {
             addChild(card)
         }
     }
     
-    func addCard(card: Card) {
+    func addCard(card: SpellCard) {
         if cards.count < 8 {
             cards.append(card)
             addChild(card)
@@ -56,7 +56,7 @@ class DisplayCardHelper: SKSpriteNode {
         setAllPositions(cards: cards)
     }
 
-    func setAllPositions(cards: [Card]) {
+    func setAllPositions(cards: [SpellCard]) {
         let xCenter = CGFloat.zero
         let middle = cards.count / 2
         let isPair = cards.count % 2 == 0
