@@ -37,7 +37,7 @@ class DefenseComponent: SKSpriteNode {
     }
 }
 
-extension DefenseComponent : Component {
+extension DefenseComponent: Component {
     func returnSelf() -> SKSpriteNode {
         return self
     }
