@@ -11,6 +11,7 @@ import GameplayKit
 class HomeScene: SKScene {
     var playButton = SKSpriteNode()
     let playButtonTex = SKTexture(imageNamed: "BgPlay")
+    let playText = SKLabelNode(fontNamed: "xilosa")
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "bgHome")
@@ -25,7 +26,6 @@ class HomeScene: SKScene {
         playButton.zPosition = 1
         self.addChild(playButton)
         
-        let playText = SKLabelNode(fontNamed: "xilosa")
         playText.text = "JOGAR"
         playText.fontSize = 28
         playText.zPosition = 2
@@ -40,7 +40,7 @@ class HomeScene: SKScene {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
             
-            if node == playButton {
+            if node == playButton || node == playText {
                 if view != nil {
                     let transition: SKTransition
                     transition = SKTransition.fade(withDuration: 1)
