@@ -28,7 +28,7 @@ class DisplayCardHelper: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func addAllCards(cards: [SpellCard]) {
+    private func addAllCards(cards: [SpellCard]) {
         for card in cards {
             addChild(card)
         }
@@ -56,7 +56,7 @@ class DisplayCardHelper: SKSpriteNode {
         setAllPositions(cards: cards)
     }
 
-    func setAllPositions(cards: [SpellCard]) {
+    private func setAllPositions(cards: [SpellCard]) {
         let xCenter = CGFloat.zero
         let middle = cards.count / 2
         let isPair = cards.count % 2 == 0
