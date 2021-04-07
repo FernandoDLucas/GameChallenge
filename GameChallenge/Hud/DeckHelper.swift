@@ -8,7 +8,7 @@
 import SpriteKit
 
 class DeckHelper: SKSpriteNode {
-    var listOfCards: [Card]
+    var listOfCards: [SpellCard]
 
     override var isUserInteractionEnabled: Bool {
         get {
@@ -19,7 +19,7 @@ class DeckHelper: SKSpriteNode {
         }
     }
     
-    init(listOfCards: [Card], texture: SKTexture?) {
+    init(listOfCards: [SpellCard], texture: SKTexture?) {
         self.listOfCards = listOfCards
         super.init(texture: texture, color: .gray, size: DECK_SIZE)
         

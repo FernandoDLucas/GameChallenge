@@ -9,7 +9,7 @@ import SpriteKit
 
 class CostComponent: SKSpriteNode {
         
-    let costTexture: SKTexture
+    var costTexture: SKTexture?
     let labelNode = SKLabelNode(text: "0")
     var costValue: Int = 0 {
         didSet {
@@ -21,8 +21,7 @@ class CostComponent: SKSpriteNode {
         self.costTexture = SKTexture(imageNamed: "costCard")
         labelNode.fontColor = .red
         labelNode.fontSize = 8
-        super.init(texture: costTexture, color: .clear, size: costTexture.size())
-        self.zPosition = 11
+        super.init(texture: costTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)
     }
     
