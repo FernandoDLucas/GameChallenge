@@ -18,7 +18,7 @@ class DefenseComponent: SKSpriteNode {
     }
     
     init() {
-//        self.defenseTexture = SKTexture(imageNamed: "elipse")
+        self.defenseTexture = SKTexture(imageNamed: "defenseCard")
         labelNode.fontSize = 8
         super.init(texture: defenseTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)
@@ -34,5 +34,11 @@ class DefenseComponent: SKSpriteNode {
     
     func buffDefense(value: Int) {
         defenseValue += value
+    }
+}
+
+extension DefenseComponent : Component {
+    func returnSelf() -> SKSpriteNode {
+        return self
     }
 }

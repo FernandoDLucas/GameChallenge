@@ -18,7 +18,7 @@ class PowerComponent: SKSpriteNode {
     }
     
     init() {
-//        self.powerTexture = SKTexture(imageNamed: "elipse")
+        self.powerTexture = SKTexture(imageNamed: "powerCard")
         labelNode.fontSize = 8
         super.init(texture: powerTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)
@@ -36,3 +36,10 @@ class PowerComponent: SKSpriteNode {
         powerValue += value
     }
 }
+
+extension PowerComponent : Component {
+    func returnSelf() -> SKSpriteNode {
+        return self
+    }
+}
+
