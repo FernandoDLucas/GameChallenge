@@ -18,7 +18,7 @@ class DefenseComponent: SKSpriteNode {
     }
     
     init() {
-        self.defenseTexture = SKTexture(imageNamed: "defenseCard")
+//        self.defenseTexture = SKTexture(imageNamed: "elipse")
         labelNode.fontSize = 8
         super.init(texture: defenseTexture, color: .clear, size: COMPONENT_SIZE)
         addChild(labelNode)

@@ -24,8 +24,8 @@ class GameScene: SKScene {
 
         self.backgroundColor = .background
         
-        var Cards = BuildCards().buildAllEntities()
-        Cards += BuildCards().buildAllEntities()
+        var Cards = BuildCards().buildAllSpells()
+        Cards += BuildCards().buildAllSpells()
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
         grid.zPosition = Zpositions.grid.rawValue

@@ -12,6 +12,12 @@
 		0BDA9A74260B655C00E781AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A73260B655C00E781AF /* Item.swift */; };
 		0BDA9A8D260B818800E781AF /* ItemsEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
+		AFBB2C79260CC09B001D2A87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C78260CC09B001D2A87 /* Colors.swift */; };
+		AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C81260CC692001D2A87 /* Surrender.swift */; };
+		AFBB2C87260CCB25001D2A87 /* Cactus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C86260CCB25001D2A87 /* Cactus.swift */; };
+		AFBB2C8C260CD0DB001D2A87 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C8B260CD0DB001D2A87 /* Positions.swift */; };
+		AFBB2C91260CD432001D2A87 /* ButtonMainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */; };
+		AFC650B5260A37060009D78F /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC650B4260A37060009D78F /* Sizes.swift */; };
 		EC19ED21260E218B00FA4FD1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19ED20260E218B00FA4FD1 /* Component.swift */; };
 		AFBB2C79260CC09B001D2A87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C78260CC09B001D2A87 /* Colors.swift */; };
 		AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C81260CC692001D2A87 /* Surrender.swift */; };
@@ -27,6 +33,7 @@
 		EC5105CE25FB906D00BF07BB /* GameChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105CD25FB906D00BF07BB /* GameChallengeTests.swift */; };
 		EC5105D925FB906D00BF07BB /* GameChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */; };
 		EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EC5105F025FB923600BF07BB /* .swiftlint.yml */; };
+		EC5A9818261CA38200E2E130 /* DeckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A9817261CA38200E2E130 /* DeckHelper.swift */; };
 		EC7EA90F260386240090DEDD /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7EA90E260386240090DEDD /* CardBuilder.swift */; };
 		ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E4B25FF84B500E699C4 /* Cards.swift */; };
 		ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5025FF859D00E699C4 /* EntityCard.swift */; };
@@ -89,6 +96,7 @@
 		EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChallengeUITests.swift; sourceTree = "<group>"; };
 		EC5105DA25FB906D00BF07BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5105F025FB923600BF07BB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		EC5A9817261CA38200E2E130 /* DeckHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckHelper.swift; sourceTree = "<group>"; };
 		EC7EA90E260386240090DEDD /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		ECA67E4B25FF84B500E699C4 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		ECA67E5025FF859D00E699C4 /* EntityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCard.swift; sourceTree = "<group>"; };
