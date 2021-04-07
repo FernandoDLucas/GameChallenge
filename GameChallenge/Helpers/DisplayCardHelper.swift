@@ -9,10 +9,10 @@ import SpriteKit
 
 class DisplayCardHelper: SKSpriteNode {
     
-    private var cards: [Card]
+    private var cards: [SpellCard]
     private var superView: SKView
     
-    init(cards: [Card], superView: SKView) {
+    init(cards: [SpellCard], superView: SKView) {
         self.cards = cards
         self.superView = superView
         let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
@@ -28,13 +28,13 @@ class DisplayCardHelper: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func addAllCards(cards: [Card]) {
+    func addAllCards(cards: [SpellCard]) {
         for card in cards {
             addChild(card)
         }
     }
     
-    func addCard(card: Card) {
+    func addCard(card: SpellCard) {
         if cards.count < 8 {
             cards.append(card)
             addChild(card)
@@ -56,7 +56,7 @@ class DisplayCardHelper: SKSpriteNode {
         setAllPositions(cards: cards)
     }
 
-    func setAllPositions(cards: [Card]) {
+    func setAllPositions(cards: [SpellCard]) {
         let xCenter = CGFloat.zero
         let middle = cards.count / 2
         let isPair = cards.count % 2 == 0

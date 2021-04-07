@@ -10,58 +10,12 @@ import Foundation
 class BuildCards {
 
     let service = JSONService()
-
-    func buildAllEntities () -> [EntityCard] {
-        var cards: [EntityCard] = []
-        if let result = service.decode() {
-            result.Cards.forEach {
-                switch $0.CardType {
-                case "Entity":
-                    cards.append(buildEntities(card: $0))
-                default:
-                    break
-                }
-            }
-        }
-        return cards
-    }
-    
-    func buildAllAssociateds () -> [AssocietedCard] {
-        var cards: [AssocietedCard] = []
-        if let result = service.decode() {
-            result.Cards.forEach {
-                switch $0.CardType {
-                case "Entity":
-                    cards.append(buildAssociateds(card: $0))
-                default:
-                    break
-                }
-            }
-        }
-        return cards
-    }
     
     func buildAllSpells () -> [SpellCard] {
         var cards: [SpellCard] = []
         if let result = service.decode() {
-            result.Cards.forEach {
-                switch $0.CardType {
-                case "Entity":
-                    cards.append(buildSpells(card: $0))
-                default:
-                    break
-                }
-            }
-        }
-        return cards
-    }
-    
-    func buildEntities(card: CardStruct) -> EntityCard {
-        return EntityCard.init(cost: card.CostValue, power: card.PowerValue, defense: card.DefenseValue, passiveDescription: card.Passive)
-    }
-    
-    func buildAssociateds(card: CardStruct) -> AssocietedCard {
-        return AssocietedCard.init(cost: card.CostValue, power: card.PowerValue, defense: card.DefenseValue, passiveDescription: card.Passive)
+            result.Cards.forEach { cards.append(buildSpells(card: $0)) } }
+            return cards
     }
 
     func buildSpells(card: CardStruct) -> SpellCard {

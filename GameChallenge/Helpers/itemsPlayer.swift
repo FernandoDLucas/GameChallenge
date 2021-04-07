@@ -42,7 +42,7 @@ class ItemsPlayer: SKSpriteNode {
     }
     
     private func setupDeck() {
-        let cardsToDeck = BuildCards().buildAllEntities()
+        let cardsToDeck = BuildCards().buildAllSpells()
         self.deck = DeckHelper(listOfCards: cardsToDeck, texture: nil)
         deck.position = CGPoint(x: 0, y: -(DECK_SIZE.height + 25))
         deck.zPosition = 10

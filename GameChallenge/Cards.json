@@ -2,138 +2,44 @@
     "Cards" : [
         {
             "ID": 1,
-            "CardName" : "O Papa-Figo",
-            "CostValue" : 5,
-            "DefenseValue": 76,
-            "PowerValue" : 3,
-            "Passive": "Início da Rodada: Crie uma Barganha Justa na mão.",
-            "CardType": "Entity"
+            "CardName" : "Benção de Iracema",
+            "CostValue" : 3,
+            "EffectValue" : 2,
+            "Passive": "Cure-se em 2",
+            "CardType": "Heal"
        },
         {
             "ID": 2,
-            "CardName" : "O Capanga do Coronel",
-            "CostValue" : 1,
-            "DefenseValue": 1,
-            "PowerValue" : 2,
-            "Passive": " ",
-            "CardType": "Associated"
+            "CardName" : "Mandato do Papa-Figo",
+            "CostValue" : 5,
+            "EffectValue" : 7,
+            "Passive": "Cause 7 de dano",
+            "CardType": "Damage"
        },
         {
             "ID": 3,
-            "CardName" : "Avaliadora de Barganha",
-            "CostValue" : 3,
-            "DefenseValue": 3,
-            "PowerValue" : 2,
-            "Passive": "Quando você barganhar, invoque um Capanga do Coronel em campo.",
-            "CardType": "Associated"
+            "CardName" : "Capanga Novato",
+            "CostValue" : 1,
+            "EffectValue" : 1,
+            "Passive": "Cause 1 de dano",
+            "CardType": "Damage"
        },
         {
             "ID": 4,
-            "CardName" : "O Deformado",
-            "CostValue" : 1,
-            "DefenseValue": 3,
-            "PowerValue" : 0,
-            "Passive": "Se um inimigo me golpear, e eu sobreviver, os atributos dele ficam iguais aos meus.",
-            "CardType": "Associated"
+            "CardName" : "Labalut, O Monstro",
+            "CostValue" : 3,
+            "EffectValue" : 3,
+            "Passive": "Cause 3 de dano.",
+            "CardType": "Damage"
        },
         {
             "ID": 5,
-            "CardName" : "Barganha Justa",
-            "CostValue" : 2,
-            "DefenseValue": 0,
-            "PowerValue" : 0,
-            "Passive": "Cause 2 de dano à um aliado para causar 2 de dano à um inimigo. ",
-            "CardType": "Spell"
+            "CardName" : "Dávida Divina",
+            "CostValue" : 7,
+            "EffectValue" : 10,
+            "Passive": "Cure-se em 10",
+            "CardType": "Heal"
        },
-        {
-            "ID": 6,
-            "CardName" : "Labalut",
-            "CostValue" : 9,
-            "DefenseValue": 12,
-            "PowerValue" : 0,
-            "Passive": "Eu ganho ataque proporcional ao dano sofrido. /n Fim da Rodada: Eu me curo em 4. ",
-            "CardType": "Entity"
-       },
-        {
-            "ID": 7,
-            "CardName" : "A Cruzada",
-            "CostValue" : 3,
-            "DefenseValue": 0,
-            "PowerValue" : 0,
-            "Passive": "Invoque 2 Cavaleiros Destemidos",
-            "CardType": "Spell"
-       },
-        {
-            "ID": 8,
-            "CardName" : "Cavaleiro Destemido",
-            "CostValue" : 1,
-            "DefenseValue": 1,
-            "PowerValue" : 2,
-            "Passive": "Quando você invocar um Labalut, eu o golpeio.",
-            "CardType": "Associated"
-       },
-        {
-            "ID": 9,
-            "CardName" : "Sacerdote Ambicioso",
-            "CostValue" : 3,
-            "DefenseValue": 4,
-            "PowerValue" : 1,
-            "Passive": "Quando um aliado for abatido, reduza o custo da carta mais carta na mão em 1.",
-            "CardType": "Associated"
-       },
-        {
-            "ID": 10,
-            "CardName" : "Aviso na Fronteira",
-            "CostValue" : 5,
-            "DefenseValue": 0,
-            "PowerValue" : 0,
-            "Passive": "Se inimigos atacarem nessa rodada, eles sofrem 3 de dano.",
-            "CardType": "Spell"
-       },
-        {
-            "ID": 11,
-            "CardName" : "Benção Sacerdotal",
-            "CostValue" : 3,
-            "DefenseValue": 0,
-            "PowerValue" : 0,
-            "Passive": "Barganhe uma unidade de poder +2 para dar impiedoso à um aliado.",
-            "CardType": "Spell"
-       },
-        {
-            "ID": 12,
-            "CardName" : "Iracema",
-            "CostValue" : 6,
-            "DefenseValue": 3,
-            "PowerValue" : 5,
-            "Passive": "Início da Rodada: Troque meus atributos e minha palavra chave para Sorrateiro",
-            "CardType": "Entity"
-       },
-        {
-            "ID": 13,
-            "CardName" : "Tutor da Iacema",
-            "CostValue" : 4,
-            "DefenseValue": 3,
-            "PowerValue" : 4,
-            "Passive": "Se você tiver uma Iracema, ela ganha +1|+1. Se não, reduza o custo dela em 1.",
-            "CardType": "Associated"
-       },
-        {
-            "ID": 14,
-            "CardName" : "Agiota Falido",
-            "CostValue" : 1,
-            "DefenseValue": 1,
-            "PowerValue" : 1,
-            "Passive": "Ao me invocar, compre 1.",
-            "CardType": "Associated"
-       },
-        {
-            "ID": 15,
-            "CardName" : "Recompensa de Ouro",
-            "CostValue" : 3,
-            "DefenseValue": 0,
-            "PowerValue" : 0,
-            "Passive": "Da próxima vez que um aliado atacar, recupere Mana igual ao Poder dele.",
-            "CardType": "Spell"
-       },
+       
     ]
 }
