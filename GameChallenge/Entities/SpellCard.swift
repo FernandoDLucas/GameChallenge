@@ -25,6 +25,7 @@ class SpellCard: Card {
         self.texture = SKTexture(imageNamed: "bgCardSpell")
         self.costComponent.costValue = cost
         self.passiveComponent.labelNode.text = passiveDescription
+        self.passiveComponent.passive = HealPassive(value: 12)
         addChild(passiveComponent)
     }
     

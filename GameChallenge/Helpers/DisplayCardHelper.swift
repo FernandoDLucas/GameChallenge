@@ -12,12 +12,12 @@ class DisplayCardHelper: SKSpriteNode {
     private var cards: [Card]
     private var superView: SKView
     
-    init(cards: [Card], texture: SKTexture?, superView: SKView) {
+    init(cards: [Card], superView: SKView) {
         self.cards = cards
         self.superView = superView
         let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
-        
-        super.init(texture: texture, color: .clear, size: size)
+        let textureDisplay = SKTexture(imageNamed: "HandPlayerBg")
+        super.init(texture: textureDisplay, color: .clear, size: size)
         
         position = CGPoint.init(x: superView.center.x, y: 0)
         setAllPositions(cards: cards)

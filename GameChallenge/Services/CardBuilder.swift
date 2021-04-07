@@ -19,6 +19,6 @@ class BuildCards {
     }
 
     func buildSpells(card: CardStruct) -> SpellCard {
-        return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive)
+        return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: 12)
     }
 }

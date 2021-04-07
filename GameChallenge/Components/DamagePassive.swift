@@ -7,14 +7,13 @@
 import SpriteKit
 
 class DamagePassive {
-//    var scene: GameScene?
-//
-//    convenience init(on scene: GameScene) {
-//        self.init()
-//        self.cards = cards
-//    }
+    var value: Int?
+
+    init(value: Int) {
+        self.value = value
+    }
 //    func damage(player: Player, value: Int) {
-////        scene?.player?.addCard(card: cards!)
+//      scene?.displayCard?.addCard(card: cards!)
 //    }
     
 }
@@ -24,7 +23,8 @@ extension DamagePassive: Passive {
         
     }
     
-    func activate() {
-//        self.damage()
+    func activate(on player: GameScene) {
+//        self.damage(player: player)
     }
+    
 }

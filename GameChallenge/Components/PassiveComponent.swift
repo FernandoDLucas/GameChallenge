@@ -10,7 +10,7 @@ import SpriteKit
 class PassiveComponent: SKSpriteNode {
     
     let labelNode = SKLabelNode(text: "0")
-    var passives: Passive?
+    var passive: Passive?
     
     init() {
         super.init(texture: .none, color: .clear, size: CGSize(width: 70, height: 70))

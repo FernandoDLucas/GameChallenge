@@ -7,13 +7,12 @@
 import SpriteKit
 
 class HealPassive {
-//    var scene: GameScene?
-//
-//    convenience init(on scene: GameScene, cards: Card) {
-//        self.init()
-//        self.scene = scene
-//    }
-//    func (player: Player, value: Int) {
+    var value: Int?
+    
+    init(value: Int) {
+        self.value = value
+    }
+//    func heal(player: Player, value: Int) {
 ////        scene?.displayCard?.addCard(card: cards!)
 //    }
     
@@ -24,7 +23,8 @@ extension HealPassive: Passive {
         
     }
     
-    func activate() {
-//        self.heal()
+    func activate(on player: GameScene) {
+//        self.heal(player: player)
     }
+
 }
