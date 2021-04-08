@@ -77,6 +77,16 @@ class GameManagement {
         return nil
     }
     
+    func changeActualPlayer() {
+        if playerOne.isActive {
+            playerOne.isActive = false
+            playerTwo.isActive = true
+        } else {
+            playerOne.isActive = true
+            playerTwo.isActive = false
+        }
+    }
+    
     func isNewTurn() -> Bool {
         if numberOfTurn % 2 != 0 {
             return true
