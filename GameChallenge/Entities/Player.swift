@@ -6,49 +6,51 @@
 //
 
 import Foundation
-class Player {
+enum PlayerType: String {
+    case playerOne, playerTwo
+}
+
+class Player: Equatable {
     let playerId: UUID
     var life: Int
     var mana: Int
     var isActive: Bool
-    var listOfCards: DisplayCardHelper
-    private var items: ItemsPlayer
+    var cardsOnHand: [SpellCard]
+    var cardsOnDeck: [SpellCard]
+    let type: PlayerType
+    let surrender: Bool = false
     
-    init(items: ItemsPlayer, listOfCards: DisplayCardHelper) {
-        self.items = items
+    init(cardsOnHand: [SpellCard], cardsOnDeck: [SpellCard], type: PlayerType) {
+        self.type = type
         playerId = UUID()
         self.life = 20
-        self.mana = 3
+        self.mana = 1
         self.isActive = false
-        self.listOfCards = listOfCards
+        self.cardsOnHand = cardsOnHand
+        self.cardsOnDeck = cardsOnDeck
+    }
+    
+    static func == (lhs: Player, rhs: Player) -> Bool {
+        lhs.playerId == rhs.playerId
     }
     
     func incrementMana(value: Int) {
         mana += value
-        items.mana.changeValue(mana)
     }
     
     func decrementMana(value: Int) {
         if value <= mana {
             mana -= value
         }
-        items.mana.changeValue(mana)
     }
     
     func incrementLife(value: Int) {
         life += value
-        items.life.changeValue(life)
     }
     
     func decrementLife(value: Int) {
         if value <= life {
             life -= value
         }
-        items.life.changeValue(life)
     }
-    
-    func deckIsEmpty() -> Bool {
-        items.deck.listOfCards.isEmpty
-    }
-        
 }
