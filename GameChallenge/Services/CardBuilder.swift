@@ -19,6 +19,18 @@ class BuildCards {
     }
 
     func buildSpells(card: CardStruct) -> SpellCard {
-        return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive)
+        switch CardType(rawValue: card.CardType) {
+        case .heal:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue)
+        case .damage:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveDamage: card.EffectValue)
+        case .none:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue) 
+        }
     }
+}
+
+enum CardType: String {
+    case heal = "Heal"
+    case damage = "Damage"
 }
