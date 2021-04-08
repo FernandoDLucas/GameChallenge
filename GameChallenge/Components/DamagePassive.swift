@@ -27,5 +27,4 @@ extension DamagePassive: Passive {
     func activate(on player: GameScene) {
 //        self.damage(player: player)
     }
-    
 }
