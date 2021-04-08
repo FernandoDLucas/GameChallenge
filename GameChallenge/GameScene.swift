@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-  
+    var label: SKLabelNode!
     var displayCard: DisplayCardHelper!
     var grid: Grid!
     var itemsPlayer: ItemsPlayer!
@@ -17,11 +17,22 @@ class GameScene: SKScene {
     var surrender: Surrender!
     var cactus: Cactus!
     var mainButton: ButtonMainAction!
-    var deck: DeckHelper!
     var boardHelper: BoardHelper!
+    var gameManagement: GameManagement!
     
     override func didMove(to view: SKView) {
-
+        
+        itemsPlayer = ItemsPlayer(superView: view)
+        itemsPlayer.zPosition = Zpositions.tableau.rawValue
+        addChild(itemsPlayer)
+        
+        itemsEnemy = ItemsEnemy(superView: view)
+        itemsEnemy.zPosition = Zpositions.tableau.rawValue
+        addChild(itemsEnemy)
+       
+        self.displayCard = DisplayCardHelper(superView: view)
+        displayCard.zPosition = Zpositions.display.rawValue
+        addChild(displayCard)
         self.backgroundColor = .background
         
         var Cards = BuildCards().buildAllSpells()
@@ -31,27 +42,13 @@ class GameScene: SKScene {
         grid.zPosition = Zpositions.grid.rawValue
         addChild(grid)
         
-        itemsPlayer = ItemsPlayer(superView: view)
-        itemsPlayer.zPosition = Zpositions.tableau.rawValue
-        addChild(itemsPlayer)
-      
-        itemsEnemy = ItemsEnemy(superView: view)
-        itemsEnemy.zPosition = Zpositions.tableau.rawValue
-        addChild(itemsEnemy)
-      
         cactus = Cactus(superView: view)
         cactus.zPosition = Zpositions.cactus.rawValue
         addChild(cactus)
-      
-        let spellCards = BuildCards().buildAllSpells()
-        self.displayCard = DisplayCardHelper(cards: spellCards, superView: view)
-        displayCard.zPosition = Zpositions.display.rawValue
-
+        
         self.boardHelper = BoardHelper(grid: self.grid)
         // pega a posicao do quadro no grid e repassa para a carta
-
-        addChild(displayCard!)
-     
+      
         surrender = Surrender(superView: view)
         surrender.zPosition = Zpositions.surrender.rawValue
         addChild(surrender)
@@ -59,6 +56,35 @@ class GameScene: SKScene {
         mainButton = ButtonMainAction(superView: view)
         mainButton.zPosition = Zpositions.mainButton.rawValue
         addChild(mainButton)
-
+        
+        setupGame()
+        setupLabel(view: view)
+    }
+    
+    func setupGame() {
+        // função com quantidade de cartas
+        let cardsOnHandPlayerOne = BuildCards().buildAllSpells()
+        let cardsOnHandPlayerTwo = BuildCards().buildAllSpells()
+        let cardsOnDeck = BuildCards().buildAllSpells()
+        
+        let playerOne = Player(cardsOnHand: cardsOnHandPlayerOne, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerOne)
+        let playerTwo = Player(cardsOnHand: cardsOnHandPlayerTwo, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerTwo)
+        
+        gameManagement = GameManagement(playerOne: playerOne, playerTwo: playerTwo, displayCard: displayCard, itemsPlayer: itemsPlayer, itemsEnemy: itemsEnemy)
+        gameManagement.initGame()
+   
+    }
+    
+    // MARK: - Funções para fase de teste
+    func setupLabel(view: SKView) {
+        let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
+        label = SKLabelNode(text: nil)
+        label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
+        label.position = view.center
+        addChild(label)
+    }
+    func updateLabel() {
+        let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
+        label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
     }
 }
