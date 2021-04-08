@@ -37,9 +37,8 @@ class PowerComponent: SKSpriteNode {
     }
 }
 
-extension PowerComponent : Component {
+extension PowerComponent: Component {
     func returnSelf() -> SKSpriteNode {
         return self
     }
 }
-
