@@ -37,6 +37,10 @@ class DeckHelper: SKSpriteNode {
         }
     }
     
+    func updateCards(cards: [SpellCard]) {
+        self.listOfCards = cards
+    }
+    
     //Escolher uma carta aleatória e entregar ao DisplayCardHelper
     func popCard() {
         if !listOfCards.isEmpty {
