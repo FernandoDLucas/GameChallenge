@@ -25,6 +25,12 @@ class ItemsEnemy: SKSpriteNode {
       
     }
     
+    func updateValues(mana: Int, life: Int, numberOfCardsOnHand: Int) {
+        self.mana.changeValue(mana)
+        self.life.changeValue(life)
+        self.handCards.changeValue(numberOfCardsOnHand)
+    }
+    
     private func setupHandsCards() {
         let textureHand = SKTexture(imageNamed: "handEnemy")
         self.handCards = Item(value: 0, texture: textureHand, size: HAND_CARD_ENEMY_SIZE, positionLabel: CGPoint(x: -1, y: 3))
@@ -35,7 +41,7 @@ class ItemsEnemy: SKSpriteNode {
     
     private func setupLife() {
         let textureLife = SKTexture(imageNamed: "lifeEnemy")
-        self.life = Item(value: 5, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
+        self.life = Item(value: 20, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
         life.position = CGPoint(x: 0, y: -12)
         life.zPosition = 10
         addChild(life)
