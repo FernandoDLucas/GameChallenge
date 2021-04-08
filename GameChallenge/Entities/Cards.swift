@@ -22,8 +22,6 @@ class Card: SKSpriteNode {
     private var savedPosition = CGPoint.zero
     var enlarged = false
     var initialZPosition = CGFloat.zero
-    var onAttack: Bool = false
-    var cell: Cell?
     
     override var isUserInteractionEnabled: Bool {
         get {
@@ -124,17 +122,12 @@ class Card: SKSpriteNode {
                 self.removeAction(forKey: "drop" )
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
-            
-            if let _ = parent as? Grid {
-                if !onAttack {
-                    savedPosition = self.position
-                    initialZPosition = self.zPosition
-                    self.zPosition = CardLevel.moving.rawValue
-                    self.removeAction(forKey: "drop" )
-                    self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
-                }
-            }
+        
+        if let _ = parent as? Grid {
+            self.removeFromParent()
         }
+            
+    }
         
         // verificar se carta está no deck, se estiver fazer animação de flip
         // self.flip()
@@ -145,12 +138,6 @@ class Card: SKSpriteNode {
             if let myParent = parent as? DisplayCardHelper {
                 let location = touch.location(in: myParent)
                 self.position = location
-            }
-            if let myParent = parent as? Grid, let _ = self.scene as? GameScene {
-                let location = touch.location(in: myParent)
-                self.position = location
-                self.onAttack = false
-                self.cell?.free = true
             }
         }
     }
@@ -163,7 +150,7 @@ class Card: SKSpriteNode {
 
             if scene.grid.intersects(self), !parent.intersects(self) {
                 let card = self.createCopy()
-                if scene.boardHelper.hadSpaceOnBoard() {
+                if scene.boardHelper.freeSpace {
                     parent.removeCard(card: self)
                     scene.boardHelper.addCardToBoard(add: card)
                 } else {
@@ -181,23 +168,6 @@ class Card: SKSpriteNode {
 
             }
         }
-        
-        if let _ = self.parent as? Grid, let scene = self.scene as? GameScene {
-            let attackCells = scene.boardHelper.attackNodes()
-            
-            attackCells.forEach {
-                if self.intersects($0.node) {
-                    scene.boardHelper.addCardToAttack(add: self, to: $0)
-                    self.cell = $0
-                }
-            }
-            
-            if !onAttack {
-                self.zPosition = initialZPosition
-                self.position = savedPosition
-                self.removeAction(forKey: "pickup" )
-                self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
-            }
-        }
+    
     }
 }
