@@ -9,11 +9,10 @@ import SpriteKit
 
 class DisplayCardHelper: SKSpriteNode {
     
-    private var cards: [SpellCard]
+    private var cards: [SpellCard] = []
     private var superView: SKView
     
-    init(cards: [SpellCard], superView: SKView) {
-        self.cards = cards
+    init(superView: SKView) {
         self.superView = superView
         let size = CGSize(width: superView.frame.width, height: superView.frame.height * 0.5)
         let textureDisplay = SKTexture(imageNamed: "HandPlayerBg")
@@ -27,11 +26,22 @@ class DisplayCardHelper: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func updateCards(cards: [SpellCard]) {
+        removeAllChildren()
+        self.cards = cards
+        setAllPositions(cards: cards)
+        addAllCards(cards: cards)
+    }
         
     private func addAllCards(cards: [SpellCard]) {
         for card in cards {
             addChild(card)
         }
+    }
+    
+    func shuffleCards() {
+        self.cards = cards.shuffled()
     }
     
     func addCard(card: SpellCard) {
