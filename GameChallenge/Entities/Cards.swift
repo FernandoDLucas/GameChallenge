@@ -104,10 +104,7 @@ class Card: SKSpriteNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            if let parent = parent as? DeckHelper {
-                parent.popCard()
-            }
-        
+
             if let _ = parent as? DisplayCardHelper {
                 for touch in touches where touch.tapCount > 1 {
                   self.enlarge()

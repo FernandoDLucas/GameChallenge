@@ -35,7 +35,7 @@ class ItemsPlayer: SKSpriteNode {
     
     private func setupLife() {
         let textureLife = SKTexture(imageNamed: "lifePlayer")
-        self.life = Item(value: 5, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
+        self.life = Item(value: 20, texture: textureLife, size: LIFE_SIZE, positionLabel: CGPoint(x: 0, y: -5))
         life.position = CGPoint(x: 0, y: (LIFE_SIZE.height/2 + 15))
         life.zPosition = 10
         addChild(life)
@@ -47,6 +47,12 @@ class ItemsPlayer: SKSpriteNode {
         deck.position = CGPoint(x: 0, y: -(DECK_SIZE.height + 25))
         deck.zPosition = 10
         addChild(deck)
+    }
+    
+    func updateValues(mana: Int, life: Int, cardsOnDeck: [SpellCard]) {
+        self.mana.changeValue(mana)
+        self.life.changeValue(life)
+        self.deck.updateCards(cards: cardsOnDeck)
     }
     
     required init?(coder aDecoder: NSCoder) {

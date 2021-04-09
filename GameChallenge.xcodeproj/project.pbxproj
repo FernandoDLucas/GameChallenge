@@ -11,6 +11,8 @@
 		0BDA9A6E260B582F00E781AF /* itemsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */; };
 		0BDA9A74260B655C00E781AF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A73260B655C00E781AF /* Item.swift */; };
 		0BDA9A8D260B818800E781AF /* ItemsEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */; };
+		AF3DDF35261DDF59006BCAD6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DDF34261DDF59006BCAD6 /* Player.swift */; };
+		AF3DDF3A261DEA6A006BCAD6 /* GameManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DDF39261DEA6A006BCAD6 /* GameManagement.swift */; };
 		AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */; };
 		AFBB2C79260CC09B001D2A87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C78260CC09B001D2A87 /* Colors.swift */; };
 		AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C81260CC692001D2A87 /* Surrender.swift */; };
@@ -31,8 +33,10 @@
 		EC5105CE25FB906D00BF07BB /* GameChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105CD25FB906D00BF07BB /* GameChallengeTests.swift */; };
 		EC5105D925FB906D00BF07BB /* GameChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */; };
 		EC5105F125FB923600BF07BB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EC5105F025FB923600BF07BB /* .swiftlint.yml */; };
+
 		EC5B88A7261DDFE7009A9298 /* HealPassive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5B88A6261DDFE7009A9298 /* HealPassive.swift */; };
 		EC5B88AC261DE009009A9298 /* DamagePassive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5B88AB261DE009009A9298 /* DamagePassive.swift */; };
+
 		EC7EA90F260386240090DEDD /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7EA90E260386240090DEDD /* CardBuilder.swift */; };
 		ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E4B25FF84B500E699C4 /* Cards.swift */; };
 		ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA67E5025FF859D00E699C4 /* EntityCard.swift */; };
@@ -73,6 +77,8 @@
 		0BDA9A6D260B582F00E781AF /* itemsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemsPlayer.swift; sourceTree = "<group>"; };
 		0BDA9A73260B655C00E781AF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0BDA9A8C260B818800E781AF /* ItemsEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsEnemy.swift; sourceTree = "<group>"; };
+		AF3DDF34261DDF59006BCAD6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		AF3DDF39261DEA6A006BCAD6 /* GameManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagement.swift; sourceTree = "<group>"; };
 		AFB3987A2600ECD500B2FE89 /* DisplayCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCardHelper.swift; sourceTree = "<group>"; };
 		AFBB2C78260CC09B001D2A87 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AFBB2C81260CC692001D2A87 /* Surrender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surrender.swift; sourceTree = "<group>"; };
@@ -99,8 +105,10 @@
 		EC5105D825FB906D00BF07BB /* GameChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChallengeUITests.swift; sourceTree = "<group>"; };
 		EC5105DA25FB906D00BF07BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5105F025FB923600BF07BB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+
 		EC5B88A6261DDFE7009A9298 /* HealPassive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealPassive.swift; sourceTree = "<group>"; };
 		EC5B88AB261DE009009A9298 /* DamagePassive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagePassive.swift; sourceTree = "<group>"; };
+
 		EC7EA90E260386240090DEDD /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		ECA67E4B25FF84B500E699C4 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		ECA67E5025FF859D00E699C4 /* EntityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCard.swift; sourceTree = "<group>"; };
@@ -241,6 +249,7 @@
 				ECA67E5025FF859D00E699C4 /* EntityCard.swift */,
 				ECA67E5525FF862900E699C4 /* AssocietedCard.swift */,
 				ECA67E5D25FF866800E699C4 /* SpellCard.swift */,
+				AF3DDF34261DDF59006BCAD6 /* Player.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -255,6 +264,7 @@
 				AFBB2C81260CC692001D2A87 /* Surrender.swift */,
 				AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */,
 				ECC3AA042608DBF5008488EF /* BoardHelper.swift */,
+				AF3DDF39261DEA6A006BCAD6 /* GameManagement.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -455,6 +465,7 @@
 				0BDA9A74260B655C00E781AF /* Item.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				AFBB2C91260CD432001D2A87 /* ButtonMainAction.swift in Sources */,
+				AF3DDF35261DDF59006BCAD6 /* Player.swift in Sources */,
 				AFC650B5260A37060009D78F /* Sizes.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
 				0BDA9A6E260B582F00E781AF /* itemsPlayer.swift in Sources */,
@@ -462,6 +473,7 @@
 				ECDDB0E12602445E000ED6BE /* JSONStruct.swift in Sources */,
 				EC7EA90F260386240090DEDD /* CardBuilder.swift in Sources */,
 				ECDDB09B2600F966000ED6BE /* CostComponent.swift in Sources */,
+				AF3DDF3A261DEA6A006BCAD6 /* GameManagement.swift in Sources */,
 				EC5105BE25FB906B00BF07BB /* GameViewController.swift in Sources */,
 				ECDDB0C226022781000ED6BE /* CreatCardsPassive.swift in Sources */,
 				EC19ED21260E218B00FA4FD1 /* Component.swift in Sources */,
