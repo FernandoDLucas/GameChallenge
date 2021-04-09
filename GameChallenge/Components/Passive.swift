@@ -9,7 +9,8 @@ import SpriteKit
 
 protocol Passive {
     
-    func activate()
+    func activate(on: GameScene)
     
     func deActivate()
+    
 }
