@@ -14,19 +14,20 @@ class SpellCard: Card {
         
     init(cost: Int, passiveDescription: String, passiveDamage: Int) {
         super.init()
-        self.texture = SKTexture(imageNamed: "bgCardSpell")
         self.costComponent.costValue = cost
-        self.passiveComponent.labelNode.text = passiveDescription
-        self.passiveComponent.passive = DamagePassive(value: 12)
+        self.passiveComponent.labelNode.attributedText = NSAttributedString(string: passiveDescription, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.text])
+        self.passiveComponent.passive = DamagePassive(value: passiveDamage)
+        addChild(costComponent)
         addChild(passiveComponent)
     }
     
     init(cost: Int, passiveDescription: String, passiveHeal: Int) {
         super.init()
-        self.texture = SKTexture(imageNamed: "bgCardSpell")
         self.costComponent.costValue = cost
         self.passiveComponent.labelNode.text = passiveDescription
-        self.passiveComponent.passive = HealPassive(value: 12)
+        self.passiveComponent.labelNode.attributedText = NSAttributedString(string: passiveDescription, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.text])
+        self.passiveComponent.passive = HealPassive(value: passiveHeal)
+        addChild(costComponent)
         addChild(passiveComponent)
     }
     

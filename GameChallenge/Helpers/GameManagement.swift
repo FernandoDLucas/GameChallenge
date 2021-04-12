@@ -54,15 +54,30 @@ class GameManagement {
         itemsEnemy.updateValues(mana: player.mana, life: player.life, numberOfCardsOnHand: player.cardsOnHand.count)
         
     }
-    
+
     private func updateItemsPlayer(_ player: Player) {
         itemsPlayer.updateValues(mana: player.mana, life: player.life, cardsOnDeck: player.cardsOnDeck)
     }
-    
+
     func play() {
 
     }
-    
+
+    func playCard(_ card: SpellCard) {
+        let actualPlayer = self.actualPlayer()
+        let enemyPlayer = self.enemyPlayer()
+        actualPlayer.decrementMana(value: card.costComponent.costValue)
+        guard let passive = card.passiveComponent.passive else { return }
+        switch passive.getPassive() {
+        case .heal:
+            actualPlayer.incrementLife(value: passive.getValue())
+            self.updateScene()
+        case .damage:
+            enemyPlayer.decrementLife(value: passive.getValue())
+            self.updateScene()
+        }
+    }
+
     func endGame(winner: Player) {
         // exibe o ganhador e finaliza o jogo
     }
@@ -93,4 +108,14 @@ class GameManagement {
         }
         return false
     }
+    
+    func actualPlayer() -> Player {
+        return playerOne.isActive ? playerOne : playerTwo
+    }
+    
+    func enemyPlayer() -> Player {
+        return playerOne.isActive ? playerTwo : playerOne
+    }
+    
+    
 }

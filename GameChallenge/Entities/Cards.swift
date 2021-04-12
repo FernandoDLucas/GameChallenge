@@ -33,11 +33,9 @@ class Card: SKSpriteNode {
     }
     
     init() {
-
         self.frontTexture = SKTexture(imageNamed: "bgCardSpell")
         self.backTexture = SKTexture(imageNamed: "backCard")
         super.init(texture: frontTexture, color: .clear, size: CARD_HAND_SIZE)
-
         zPosition = CardLevel.board.rawValue
     }
     
@@ -120,10 +118,10 @@ class Card: SKSpriteNode {
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
         
-        if let _ = parent as? Grid {
+        if let _ = parent as? Grid, let scene = self.scene as? GameScene {
             self.removeFromParent()
+            scene.boardHelper.removeFromBoard(remove: self)
         }
-            
     }
         
         // verificar se carta está no deck, se estiver fazer animação de flip
@@ -150,6 +148,7 @@ class Card: SKSpriteNode {
                 if scene.boardHelper.freeSpace {
                     parent.removeCard(card: self)
                     scene.boardHelper.addCardToBoard(add: card)
+                    scene.gameManagement.playCard(self as! SpellCard)
                 } else {
                     self.zPosition = initialZPosition
                     self.position = savedPosition
