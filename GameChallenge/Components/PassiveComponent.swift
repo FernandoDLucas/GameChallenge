@@ -14,8 +14,7 @@ class PassiveComponent: SKSpriteNode {
 
     init() {
         super.init(texture: .none, color: .clear, size: CGSize(width: 80, height: 100))
-        labelNode.fontColor = .red
-        labelNode.fontSize = 8
+        self.labelNode.position = CGPoint(x: 2, y: 2)
         addChild(labelNode)
     }
     

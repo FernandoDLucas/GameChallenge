@@ -9,6 +9,7 @@ import SpriteKit
 
 class DamagePassive {
     var value: Int?
+    var type = PassiveType.damage
 
     init(value: Int) {
         self.value = value
@@ -20,11 +21,11 @@ class DamagePassive {
 }
 
 extension DamagePassive: Passive {
-    func deActivate() {
-        
+    func getPassive() -> PassiveType {
+        return self.type
     }
     
-    func activate(on player: GameScene) {
-//        self.damage(player: player)
+    func getValue() -> Int {
+        return self.value ?? 0 
     }
 }

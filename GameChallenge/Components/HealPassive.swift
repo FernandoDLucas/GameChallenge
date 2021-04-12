@@ -9,23 +9,26 @@ import Foundation
 
 class HealPassive {
     var value: Int?
+    var type = PassiveType.heal
     
     init(value: Int) {
         self.value = value
     }
-//    func heal(player: Player, value: Int) {
-//        scene?.displayCard?.addCard(card: cards!)
-//    }
     
 }
 
 extension HealPassive: Passive {
-    func deActivate() {
-        
+
+    func getPassive() -> PassiveType {
+        return self.type
     }
     
-    func activate(on player: GameScene) {
-//        self.heal(player: player)
+    func getValue() -> Int {
+        return self.value ?? 0
     }
 
+}
+
+enum PassiveType {
+    case heal, damage
 }

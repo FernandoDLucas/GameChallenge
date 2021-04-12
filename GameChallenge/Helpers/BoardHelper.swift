@@ -31,4 +31,8 @@ extension BoardHelper {
         self.freeSpace = false
     }
     
+    func removeFromBoard(remove card: Card) {
+        card.removeFromParent()
+        self.freeSpace = true 
+    }
 }
