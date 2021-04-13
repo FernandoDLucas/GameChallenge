@@ -21,7 +21,6 @@ class GameScene: SKScene {
     var gameManagement: GameManagement!
     
     override func didMove(to view: SKView) {
-        
         itemsPlayer = ItemsPlayer(superView: view)
         itemsPlayer.zPosition = Zpositions.tableau.rawValue
         addChild(itemsPlayer)

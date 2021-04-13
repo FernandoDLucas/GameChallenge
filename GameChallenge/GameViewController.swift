@@ -13,7 +13,6 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -25,7 +24,6 @@ class GameViewController: UIViewController {
             // Present the scene
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
-
             view.showsNodeCount = true
         }
     }
