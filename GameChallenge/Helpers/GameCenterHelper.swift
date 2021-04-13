@@ -40,7 +40,7 @@ class GameCenterHelper: NSObject {
           self.viewController?.present(vc, animated: true)
         }
         else {
-          print("Erro ao tentar autenticar no GameCenter: \(error?.localizedDescription ?? "none")")
+          print("Erro ao tentar autenticar no GameCenter, erro: \(error?.localizedDescription ?? "none")")
         }
       }
     }
