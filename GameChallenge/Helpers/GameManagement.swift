@@ -35,15 +35,18 @@ class GameManagement {
     }
     
     func updateScene() {
-        if playerOne.isActive {
-            updateDisplayCard(playerOne)
-            updateItemsPlayer(playerOne)
-            updateItemsEnemy(playerTwo)
-        } else {
-            updateDisplayCard(playerTwo)
-            updateItemsPlayer(playerTwo)
-            updateItemsEnemy(playerOne)
-        }
+//        if playerOne.isActive {
+//            updateDisplayCard(playerOne)
+//            updateItemsPlayer(playerOne)
+//            updateItemsEnemy(playerTwo)
+//        } else {
+//            updateDisplayCard(playerTwo)
+//            updateItemsPlayer(playerTwo)
+//            updateItemsEnemy(playerOne)
+//        }
+        updateDisplayCard(playerOne)
+        updateItemsPlayer(playerOne)
+        updateItemsEnemy(playerTwo)
     }
     
     private func updateDisplayCard(_ player: Player) {
@@ -57,10 +60,6 @@ class GameManagement {
 
     private func updateItemsPlayer(_ player: Player) {
         itemsPlayer.updateValues(mana: player.mana, life: player.life, cardsOnDeck: player.cardsOnDeck)
-    }
-
-    func play() {
-
     }
 
     func playCard(_ card: SpellCard) {
@@ -116,6 +115,5 @@ class GameManagement {
     func enemyPlayer() -> Player {
         return playerOne.isActive ? playerTwo : playerOne
     }
-    
     
 }

@@ -143,12 +143,13 @@ class Card: SKSpriteNode {
         
         if let parent = self.parent as? DisplayCardHelper, let scene = self.scene as? GameScene {
 
-            if scene.grid.intersects(self), !parent.intersects(self) {
+            if scene.grid.intersects(self), !parent.intersects(self), scene.canPlay {
                 let card = self.createCopy()
                 if scene.boardHelper.freeSpace {
                     parent.removeCard(card: self)
                     scene.boardHelper.addCardToBoard(add: card)
                     scene.gameManagement.playCard(self as! SpellCard)
+                    scene.updateModel()
                 } else {
                     self.zPosition = initialZPosition
                     self.position = savedPosition

@@ -20,11 +20,11 @@ class Player: Equatable {
     let type: PlayerType
     let surrender: Bool = false
     
-    init(cardsOnHand: [SpellCard], cardsOnDeck: [SpellCard], type: PlayerType) {
+    init(cardsOnHand: [SpellCard], cardsOnDeck: [SpellCard], type: PlayerType, mana: Int, life: Int) {
         self.type = type
         playerId = UUID()
-        self.life = 20
-        self.mana = 1
+        self.life = life
+        self.mana = mana
         self.isActive = false
         self.cardsOnHand = cardsOnHand
         self.cardsOnDeck = cardsOnDeck

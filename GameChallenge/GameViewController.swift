@@ -15,14 +15,14 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//            let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             
             // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
+//            scene.scaleMode = .aspectFill
             //scene.size = view.frame.size
 
             // Present the scene
-            view.presentScene(scene)
+//            view.presentScene(scene)
             view.ignoresSiblingOrder = true
             view.showsNodeCount = true
         }
