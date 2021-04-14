@@ -29,7 +29,7 @@ class HomeScene: SKScene {
           name: .authenticationChanged,
           object: nil
         )
-
+    
         let background = SKSpriteNode(imageNamed: "bgHome")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -57,10 +57,7 @@ class HomeScene: SKScene {
             if node == playButton || node == playText {
                 if view != nil {
                     GameCenterHelper.helper.presentMatchmaker()
-                    let transition: SKTransition
-                    transition = SKTransition.fade(withDuration: 1)
-                    let scene: SKScene = GameScene(size: self.size)
-                    self.view?.presentScene(scene, transition: transition)
+
                 }
             }
         }
@@ -70,7 +67,7 @@ class HomeScene: SKScene {
         guard let match = notification.object as? GKTurnBasedMatch else {
           return
         }
-        print("finded match")
+        loadModel(match: match)
     }
     
     @objc private func authenticationChanged(_ notification: Notification) {
@@ -78,4 +75,27 @@ class HomeScene: SKScene {
         playButton.addChild(playText)
     }
     
+    private func loadModel(match: GKTurnBasedMatch) {
+      match.loadMatchData { data, error in
+        let model: GameModel
+        
+        if let data = data {
+            
+          do {
+            model = try JSONDecoder().decode(GameModel.self, from: data)
+            
+          } catch {
+            model = GameModel()
+          }
+        } else {
+          model = GameModel()
+        }
+        
+        GameCenterHelper.helper.currentMatch = match
+        let transition: SKTransition
+        transition = SKTransition.fade(withDuration: 1)
+        let scene: SKScene = GameScene(size: self.size, model: model)
+        self.view?.presentScene(scene, transition: transition)
+      }
+    }
 }

@@ -10,7 +10,9 @@ import GameKit
 class GameCenterHelper: NSObject {
     
     static let helper = GameCenterHelper()
-
+    
+    weak var becameActiveDelegate: BecameActiveProtocol?
+    
     var viewController: UIViewController?
     var currentMatchmakerVC: GKTurnBasedMatchmakerViewController?
     var currentMatch: GKTurnBasedMatch?
@@ -77,6 +79,24 @@ class GameCenterHelper: NSObject {
         completionHandler: completion
       )
     }
+    
+    func endTurn(_ model: GameModel, completion: @escaping HandleCompletion) {
+      guard let match = currentMatch else {
+        completion(HelperError.matchNotFound)
+        return
+      }
+      do {
+        match.endTurn(
+          withNextParticipants: match.others,
+          turnTimeout: GKExchangeTimeoutDefault,
+          match: try JSONEncoder().encode(model),
+          completionHandler: completion
+        )
+      } catch {
+        completion(error)
+      }
+        becameActiveDelegate?.deActivate()
+    }
 }
 
 extension GameCenterHelper: GKTurnBasedMatchmakerViewControllerDelegate {
@@ -115,10 +135,15 @@ extension GameCenterHelper: GKLocalPlayerListener {
       guard didBecomeActive else {
         return
       }
-    match.message = "Teste"
-      NotificationCenter.default.post(name: .presentGame, object: match)
-    }
+        if match.isLocalPlayersTurn {
+            becameActiveDelegate?.activate()
+        } else {
+            becameActiveDelegate?.deActivate()
+        }
 
+    NotificationCenter.default.post(name: .presentGame, object: match)
+    }
+    
 }
 
 extension GKTurnBasedMatch {
@@ -136,4 +161,14 @@ extension GKTurnBasedMatch {
 extension Notification.Name {
   static let presentGame = Notification.Name(rawValue: "presentGame")
   static let authenticationChanged = Notification.Name(rawValue: "authenticationChanged")
+    static let localPlayerBecameActive = Notification.Name(rawValue: "localPlayerBecameActive")
+}
+
+enum HelperError: Error {
+  case matchNotFound
+}
+
+protocol BecameActiveProtocol: AnyObject {
+    func activate()
+    func deActivate()
 }

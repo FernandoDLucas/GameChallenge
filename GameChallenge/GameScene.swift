@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import GameKit
 
 class GameScene: SKScene {
     var label: SKLabelNode!
@@ -19,8 +20,21 @@ class GameScene: SKScene {
     var mainButton: ButtonMainAction!
     var boardHelper: BoardHelper!
     var gameManagement: GameManagement!
+    var model: GameModel!
+    var canPlay: Bool = false
+    
+    init(size: CGSize, model: GameModel) {
+        super.init(size: size)
+        self.model = model
+        self.canPlay = GameCenterHelper.helper.currentMatch?.isLocalPlayersTurn ?? false 
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
+        GameCenterHelper.helper.becameActiveDelegate = self 
         itemsPlayer = ItemsPlayer(superView: view)
         itemsPlayer.zPosition = Zpositions.tableau.rawValue
         addChild(itemsPlayer)
@@ -66,8 +80,8 @@ class GameScene: SKScene {
         let cardsOnHandPlayerTwo = BuildCards().buildAllSpells()
         let cardsOnDeck = BuildCards().buildAllSpells()
         
-        let playerOne = Player(cardsOnHand: cardsOnHandPlayerOne, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerOne)
-        let playerTwo = Player(cardsOnHand: cardsOnHandPlayerTwo, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerTwo)
+        let playerOne = Player(cardsOnHand: cardsOnHandPlayerOne, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerOne, mana: model.localPlayerMana, life: model.localPlayerLife)
+        let playerTwo = Player(cardsOnHand: cardsOnHandPlayerTwo, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerTwo, mana: model.remotePlayerMana, life: model.remotePlayerLife)
         
         gameManagement = GameManagement(playerOne: playerOne, playerTwo: playerTwo, displayCard: displayCard, itemsPlayer: itemsPlayer, itemsEnemy: itemsEnemy)
         gameManagement.initGame()
@@ -76,7 +90,8 @@ class GameScene: SKScene {
     
     // MARK: - Funções para fase de teste
     func setupLabel(view: SKView) {
-        let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
+//        let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
+        let playerName = self.canPlay ? "" : "Turno do Oponente"
         label = SKLabelNode(text: nil)
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
         label.position = view.center
@@ -85,5 +100,23 @@ class GameScene: SKScene {
     func updateLabel() {
         let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
+    }
+    
+    func updateModel() {
+        self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
+        updateRemote()
+    }
+    
+    func updateRemote() {
+          GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(error)")}
+    }
+}
+
+extension GameScene: BecameActiveProtocol {
+    func activate() {
+        self.canPlay = true
+    }
+    func deActivate() {
+        self.canPlay = false 
     }
 }
