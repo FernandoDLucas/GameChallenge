@@ -63,20 +63,22 @@ class HomeScene: SKScene {
         }
     }
     
-    @objc func presentGame(_ notification: Notification){
+    @objc func presentGame(_ notification: Notification) {
         guard let match = notification.object as? GKTurnBasedMatch else {
           return
         }
         loadModel(match: match)
     }
     
-    @objc private func authenticationChanged(_ notification: Notification) {
-        self.addChild(playButton)
-        playButton.addChild(playText)
+    @objc func authenticationChanged(_ notification: Notification) {
+        if GameCenterHelper.helper.isAuthenticated {
+            self.addChild(playButton)
+            playButton.addChild(playText)
+        }
     }
     
-    private func loadModel(match: GKTurnBasedMatch) {
-      match.loadMatchData { data, error in
+     func loadModel(match: GKTurnBasedMatch) {
+      match.loadMatchData { data, _ in
         let model: GameModel
         
         if let data = data {

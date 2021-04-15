@@ -17,6 +17,18 @@ class BuildCards {
             result.Cards.forEach { cards.append(buildSpells(card: $0)) } }
             return cards
     }
+    
+    
+//    func buildSpellsAsync () -> [SpellCard]{
+//        var cards: [SpellCard] = []
+//        
+//        service.decodeAsymc { (result) in
+//            switch result{
+//                case .success(let jsonCards):
+//                    jsonCards.Cards.forEach { cards.append(buildSpells(card: $0)) } }
+//            }
+//        }
+//    }
 
     func buildSpells(card: CardStruct) -> SpellCard {
         switch CardType(rawValue: card.CardType) {
