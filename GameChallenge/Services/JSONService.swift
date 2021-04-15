@@ -23,4 +23,18 @@ class JSONService {
             return nil
         }
     }
+    
+    func decodeAsymc(_ completion: @escaping (Result<JSONCards, Error>) -> Void){
+        do {
+            let data = try Data(contentsOf: url!)
+            let cards = try decoder.decode(JSONCards.self, from: data)
+            self.jsonCards = cards
+            DispatchQueue.main.async {
+            completion(.success(cards))
+            }
+        } catch {
+            completion(.failure(error))
+            
+        }
+    }
 }

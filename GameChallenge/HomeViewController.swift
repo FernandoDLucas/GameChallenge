@@ -32,5 +32,4 @@ class HomeViewController: UIViewController {
         return true
     }
 
-
 }

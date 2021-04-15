@@ -80,23 +80,22 @@ class GameScene: SKScene {
         let cardsOnHandPlayerTwo = BuildCards().buildAllSpells()
         let cardsOnDeck = BuildCards().buildAllSpells()
         
-        let playerOne = Player(cardsOnHand: cardsOnHandPlayerOne, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerOne, mana: model.localPlayerMana, life: model.localPlayerLife)
-        let playerTwo = Player(cardsOnHand: cardsOnHandPlayerTwo, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerTwo, mana: model.remotePlayerMana, life: model.remotePlayerLife)
-        
-        gameManagement = GameManagement(playerOne: playerOne, playerTwo: playerTwo, displayCard: displayCard, itemsPlayer: itemsPlayer, itemsEnemy: itemsEnemy)
-        gameManagement.initGame()
-   
+            let playerOne = Player(cardsOnHand: cardsOnHandPlayerOne, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerOne, mana: self.model.localPlayerMana, life: self.model.localPlayerLife)
+            let playerTwo = Player(cardsOnHand: cardsOnHandPlayerTwo, cardsOnDeck: cardsOnDeck.shuffled(), type: .playerTwo, mana: self.model.remotePlayerMana, life: self.model.remotePlayerLife)
+            
+            self.gameManagement = GameManagement(playerOne: playerOne, playerTwo: playerTwo, displayCard: self.displayCard, itemsPlayer: self.itemsPlayer, itemsEnemy: self.itemsEnemy)
+            self.gameManagement.initGame()
     }
     
     // MARK: - Funções para fase de teste
     func setupLabel(view: SKView) {
-//        let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
-        let playerName = self.canPlay ? "" : "Turno do Oponente"
-        label = SKLabelNode(text: nil)
+        let playerName = self.canPlay ? "Sua vez" : "Turno do Oponente"
+        label = SKLabelNode()
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
         label.position = view.center
         addChild(label)
     }
+
     func updateLabel() {
         let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
@@ -108,7 +107,7 @@ class GameScene: SKScene {
     }
     
     func updateRemote() {
-          GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(error)")}
+          GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(error)") }
     }
 }
 

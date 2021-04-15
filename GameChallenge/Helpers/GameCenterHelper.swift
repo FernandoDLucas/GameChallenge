@@ -79,7 +79,7 @@ class GameCenterHelper: NSObject {
         completionHandler: completion
       )
     }
-    
+
     func endTurn(_ model: GameModel, completion: @escaping HandleCompletion) {
       guard let match = currentMatch else {
         completion(HelperError.matchNotFound)
