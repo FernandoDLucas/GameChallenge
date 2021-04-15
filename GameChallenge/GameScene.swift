@@ -8,7 +8,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SurrenderDelegate {
+    func surrenderTouch() {
+        let transition: SKTransition
+        transition = SKTransition.fade(withDuration: 1)
+        let scene: SKScene = SurrenderScene(size: self.size)
+        self.view?.presentScene(scene, transition: transition)
+    }
+    
   
     var displayCard: DisplayCardHelper!
     var grid: Grid!
@@ -23,7 +30,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
 
         self.backgroundColor = .background
-        
         var Cards = BuildCards().buildAllSpells()
         Cards += BuildCards().buildAllSpells()
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
@@ -54,6 +60,7 @@ class GameScene: SKScene {
      
         surrender = Surrender(superView: view)
         surrender.zPosition = Zpositions.surrender.rawValue
+        surrender.delegate = self
         addChild(surrender)
         
         mainButton = ButtonMainAction(superView: view)
@@ -61,4 +68,20 @@ class GameScene: SKScene {
         addChild(mainButton)
 
     }
-}
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let pos = touch.location(in: self)
+            let node = self.atPoint(pos)
+            
+            if node == surrender {
+                if view != nil {
+                    let transition: SKTransition
+                    transition = SKTransition.fade(withDuration: 1)
+                    let scene: SKScene = SurrenderScene(size: self.size)
+                    self.view?.presentScene(scene, transition: transition)
+                }
+            }
+        }
+    }
+    }
+
