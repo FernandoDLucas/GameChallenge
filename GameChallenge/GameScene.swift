@@ -78,6 +78,7 @@ class GameScene: SKScene, SurrenderDelegate {
                     let transition: SKTransition
                     transition = SKTransition.fade(withDuration: 1)
                     let scene: SKScene = SurrenderScene(size: self.size)
+                    
                     self.view?.presentScene(scene, transition: transition)
                 }
             }

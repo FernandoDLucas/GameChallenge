@@ -18,6 +18,7 @@
 		AFBB2C8C260CD0DB001D2A87 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C8B260CD0DB001D2A87 /* Positions.swift */; };
 		AFBB2C91260CD432001D2A87 /* ButtonMainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */; };
 		AFC650B5260A37060009D78F /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC650B4260A37060009D78F /* Sizes.swift */; };
+		D78854F82629B13C009AB446 /* SurrenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78854F72629B13C009AB446 /* SurrenderView.swift */; };
 		D7CA4B83261CA90D00D9445E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA4B82261CA90D00D9445E /* HomeViewController.swift */; };
 		D7CA4B88261CA92300D9445E /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA4B87261CA92300D9445E /* HomeScene.swift */; };
 		D7CA4B8E261DF3E800D9445E /* xilosa_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7CA4B8D261DF3E800D9445E /* xilosa_.ttf */; };
@@ -79,6 +80,7 @@
 		AFBB2C8B260CD0DB001D2A87 /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMainAction.swift; sourceTree = "<group>"; };
 		AFC650B4260A37060009D78F /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		D78854F72629B13C009AB446 /* SurrenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurrenderView.swift; sourceTree = "<group>"; };
 		D7CA4B82261CA90D00D9445E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D7CA4B87261CA92300D9445E /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		D7CA4B8D261DF3E800D9445E /* xilosa_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = xilosa_.ttf; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				EC5105BB25FB906B00BF07BB /* GameScene.swift */,
 				D7CA4B87261CA92300D9445E /* HomeScene.swift */,
 				D7E55697262076FA00E2E208 /* SurrenderScene.swift */,
+				D78854F72629B13C009AB446 /* SurrenderView.swift */,
 				EC5105BD25FB906B00BF07BB /* GameViewController.swift */,
 				D7CA4B82261CA90D00D9445E /* HomeViewController.swift */,
 				D7E5569C2620779C00E2E208 /* SurrenderViewController.swift */,
@@ -441,6 +444,7 @@
 				ECA67E5625FF862900E699C4 /* AssocietedCard.swift in Sources */,
 				D7CA4B83261CA90D00D9445E /* HomeViewController.swift in Sources */,
 				ECDDB0D926024447000ED6BE /* JSONService.swift in Sources */,
+				D78854F82629B13C009AB446 /* SurrenderView.swift in Sources */,
 				AFBB2C82260CC692001D2A87 /* Surrender.swift in Sources */,
 				AFB3987B2600ECD500B2FE89 /* DisplayCardHelper.swift in Sources */,
 				AFBB2C87260CCB25001D2A87 /* Cactus.swift in Sources */,
