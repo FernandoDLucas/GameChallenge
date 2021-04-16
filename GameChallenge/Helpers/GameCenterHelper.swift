@@ -131,10 +131,10 @@ extension GameCenterHelper: GKLocalPlayerListener {
         currentMatchmakerVC = nil
         vc.dismiss(animated: true)
       }
-      
-      guard didBecomeActive else {
-        return
-      }
+//      guard didBecomeActive else {
+//        print("Teste")
+//        return
+//      }
         if match.isLocalPlayersTurn {
             becameActiveDelegate?.activate()
         } else {
