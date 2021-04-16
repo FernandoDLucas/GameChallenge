@@ -63,8 +63,8 @@ class GameManagement {
     }
 
     func playCard(_ card: SpellCard) {
-        let actualPlayer = self.actualPlayer()
-        let enemyPlayer = self.enemyPlayer()
+        let actualPlayer = self.playerOne
+        let enemyPlayer = self.playerTwo
         actualPlayer.decrementMana(value: card.costComponent.costValue)
         guard let passive = card.passiveComponent.passive else { return }
         switch passive.getPassive() {
@@ -87,7 +87,6 @@ class GameManagement {
         } else if playerTwo.life == 0 || playerTwo.surrender {
             return playerOne
         }
-        
         return nil
     }
     

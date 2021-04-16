@@ -47,6 +47,10 @@ class HomeScene: SKScene {
         playText.verticalAlignmentMode = .center
         playText.horizontalAlignmentMode = .center
         playText.fontColor = SKColor.textAction
+        playButton.isHidden = true
+        playText.isHidden = true
+        self.addChild(playButton)
+        playButton.addChild(playText)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,8 +76,8 @@ class HomeScene: SKScene {
     
     @objc func authenticationChanged(_ notification: Notification) {
         if GameCenterHelper.helper.isAuthenticated {
-            self.addChild(playButton)
-            playButton.addChild(playText)
+            playButton.isHidden = false
+            playText.isHidden = false
         }
     }
     

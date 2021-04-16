@@ -103,6 +103,10 @@ class GameScene: SKScene {
     
     func updateModel() {
         self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
+        if gameManagement.isNewTurn() {
+            self.model?.localPlayerMana += 1
+            self.model?.remotePlayerMana += 1
+        }
         updateRemote()
     }
     

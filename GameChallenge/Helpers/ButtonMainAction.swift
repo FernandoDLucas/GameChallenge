@@ -55,8 +55,7 @@ class ButtonMainAction: SKSpriteNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.count == 1 {
             if let parent = parent as? GameScene {
-                parent.gameManagement.changeActualPlayer()
-                parent.updateLabel()
+                parent.updateModel()
             }
         }
     }
