@@ -22,14 +22,6 @@ class GameCenterHelper: NSObject {
         return GKLocalPlayer.local.isAuthenticated
     }
     
-    var canTakeTurnForCurrentMatch: Bool {
-      guard let match = currentMatch else {
-        return true
-      }
-      
-        return match.isLocalPlayersTurn
-    }
-    
     override init() {
       super.init()
       
@@ -78,6 +70,24 @@ class GameCenterHelper: NSObject {
         withMatch: match.matchData ?? Data(),
         completionHandler: completion
       )
+        NotificationCenter.default.post(name: .presentGame, object: match)
+    }
+    
+    func lost(completion: @escaping HandleCompletion) {
+      guard let match = currentMatch else {
+        return
+      }
+      
+      match.currentParticipant?.matchOutcome = .lost
+      match.others.forEach { other in
+        other.matchOutcome = .won
+      }
+      
+      match.endMatchInTurn(
+        withMatch: match.matchData ?? Data(),
+        completionHandler: completion
+      )
+        NotificationCenter.default.post(name: .presentGame, object: match)
     }
 
     func endTurn(_ model: GameModel, completion: @escaping HandleCompletion) {
@@ -127,7 +137,8 @@ extension GameCenterHelper: GKLocalPlayerListener {
     }
     
     func player(_ player: GKPlayer, receivedTurnEventFor match: GKTurnBasedMatch, didBecomeActive: Bool) {
-      if let vc = currentMatchmakerVC {
+     
+        if let vc = currentMatchmakerVC {
         currentMatchmakerVC = nil
         vc.dismiss(animated: true)
       }
@@ -143,7 +154,6 @@ extension GameCenterHelper: GKLocalPlayerListener {
 
     NotificationCenter.default.post(name: .presentGame, object: match)
     }
-    
 }
 
 extension GKTurnBasedMatch {
@@ -161,7 +171,7 @@ extension GKTurnBasedMatch {
 extension Notification.Name {
   static let presentGame = Notification.Name(rawValue: "presentGame")
   static let authenticationChanged = Notification.Name(rawValue: "authenticationChanged")
-    static let localPlayerBecameActive = Notification.Name(rawValue: "localPlayerBecameActive")
+    static let endGame = Notification.Name(rawValue: "endGame")
 }
 
 enum HelperError: Error {

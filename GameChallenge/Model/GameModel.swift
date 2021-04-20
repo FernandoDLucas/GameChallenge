@@ -11,6 +11,7 @@ struct GameModel: Codable {
     var localPlayerLife: Int
     var localPlayerMana: Int
     var localPlayerNumberOfCards: Int
+    var activePlayer: Bool = false
     
     var remotePlayerLife: Int
     var remotePlayerMana: Int
@@ -28,13 +29,14 @@ struct GameModel: Codable {
     
     mutating func updateStatus( allyPlayer: Player, enemyPlayer: Player) {
         self.localPlayerLife = allyPlayer.life
-        self.localPlayerMana = allyPlayer.life
+        self.localPlayerMana = allyPlayer.mana
         self.localPlayerNumberOfCards = allyPlayer.cardsOnHand.count
         
         self.remotePlayerLife = enemyPlayer.life
         self.remotePlayerMana = enemyPlayer.mana
         self.remotePlayerNumberOfCards = enemyPlayer.cardsOnHand.count
     }
+    
 }
 //
 //struct PlayerModel: Codable {

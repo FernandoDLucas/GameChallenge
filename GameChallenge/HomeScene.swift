@@ -61,7 +61,6 @@ class HomeScene: SKScene {
             if node == playButton || node == playText {
                 if view != nil {
                     GameCenterHelper.helper.presentMatchmaker()
-
                 }
             }
         }
