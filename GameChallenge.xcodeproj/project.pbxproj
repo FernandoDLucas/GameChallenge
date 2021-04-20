@@ -20,9 +20,12 @@
 		AFBB2C8C260CD0DB001D2A87 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C8B260CD0DB001D2A87 /* Positions.swift */; };
 		AFBB2C91260CD432001D2A87 /* ButtonMainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */; };
 		AFC650B5260A37060009D78F /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC650B4260A37060009D78F /* Sizes.swift */; };
+		D75FB50C262EFF260017BA88 /* EndGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75FB50B262EFF260017BA88 /* EndGameScene.swift */; };
 		D7CA4B83261CA90D00D9445E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA4B82261CA90D00D9445E /* HomeViewController.swift */; };
 		D7CA4B88261CA92300D9445E /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA4B87261CA92300D9445E /* HomeScene.swift */; };
 		D7CA4B8E261DF3E800D9445E /* xilosa_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7CA4B8D261DF3E800D9445E /* xilosa_.ttf */; };
+		D7E55698262076FA00E2E208 /* SurrenderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E55697262076FA00E2E208 /* SurrenderScene.swift */; };
+		D7E5569D2620779C00E2E208 /* SurrenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5569C2620779C00E2E208 /* SurrenderViewController.swift */; };
 		EC19ED21260E218B00FA4FD1 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19ED20260E218B00FA4FD1 /* Component.swift */; };
 		EC5105B625FB906B00BF07BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105B525FB906B00BF07BB /* AppDelegate.swift */; };
 		EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5105BB25FB906B00BF07BB /* GameScene.swift */; };
@@ -86,9 +89,12 @@
 		AFBB2C8B260CD0DB001D2A87 /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		AFBB2C90260CD432001D2A87 /* ButtonMainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMainAction.swift; sourceTree = "<group>"; };
 		AFC650B4260A37060009D78F /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		D75FB50B262EFF260017BA88 /* EndGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameScene.swift; sourceTree = "<group>"; };
 		D7CA4B82261CA90D00D9445E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D7CA4B87261CA92300D9445E /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		D7CA4B8D261DF3E800D9445E /* xilosa_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = xilosa_.ttf; sourceTree = "<group>"; };
+		D7E55697262076FA00E2E208 /* SurrenderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurrenderScene.swift; sourceTree = "<group>"; };
+		D7E5569C2620779C00E2E208 /* SurrenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurrenderViewController.swift; sourceTree = "<group>"; };
 		EC19ED20260E218B00FA4FD1 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		EC5105B225FB906B00BF07BB /* GameChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5105B525FB906B00BF07BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,8 +225,11 @@
 				EC5105B525FB906B00BF07BB /* AppDelegate.swift */,
 				EC5105BB25FB906B00BF07BB /* GameScene.swift */,
 				D7CA4B87261CA92300D9445E /* HomeScene.swift */,
+				D7E55697262076FA00E2E208 /* SurrenderScene.swift */,
+				D75FB50B262EFF260017BA88 /* EndGameScene.swift */,
 				EC5105BD25FB906B00BF07BB /* GameViewController.swift */,
 				D7CA4B82261CA90D00D9445E /* HomeViewController.swift */,
+				D7E5569C2620779C00E2E208 /* SurrenderViewController.swift */,
 				EC5105BF25FB906B00BF07BB /* Main.storyboard */,
 				EC5105C225FB906C00BF07BB /* Assets.xcassets */,
 				EC5105C425FB906C00BF07BB /* Info.plist */,
@@ -488,6 +497,7 @@
 				0BDA9A74260B655C00E781AF /* Item.swift in Sources */,
 				EC5105BC25FB906B00BF07BB /* GameScene.swift in Sources */,
 				AFBB2C91260CD432001D2A87 /* ButtonMainAction.swift in Sources */,
+				D75FB50C262EFF260017BA88 /* EndGameScene.swift in Sources */,
 				AF3DDF35261DDF59006BCAD6 /* Player.swift in Sources */,
 				AFC650B5260A37060009D78F /* Sizes.swift in Sources */,
 				ECA67E912600D04700E699C4 /* Grid.swift in Sources */,
@@ -505,8 +515,10 @@
 				ECC6B31F26247490006E01D6 /* GameCenterHelper.swift in Sources */,
 				ECA67E5E25FF866800E699C4 /* SpellCard.swift in Sources */,
 				ECA67E4C25FF84B500E699C4 /* Cards.swift in Sources */,
+				D7E5569D2620779C00E2E208 /* SurrenderViewController.swift in Sources */,
 				ECA67E5125FF859D00E699C4 /* EntityCard.swift in Sources */,
 				0B325788261CA58D00FA1DB7 /* DeckHelper.swift in Sources */,
+				D7E55698262076FA00E2E208 /* SurrenderScene.swift in Sources */,
 				ECDDB0B826022544000ED6BE /* PassiveComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

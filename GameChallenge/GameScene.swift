@@ -9,7 +9,15 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SurrenderDelegate {
+    func surrenderTouch() {
+        let transition: SKTransition
+        transition = SKTransition.fade(withDuration: 1)
+        let scene: SKScene = SurrenderScene(size: self.size, model: self.model)
+        self.view?.presentScene(scene, transition: transition)
+//        loadPauseBGScreen()
+    }
+    
     var label: SKLabelNode!
     var displayCard: DisplayCardHelper!
     var grid: Grid!
@@ -47,7 +55,6 @@ class GameScene: SKScene {
         displayCard.zPosition = Zpositions.display.rawValue
         addChild(displayCard)
         self.backgroundColor = .background
-        
         var Cards = BuildCards().buildAllSpells()
         Cards += BuildCards().buildAllSpells()
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
@@ -64,6 +71,7 @@ class GameScene: SKScene {
       
         surrender = Surrender(superView: view)
         surrender.zPosition = Zpositions.surrender.rawValue
+        surrender.delegate = self
         addChild(surrender)
         
         mainButton = ButtonMainAction(superView: view)
@@ -99,6 +107,23 @@ class GameScene: SKScene {
     func updateLabel() {
         let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let pos = touch.location(in: self)
+            let node = self.atPoint(pos)
+            
+            if node == surrender {
+                if view != nil {
+//                    let transition: SKTransition
+//                    transition = SKTransition.fade(withDuration: 1)
+//                    let scene: SKScene = SurrenderScene(size: self.size)
+//
+//                    self.view?.presentScene(scene, transition: transition)
+                 
+                }
+            }
+        }
     }
     
     func updateModel() {
