@@ -14,6 +14,7 @@ class GameScene: SKScene, SurrenderDelegate {
         transition = SKTransition.fade(withDuration: 1)
         let scene: SKScene = SurrenderScene(size: self.size)
         self.view?.presentScene(scene, transition: transition)
+//        loadPauseBGScreen()
     }
     
   
@@ -68,6 +69,31 @@ class GameScene: SKScene, SurrenderDelegate {
         addChild(mainButton)
 
     }
+// MARK: Blur
+//    func getBluredScreenshot() -> SKSpriteNode{
+//        let effectNode = SKEffectNode()
+//        let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": 75])
+//        effectNode.filter = blurFilter
+//        effectNode.shouldRasterize = true
+//        effectNode.shouldEnableEffects = true
+//        effectNode.zPosition = 2
+//        self.addChild(effectNode)
+//        return effectNode
+//    }
+//
+//    func loadPauseBGScreen(){
+//
+//        let duration = 1.0
+//
+//        let pauseBG:SKSpriteNode = self.getBluredScreenshot()
+//
+//        pauseBG.alpha = 0
+//        pauseBG.zPosition = self.zPosition + 1
+//        pauseBG.run(SKAction.fadeAlpha(to: 1, duration: duration))
+//
+//        self.addChild(pauseBG)
+//
+//    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let pos = touch.location(in: self)
@@ -75,11 +101,12 @@ class GameScene: SKScene, SurrenderDelegate {
             
             if node == surrender {
                 if view != nil {
-                    let transition: SKTransition
-                    transition = SKTransition.fade(withDuration: 1)
-                    let scene: SKScene = SurrenderScene(size: self.size)
-                    
-                    self.view?.presentScene(scene, transition: transition)
+//                    let transition: SKTransition
+//                    transition = SKTransition.fade(withDuration: 1)
+//                    let scene: SKScene = SurrenderScene(size: self.size)
+//
+//                    self.view?.presentScene(scene, transition: transition)
+                 
                 }
             }
         }

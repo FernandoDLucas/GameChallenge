@@ -7,19 +7,18 @@
 
 import UIKit
 import SpriteKit
-class SurrenderViewController: UIViewController {
-    let surrenderView = SurrenderView()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view = surrenderView
-        
-        
-    }
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
-}
+//class SurrenderViewController: UIViewController {
+//    let surrenderView = SurrenderView()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view = surrenderView
+//         
+//    }
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
+//
+//}
 
 
 

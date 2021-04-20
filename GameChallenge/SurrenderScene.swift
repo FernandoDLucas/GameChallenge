@@ -10,73 +10,105 @@ import SpriteKit
 
 class SurrenderScene: SKScene {
     var surrenderButton = SKSpriteNode()
-    let surrenderText = SKLabelNode(fontNamed: "xilosa")
+    var surrenderLabel = SKLabelNode()
     var backButton = SKSpriteNode()
-    
-    override func didMove(to view: SKView) {
-       
-//        if let effectNode = self.childNode(withName: "EffectNode") as? SKEffectNode {
-//        let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": 75])
-//        self.filter = blurFilter
-//        self.zPosition = -1
-//        self.shouldRasterize = true
-//        self.shouldEnableEffects = true
+    var backLabel = SKLabelNode()
+    var goHomeButton = SKSpriteNode()
+    var goHomeLabel = SKLabelNode()
+    private var rectangle : SKShapeNode!
 
-            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = self.view!.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            //let fillTexture = self.view?.texture(from: contentNode, crop: blurNode.frame)
-//            self.view!.addSubview(blurEffectView)
+    override func didMove(to view: SKView) {
+//        MARK: Blur
+//        let w = (self.size.width + self.size.height) * 0.05
+//        let effectNode = SKEffectNode()
+//        let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": 75])
+//        effectNode.filter = blurFilter
+//        effectNode.shouldRasterize = true
+//        effectNode.shouldEnableEffects = true
+//        effectNode.zPosition = 2
+//        self.addChild(effectNode)
+//        self.rectangle = SKShapeNode.init(rectOf: CGSize.init(width: w*3, height: w*3), cornerRadius: w * 0.3)
+//        self.rectangle.fillColor = UIColor.blue
+//        self.rectangle.zPosition = 1
+//        effectNode.addChild(rectangle)
         let background = SKSpriteNode(imageNamed: "bgEndGame")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.zPosition = -1
-        
+        background.zPosition = 1
         addChild(background)
-        let text = SKLabelNode(fontNamed: "xilosa")
-        text.text = "Deseja abandonar a partida?"
+        let text = formatLabel(text: "O que deseja fazer?", color: UIColor.text, fontSize: 34, vertical: .top, horizontal: .center)
+        text.preferredMaxLayoutWidth = background.frame.size.width
+        text.position = .init(x: 0, y: background.size.height/2 - 20)
         text.lineBreakMode = .byWordWrapping
         text.numberOfLines = .max
-        text.position = CGPoint(x: size.width * 0.355, y: size.height * 0.219 )
-        text.fontSize = 28
-        text.zPosition = 2
-//        text.verticalAlignmentMode = .top
-        text.horizontalAlignmentMode = .center
-        text.fontColor = SKColor.text
         background.addChild(text)
         
-        let surrenderTex = SKTexture(imageNamed: "bgButtonSurrender")
-        surrenderButton = SKSpriteNode(texture: surrenderTex)
-        surrenderButton.position = CGPoint(x: size.width/2, y: size.height/2)
-        surrenderButton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        surrenderButton.zPosition = 1
+        surrenderButton = setupButton(imageName: "bgButtonSurrender", positionY: size.height/2 + 10)
         addChild(surrenderButton)
+        surrenderLabel = formatLabel(text: "Render-se", color: UIColor.textAction, fontSize: 26, vertical: .center, horizontal: .center)
+        surrenderButton.addChild(surrenderLabel)
         
-        let backbuttonTex = SKTexture(imageNamed: "bgButtonBack")
-        backButton = SKSpriteNode(texture: backbuttonTex)
-        backButton.position = CGPoint(x: size.width/2, y: surrenderButton.position.y - 50)
-        backButton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        backButton.zPosition = 1
+        goHomeButton = setupButton(imageName: "bgButtonSurrender", positionY: surrenderButton.position.y - 50)
+        addChild(goHomeButton)
+        goHomeLabel = formatLabel(text: "Tela Inicial", color: .textAction, fontSize: 26, vertical: .center, horizontal: .center)
+        goHomeButton.addChild(goHomeLabel)
+        
+        backButton = setupButton(imageName: "bgButtonBack", positionY: goHomeButton.position.y - 50)
         addChild(backButton)
-        
+        backLabel = formatLabel(text: "VOLTAR", color: .textAction, fontSize: 26, vertical: .center, horizontal: .center)
+        backButton.addChild(backLabel)
+   
+    }
+    func setupButton(imageName: String, positionY: CGFloat) -> SKSpriteNode {
+        let surrenderTex = SKTexture(imageNamed: imageName)
+        let button = SKSpriteNode(texture: surrenderTex)
+        button.position = CGPoint(x: size.width/2, y: positionY)
+        button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        button.zPosition = 2
+        return button
+    }
+    func formatLabel(text: String, color: UIColor, fontSize: CGFloat, vertical: SKLabelVerticalAlignmentMode, horizontal: SKLabelHorizontalAlignmentMode  ) -> SKLabelNode {
+        let label = SKLabelNode()
+        label.zPosition = 3
+        label.text = text
+        label.fontName = "xilosa"
+        label.fontSize = fontSize
+        label.fontColor = color
+        label.numberOfLines = 1
+        label.verticalAlignmentMode = vertical
+        label.horizontalAlignmentMode = horizontal
+        return label
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
-            
-//            if node == playButton || node == playText {
+            if node == backButton || node == backLabel {
                 if view != nil {
                     let transition: SKTransition
                     transition = SKTransition.fade(withDuration: 1)
                     let scene: SKScene = GameScene(size: self.size)
                     self.view?.presentScene(scene, transition: transition)
                 }
+                
             }
-//        }
+            if  node == surrenderButton || node == surrenderLabel {
+                if view != nil {
+                    let transition: SKTransition
+                    transition = SKTransition.fade(withDuration: 1)
+                    let scene: SKScene = EndGameScene(size: self.size)
+                    self.view?.presentScene(scene, transition: transition)
+                }
+            }
+            if  node == goHomeButton || node == goHomeLabel {
+                if view != nil {
+                    let transition: SKTransition
+                    transition = SKTransition.fade(withDuration: 1)
+                    let scene: SKScene = HomeScene(size: self.size)
+                    self.view?.presentScene(scene, transition: transition)
+                }
+            }
+            }
+        }
     }
-}
-
-   
