@@ -10,13 +10,11 @@ import SpriteKit
 class PassiveComponent: SKSpriteNode {
     
     let labelNode = SKLabelNode(text: "0")
-    var passives: [Passive]?
-    
+    var passive: Passive?
+
     init() {
-        super.init(texture: .none, color: .clear, size: CGSize(width: 200, height: 200))
-        labelNode.fontColor = .red
-        labelNode.fontSize = 8
-        self.zPosition = 11
+        super.init(texture: .none, color: .clear, size: CGSize(width: 80, height: 100))
+        self.labelNode.position = CGPoint(x: 2, y: 2)
         addChild(labelNode)
     }
     

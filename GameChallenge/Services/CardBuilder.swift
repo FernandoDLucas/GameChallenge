@@ -17,8 +17,32 @@ class BuildCards {
             result.Cards.forEach { cards.append(buildSpells(card: $0)) } }
             return cards
     }
+    
+    
+//    func buildSpellsAsync () -> [SpellCard]{
+//        var cards: [SpellCard] = []
+//        
+//        service.decodeAsymc { (result) in
+//            switch result{
+//                case .success(let jsonCards):
+//                    jsonCards.Cards.forEach { cards.append(buildSpells(card: $0)) } }
+//            }
+//        }
+//    }
 
     func buildSpells(card: CardStruct) -> SpellCard {
-        return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive)
+        switch CardType(rawValue: card.CardType) {
+        case .heal:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue)
+        case .damage:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveDamage: card.EffectValue)
+        case .none:
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue) 
+        }
     }
+}
+
+enum CardType: String {
+    case heal = "Heal"
+    case damage = "Damage"
 }

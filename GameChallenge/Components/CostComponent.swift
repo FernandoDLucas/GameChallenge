@@ -38,9 +38,8 @@ class CostComponent: SKSpriteNode {
     }
 }
 
-extension CostComponent : Component {
+extension CostComponent: Component {
     func returnSelf() -> SKSpriteNode {
         return self
     }
 }
-

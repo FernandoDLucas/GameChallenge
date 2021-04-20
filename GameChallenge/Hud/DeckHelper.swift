@@ -29,6 +29,8 @@ class DeckHelper: SKSpriteNode {
     func addCardsInScene() {
         for (index, card) in listOfCards.enumerated() {
             card.flip()
+            card.passiveComponent.isHidden = true
+            card.costComponent.isHidden = true
             card.size = CARD_DECK_SIZE
             if index % 2 == 0 {
                 card.zRotation = CGFloat(-0.25)
@@ -37,12 +39,17 @@ class DeckHelper: SKSpriteNode {
         }
     }
     
+    func updateCards(cards: [SpellCard]) {
+        self.listOfCards = cards
+    }
+    
     //Escolher uma carta aleatória e entregar ao DisplayCardHelper
     func popCard() {
         if !listOfCards.isEmpty {
             let card = listOfCards.removeLast()
             card.flip()
-            
+            card.passiveComponent.isHidden = false
+            card.costComponent.isHidden = false
             if let scene = scene as? GameScene, let superView = scene.view {
                 let move = SKAction.move(to: CGPoint(x: -superView.frame.width/2,
                                                      y: -(superView.frame.height - scene.displayCard.size.height)),

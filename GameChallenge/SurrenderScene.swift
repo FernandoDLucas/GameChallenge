@@ -16,7 +16,17 @@ class SurrenderScene: SKScene {
     var goHomeButton = SKSpriteNode()
     var goHomeLabel = SKLabelNode()
     private var rectangle : SKShapeNode!
-
+    var model: GameModel!
+    
+    init(size: CGSize, model: GameModel) {
+        super.init(size: size)
+        self.model = model
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
 //        MARK: Blur
 //        let w = (self.size.width + self.size.height) * 0.05
@@ -57,7 +67,6 @@ class SurrenderScene: SKScene {
         addChild(backButton)
         backLabel = formatLabel(text: "VOLTAR", color: .textAction, fontSize: 26, vertical: .center, horizontal: .center)
         backButton.addChild(backLabel)
-   
     }
     func setupButton(imageName: String, positionY: CGFloat) -> SKSpriteNode {
         let surrenderTex = SKTexture(imageNamed: imageName)
@@ -88,7 +97,7 @@ class SurrenderScene: SKScene {
                 if view != nil {
                     let transition: SKTransition
                     transition = SKTransition.fade(withDuration: 1)
-                    let scene: SKScene = GameScene(size: self.size)
+                    let scene: SKScene = GameScene(size: self.size, model: self.model)
                     self.view?.presentScene(scene, transition: transition)
                 }
                 

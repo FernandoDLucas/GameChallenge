@@ -7,6 +7,7 @@
 
 import UIKit
 import GameplayKit
+import GameKit
 
 class HomeScene: SKScene {
     var playButton = SKSpriteNode()
@@ -14,17 +15,31 @@ class HomeScene: SKScene {
     let playText = SKLabelNode(fontNamed: "xilosa")
     
     override func didMove(to view: SKView) {
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(presentGame(_:)),
+          name: .presentGame,
+          object: nil
+        )
+    
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(authenticationChanged(_:)),
+          name: .authenticationChanged,
+          object: nil
+        )
+    
         let background = SKSpriteNode(imageNamed: "bgHome")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.zPosition = -1
         addChild(background)
-        
+
         playButton = SKSpriteNode(texture: playButtonTex)
         playButton.position = CGPoint(x: size.width/2, y: size.height/2)
         playButton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         playButton.zPosition = 1
-        self.addChild(playButton)
         
         playText.text = "JOGAR"
         playText.fontSize = 28
@@ -32,6 +47,9 @@ class HomeScene: SKScene {
         playText.verticalAlignmentMode = .center
         playText.horizontalAlignmentMode = .center
         playText.fontColor = SKColor.textAction
+        playButton.isHidden = true
+        playText.isHidden = true
+        self.addChild(playButton)
         playButton.addChild(playText)
     }
     
@@ -42,12 +60,48 @@ class HomeScene: SKScene {
             
             if node == playButton || node == playText {
                 if view != nil {
-                    let transition: SKTransition
-                    transition = SKTransition.fade(withDuration: 1)
-                    let scene: SKScene = GameScene(size: self.size)
-                    self.view?.presentScene(scene, transition: transition)
+                    GameCenterHelper.helper.presentMatchmaker()
+
                 }
             }
         }
+    }
+    
+    @objc func presentGame(_ notification: Notification) {
+        guard let match = notification.object as? GKTurnBasedMatch else {
+          return
+        }
+        loadModel(match: match)
+    }
+    
+    @objc func authenticationChanged(_ notification: Notification) {
+        if GameCenterHelper.helper.isAuthenticated {
+            playButton.isHidden = false
+            playText.isHidden = false
+        }
+    }
+    
+     func loadModel(match: GKTurnBasedMatch) {
+      match.loadMatchData { data, _ in
+        let model: GameModel
+        
+        if let data = data {
+            
+          do {
+            model = try JSONDecoder().decode(GameModel.self, from: data)
+            
+          } catch {
+            model = GameModel()
+          }
+        } else {
+          model = GameModel()
+        }
+        
+        GameCenterHelper.helper.currentMatch = match
+        let transition: SKTransition
+        transition = SKTransition.fade(withDuration: 1)
+        let scene: SKScene = GameScene(size: self.size, model: model)
+        self.view?.presentScene(scene, transition: transition)
+      }
     }
 }

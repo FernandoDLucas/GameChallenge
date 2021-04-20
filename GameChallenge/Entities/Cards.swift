@@ -22,8 +22,6 @@ class Card: SKSpriteNode {
     private var savedPosition = CGPoint.zero
     var enlarged = false
     var initialZPosition = CGFloat.zero
-    var onAttack: Bool = false
-    var cell: Cell?
     
     override var isUserInteractionEnabled: Bool {
         get {
@@ -35,11 +33,9 @@ class Card: SKSpriteNode {
     }
     
     init() {
-
         self.frontTexture = SKTexture(imageNamed: "bgCardSpell")
         self.backTexture = SKTexture(imageNamed: "backCard")
         super.init(texture: frontTexture, color: .clear, size: CARD_HAND_SIZE)
-
         zPosition = CardLevel.board.rawValue
     }
     
@@ -106,10 +102,7 @@ class Card: SKSpriteNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            if let parent = parent as? DeckHelper {
-                parent.popCard()
-            }
-        
+
             if let _ = parent as? DisplayCardHelper {
                 for touch in touches where touch.tapCount > 1 {
                   self.enlarge()
@@ -124,17 +117,12 @@ class Card: SKSpriteNode {
                 self.removeAction(forKey: "drop" )
                 self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
             }
-            
-            if let _ = parent as? Grid {
-                if !onAttack {
-                    savedPosition = self.position
-                    initialZPosition = self.zPosition
-                    self.zPosition = CardLevel.moving.rawValue
-                    self.removeAction(forKey: "drop" )
-                    self.run(SKAction.scale(to: 1.2, duration: 0.25), withKey: "pickup")
-                }
-            }
+        
+        if let _ = parent as? Grid, let scene = self.scene as? GameScene {
+            self.removeFromParent()
+            scene.boardHelper.removeFromBoard(remove: self)
         }
+    }
         
         // verificar se carta está no deck, se estiver fazer animação de flip
         // self.flip()
@@ -146,12 +134,6 @@ class Card: SKSpriteNode {
                 let location = touch.location(in: myParent)
                 self.position = location
             }
-            if let myParent = parent as? Grid, let _ = self.scene as? GameScene {
-                let location = touch.location(in: myParent)
-                self.position = location
-                self.onAttack = false
-                self.cell?.free = true
-            }
         }
     }
 
@@ -161,11 +143,13 @@ class Card: SKSpriteNode {
         
         if let parent = self.parent as? DisplayCardHelper, let scene = self.scene as? GameScene {
 
-            if scene.grid.intersects(self), !parent.intersects(self) {
+            if scene.grid.intersects(self), !parent.intersects(self), scene.canPlay {
                 let card = self.createCopy()
-                if scene.boardHelper.hadSpaceOnBoard() {
+                if scene.boardHelper.freeSpace {
                     parent.removeCard(card: self)
                     scene.boardHelper.addCardToBoard(add: card)
+                    scene.gameManagement.playCard(self as! SpellCard)
+                    scene.updateModel()
                 } else {
                     self.zPosition = initialZPosition
                     self.position = savedPosition
@@ -181,23 +165,6 @@ class Card: SKSpriteNode {
 
             }
         }
-        
-        if let _ = self.parent as? Grid, let scene = self.scene as? GameScene {
-            let attackCells = scene.boardHelper.attackNodes()
-            
-            attackCells.forEach {
-                if self.intersects($0.node) {
-                    scene.boardHelper.addCardToAttack(add: self, to: $0)
-                    self.cell = $0
-                }
-            }
-            
-            if !onAttack {
-                self.zPosition = initialZPosition
-                self.position = savedPosition
-                self.removeAction(forKey: "pickup" )
-                self.run(SKAction .scale(to: 1.0, duration: 0.25 ), withKey: "drop" )
-            }
-        }
+    
     }
 }

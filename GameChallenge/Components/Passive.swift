@@ -9,7 +9,8 @@ import SpriteKit
 
 protocol Passive {
     
-    func activate()
+    func getValue() -> Int
     
-    func deActivate()
+    func getPassive() -> PassiveType
+    
 }
