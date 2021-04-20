@@ -47,8 +47,8 @@ class HomeScene: SKScene {
         playText.verticalAlignmentMode = .center
         playText.horizontalAlignmentMode = .center
         playText.fontColor = SKColor.textAction
-        playButton.isHidden = true
-        playText.isHidden = true
+        playButton.isHidden = !GameCenterHelper.helper.isAuthenticated
+        playText.isHidden = !GameCenterHelper.helper.isAuthenticated
         self.addChild(playButton)
         playButton.addChild(playText)
     }
