@@ -108,6 +108,7 @@ class SurrenderScene: SKScene {
                     transition = SKTransition.fade(withDuration: 1)
                     let scene: SKScene = EndGameScene(size: self.size)
                     self.view?.presentScene(scene, transition: transition)
+                    GameCenterHelper.helper.lost { _ in}
                 }
             }
             if  node == goHomeButton || node == goHomeLabel {
