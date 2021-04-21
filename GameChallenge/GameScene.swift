@@ -111,7 +111,7 @@ class GameScene: SKScene {
     }
     
     func updateRemote() {
-          GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(error)") }
+        GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(String(describing: error))") }
     }
 }
 
