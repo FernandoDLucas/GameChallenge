@@ -18,7 +18,6 @@ class BuildCards {
             return cards
     }
     
-    
 //    func buildSpellsAsync () -> [SpellCard]{
 //        var cards: [SpellCard] = []
 //        
