@@ -106,7 +106,7 @@ class DisplayCardHelper: SKSpriteNode {
                 }
             }
             for (index, card) in cards.enumerated() {
-            card.zPosition = CGFloat(index+1)
+                card.zPosition = CGFloat(index+1)
             }
         }
         
