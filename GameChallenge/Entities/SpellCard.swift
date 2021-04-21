@@ -11,9 +11,9 @@ class SpellCard: Card {
     
     var passiveComponent = PassiveComponent()
     var costComponent = CostComponent()
-        
-    init(cost: Int, passiveDescription: String, passiveDamage: Int) {
-        super.init()
+  
+    init(cost: Int, passiveDescription: String, passiveDamage: Int, cardName: String) {
+        super.init(cardName: cardName)
         self.costComponent.costValue = cost
         self.passiveComponent.descriptionLabel = passiveDescription
         self.passiveComponent.passive = DamagePassive(value: passiveDamage)
@@ -22,18 +22,19 @@ class SpellCard: Card {
         addChild(passiveComponent)
     }
     
-    init(cost: Int, passiveDescription: String, passiveHeal: Int) {
-        super.init()
+    init(cost: Int, passiveDescription: String, passiveHeal: Int, cardName: String) {
+        super.init(cardName: cardName)
         self.costComponent.costValue = cost
         self.passiveComponent.descriptionLabel = passiveDescription
         self.passiveComponent.passive = HealPassive(value: passiveHeal)
         addChild(costComponent)
         setCostPosition()
         addChild(passiveComponent)
+        passiveComponent.zPosition = 1
     }
     
-    override init() {
-        super.init()
+    init() {
+        super.init(cardName: "")
     }
     
     func setCostPosition() {
