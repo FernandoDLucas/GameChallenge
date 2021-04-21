@@ -26,7 +26,6 @@ class Item: SKSpriteNode {
         let text = convertToString(newValue)
         label.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.text])
 
-
     }
     
     func formatLabel(text: String, position: CGPoint) {

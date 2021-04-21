@@ -18,7 +18,6 @@ class BuildCards {
             return cards
     }
     
-    
 //    func buildSpellsAsync () -> [SpellCard]{
 //        var cards: [SpellCard] = []
 //        
@@ -33,11 +32,11 @@ class BuildCards {
     func buildSpells(card: CardStruct) -> SpellCard {
         switch CardType(rawValue: card.CardType) {
         case .heal:
-            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue)
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue, cardName: card.CardName)
         case .damage:
-            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveDamage: card.EffectValue)
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveDamage: card.EffectValue, cardName: card.CardName)
         case .none:
-            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue) 
+            return SpellCard.init(cost: card.CostValue, passiveDescription: card.Passive, passiveHeal: card.EffectValue, cardName: card.CardName) 
         }
     }
 }

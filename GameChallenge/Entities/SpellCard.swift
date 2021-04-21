@@ -11,30 +11,38 @@ class SpellCard: Card {
     
     var passiveComponent = PassiveComponent()
     var costComponent = CostComponent()
-        
-    init(cost: Int, passiveDescription: String, passiveDamage: Int) {
-        super.init()
+  
+    init(cost: Int, passiveDescription: String, passiveDamage: Int, cardName: String) {
+        super.init(cardName: cardName)
         self.costComponent.costValue = cost
-        self.passiveComponent.labelNode.attributedText = NSAttributedString(string: passiveDescription, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.text])
+        self.passiveComponent.descriptionLabel = passiveDescription
         self.passiveComponent.passive = DamagePassive(value: passiveDamage)
         addChild(costComponent)
+        setCostPosition()
         addChild(passiveComponent)
     }
     
-    init(cost: Int, passiveDescription: String, passiveHeal: Int) {
-        super.init()
+    init(cost: Int, passiveDescription: String, passiveHeal: Int, cardName: String) {
+        super.init(cardName: cardName)
         self.costComponent.costValue = cost
-        self.passiveComponent.labelNode.text = passiveDescription
-        self.passiveComponent.labelNode.attributedText = NSAttributedString(string: passiveDescription, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.text])
+        self.passiveComponent.descriptionLabel = passiveDescription
         self.passiveComponent.passive = HealPassive(value: passiveHeal)
         addChild(costComponent)
+        setCostPosition()
         addChild(passiveComponent)
+        passiveComponent.zPosition = 1
     }
     
-    override init() {
-        super.init()
+    init() {
+        super.init(cardName: "")
     }
     
+    func setCostPosition() {
+        if let parentCost = costComponent.parent {
+            costComponent.position = CGPoint(x: (-parentCost.frame.width/2) * 0.7, y: (parentCost.frame.height/2) * 0.7)
+        }
+    }
+
     override func createCopy() -> SpellCard {
         let card = SpellCard()
         card.passiveComponent = self.passiveComponent
