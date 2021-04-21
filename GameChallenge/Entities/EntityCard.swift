@@ -15,7 +15,7 @@ class EntityCard: Card {
     var costComponent = CostComponent()
     
     init(cost: Int, power: Int, defense: Int, passiveDescription: String) {
-        super.init()
+        super.init(cardName: "")
         self.defenseComponent.defenseValue = defense
         self.powerComponent.powerValue = power
         self.costComponent.costValue = cost
