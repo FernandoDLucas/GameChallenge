@@ -9,7 +9,15 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SurrenderDelegate {
+    func surrenderTouch() {
+        let transition: SKTransition
+        transition = SKTransition.fade(withDuration: 1)
+        let scene: SKScene = SurrenderScene(size: self.size, model: self.model)
+        self.view?.presentScene(scene, transition: transition)
+//        loadPauseBGScreen()
+    }
+    
     var label: SKLabelNode!
     var displayCard: DisplayCardHelper!
     var grid: Grid!
@@ -34,6 +42,21 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(presentGame(_:)),
+          name: .presentGame,
+          object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(endGame),
+          name: .endGame,
+          object: nil
+        )
+        
         GameCenterHelper.helper.becameActiveDelegate = self 
         itemsPlayer = ItemsPlayer(superView: view)
         itemsPlayer.zPosition = Zpositions.tableau.rawValue
@@ -47,6 +70,9 @@ class GameScene: SKScene {
         displayCard.zPosition = Zpositions.display.rawValue
         addChild(displayCard)
         self.backgroundColor = .background
+
+        var Cards = BuildCards().buildAllSpells()
+        Cards += BuildCards().buildAllSpells()
 
         grid = Grid(blockWidth: (UIScreen.main.bounds.width * 0.7)/5, blockHeight: (UIScreen.main.bounds.height*0.6)/4, rows: 4, cols: 5)!
         grid.position = CGPoint(x: (self.view?.bounds.width)!/2, y: (self.view?.bounds.maxY)! - grid.size.height/2 - 10)
@@ -62,6 +88,7 @@ class GameScene: SKScene {
       
         surrender = Surrender(superView: view)
         surrender.zPosition = Zpositions.surrender.rawValue
+        surrender.delegate = self
         addChild(surrender)
         
         mainButton = ButtonMainAction(superView: view)
@@ -98,18 +125,82 @@ class GameScene: SKScene {
         let playerName = gameManagement.playerOne.isActive ? gameManagement.playerOne.type.rawValue : gameManagement.playerTwo.type.rawValue
         label.attributedText = NSAttributedString(string: playerName, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.text])
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let pos = touch.location(in: self)
+            let node = self.atPoint(pos)
+            
+            if node == surrender {
+                if view != nil {
+//                    let transition: SKTransition
+//                    transition = SKTransition.fade(withDuration: 1)
+//                    let scene: SKScene = SurrenderScene(size: self.size)
+//
+//                    self.view?.presentScene(scene, transition: transition)
+                 
+                }
+            }
+        }
+    }
     
     func updateModel() {
-        self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
-        if gameManagement.isNewTurn() {
+        if gameManagement.playerOne.isActive {
+            self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
+        } else {
+            self.model.updateStatus(allyPlayer: gameManagement.playerTwo, enemyPlayer: gameManagement.playerOne)
+        }
+        if gameManagement.isNewTurn() { 
             self.model?.localPlayerMana += 1
             self.model?.remotePlayerMana += 1
         }
         updateRemote()
+        endGameIf(playerOneLife: gameManagement.playerOne.life, playerTwoLife: gameManagement.playerTwo.life)
     }
     
     func updateRemote() {
         GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(String(describing: error))") }
+    }
+    
+    @objc func presentGame(_ notification: Notification) {
+        guard let match = notification.object as? GKTurnBasedMatch else {
+          return
+        }
+        loadModel(match: match)
+    }
+    
+    func loadModel(match: GKTurnBasedMatch) {
+     match.loadMatchData { data, _ in
+       let model: GameModel
+       
+       if let data = data {
+           
+         do {
+           model = try JSONDecoder().decode(GameModel.self, from: data)
+           
+         } catch {
+           model = GameModel()
+         }
+       } else {
+         model = GameModel()
+       }
+       
+       GameCenterHelper.helper.currentMatch = match
+
+       let scene: SKScene = GameScene(size: self.size, model: model)
+       self.view?.presentScene(scene)
+     }
+   }
+    
+    func endGameIf(playerOneLife: Int, playerTwoLife: Int ) {
+        if playerOneLife <= 0 {
+            GameCenterHelper.helper.lost{_ in }
+        } else if playerTwoLife <= 0{
+            GameCenterHelper.helper.win{_ in }
+        }
+    }
+    
+    @objc func endGame() {
+        //apresentar tela de fim de jogo
     }
 }
 
