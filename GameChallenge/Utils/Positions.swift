@@ -8,4 +8,5 @@
 import UIKit
 enum Zpositions: CGFloat {
     case grid = 0, gridRect, tableau, surrender, cactus, display, mainButton
+
 }

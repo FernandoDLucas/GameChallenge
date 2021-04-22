@@ -24,7 +24,7 @@ class JSONService {
         }
     }
     
-    func decodeAsymc(_ completion: @escaping (Result<JSONCards, Error>) -> Void){
+    func decodeAsymc(_ completion: @escaping (Result<JSONCards, Error>) -> Void) {
         do {
             let data = try Data(contentsOf: url!)
             let cards = try decoder.decode(JSONCards.self, from: data)

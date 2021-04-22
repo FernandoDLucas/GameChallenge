@@ -32,8 +32,7 @@ class GameCenterHelper: NSObject {
           GKLocalPlayer.local.register(self)
         } else if let vc = gcAuthVC {
           self.viewController?.present(vc, animated: true)
-        }
-        else {
+        } else {
           print("Erro ao tentar autenticar no GameCenter, erro: \(error?.localizedDescription ?? "none")")
         }
       }
