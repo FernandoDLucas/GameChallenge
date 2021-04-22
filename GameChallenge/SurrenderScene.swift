@@ -15,7 +15,7 @@ class SurrenderScene: SKScene {
     var backLabel = SKLabelNode()
     var goHomeButton = SKSpriteNode()
     var goHomeLabel = SKLabelNode()
-    private var rectangle : SKShapeNode!
+    private var rectangle: SKShapeNode!
     var model: GameModel!
     
     init(size: CGSize, model: GameModel) {
@@ -29,22 +29,24 @@ class SurrenderScene: SKScene {
     
     override func didMove(to view: SKView) {
 //        MARK: Blur
-//        let w = (self.size.width + self.size.height) * 0.05
-//        let effectNode = SKEffectNode()
-//        let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": 75])
-//        effectNode.filter = blurFilter
-//        effectNode.shouldRasterize = true
-//        effectNode.shouldEnableEffects = true
-//        effectNode.zPosition = 2
-//        self.addChild(effectNode)
-//        self.rectangle = SKShapeNode.init(rectOf: CGSize.init(width: w*3, height: w*3), cornerRadius: w * 0.3)
-//        self.rectangle.fillColor = UIColor.blue
-//        self.rectangle.zPosition = 1
+        let effectNode = SKEffectNode()
+        let blurFilter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius": 75])
+        effectNode.filter = blurFilter
+        effectNode.shouldRasterize = true
+        effectNode.shouldEnableEffects = true
+        effectNode.zPosition = 2
+        self.addChild(effectNode)
+        
+        let w = (self.size.width + self.size.height)
+        self.rectangle = SKShapeNode.init(rectOf: CGSize.init(width: w*2, height: w), cornerRadius: 0)
+        self.rectangle.fillColor = UIColor.background
+        self.rectangle.zPosition = 1
+        addChild(rectangle)
 //        effectNode.addChild(rectangle)
         let background = SKSpriteNode(imageNamed: "bgEndGame")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.zPosition = 1
+        background.zPosition = 2
         addChild(background)
         let text = formatLabel(text: "O que deseja fazer?", color: UIColor.text, fontSize: 34, vertical: .top, horizontal: .center)
         text.preferredMaxLayoutWidth = background.frame.size.width
@@ -73,12 +75,12 @@ class SurrenderScene: SKScene {
         let button = SKSpriteNode(texture: surrenderTex)
         button.position = CGPoint(x: size.width/2, y: positionY)
         button.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        button.zPosition = 2
+        button.zPosition = 3
         return button
     }
     func formatLabel(text: String, color: UIColor, fontSize: CGFloat, vertical: SKLabelVerticalAlignmentMode, horizontal: SKLabelHorizontalAlignmentMode  ) -> SKLabelNode {
         let label = SKLabelNode()
-        label.zPosition = 3
+        label.zPosition = 5
         label.text = text
         label.fontName = "xilosa"
         label.fontSize = fontSize

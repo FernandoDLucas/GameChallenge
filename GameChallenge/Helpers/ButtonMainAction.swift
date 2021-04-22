@@ -27,7 +27,7 @@ class ButtonMainAction: SKSpriteNode {
         let shapeNode = SKShapeNode(circleOfRadius: size.height / 2)
         shapeNode.fillColor = .action
         shapeNode.strokeColor = .action
-        shapeNode.blendMode = .replace
+        //shapeNode.blendMode = .replace
 
         addChild(shapeNode)
         addChild(label)

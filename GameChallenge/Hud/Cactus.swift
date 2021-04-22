@@ -13,7 +13,7 @@ class Cactus: SKSpriteNode {
         let texture = SKTexture(imageNamed: "cactus")
         super.init(texture: texture, color: .clear, size: CACTUS_SIZE)
         
-        self.position = CGPoint(x: 95, y: 130)
+        self.position = CGPoint(x: 130, y: 140)
     }
     
     required init?(coder aDecoder: NSCoder) {

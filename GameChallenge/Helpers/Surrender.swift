@@ -26,7 +26,7 @@ class Surrender: SKSpriteNode {
     init(superView: SKView) {
         let texture = SKTexture(imageNamed: "surrender")
         super.init(texture: texture, color: .clear, size: SURRENDER_SIZE)
-        self.position = CGPoint(x: superView.frame.width - (size.width / 2), y: superView.frame.height - (size.height / 2))
+        self.position = CGPoint(x: superView.frame.width - (size.width / 2 + 20), y: superView.frame.height - (size.height / 2))
     }
     
     required init?(coder aDecoder: NSCoder) {

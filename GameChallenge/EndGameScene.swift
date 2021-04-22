@@ -12,8 +12,12 @@ class EndGameScene: SKScene {
     var goHomeButton = SKSpriteNode()
     var goHomeLabel = SKLabelNode()
     private var rectangle : SKShapeNode!
-    private var rectangle1 : SKShapeNode!
     override func didMove(to view: SKView) {
+        let w = (self.size.width + self.size.height)
+        self.rectangle = SKShapeNode.init(rectOf: CGSize.init(width: w*2, height: w), cornerRadius: 0)
+        self.rectangle.fillColor = UIColor.background
+        self.rectangle.zPosition = 1
+        addChild(rectangle)
         
         let background = SKSpriteNode(imageNamed: "bgEndGame")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
@@ -22,7 +26,7 @@ class EndGameScene: SKScene {
         addChild(background)
         let endGameLabel = formatLabel(text: "FIM DE JOGO", color: UIColor.text, fontSize: 34, vertical: .top, horizontal: .center)
         endGameLabel.preferredMaxLayoutWidth = background.frame.size.width
-        endGameLabel.position = .init(x: 0, y: background.size.height/2 - 40)
+        endGameLabel.position = .init(x: 0, y: background.size.height/2 - 70)
         endGameLabel.lineBreakMode = .byWordWrapping
         endGameLabel.numberOfLines = .max
         background.addChild(endGameLabel)
@@ -32,14 +36,13 @@ class EndGameScene: SKScene {
         text.position = .init(x: 0, y: background.size.height/2 - 120)
         text.lineBreakMode = .byWordWrapping
         text.numberOfLines = .max
-        background.addChild(text)
+//        background.addChild(text)
         
         goHomeButton = setupButton(imageName: "bgButtonBack", positionY: size.height/2 - 50)
         addChild(goHomeButton)
         goHomeLabel = formatLabel(text: "SAIR", color: .textAction, fontSize: 28, vertical: .center, horizontal: .center)
         goHomeButton.addChild(goHomeLabel)
-        // let contentNode = SKNode()
-        //contentNode.addChild(background)
+
         
     }
     func setupButton(imageName: String, positionY: CGFloat) -> SKSpriteNode {
