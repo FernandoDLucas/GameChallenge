@@ -43,6 +43,21 @@ class GameScene: SKScene, SurrenderDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(presentGame(_:)),
+          name: .presentGame,
+          object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(endGame),
+          name: .endGame,
+          object: nil
+        )
+        
         GameCenterHelper.helper.becameActiveDelegate = self 
         
         self.gridRect = SKShapeNode.init(rectOf: CGSize.init(width: self.size.width * 0.63, height:  self.size.height * 0.73), cornerRadius: 0)
@@ -136,16 +151,63 @@ class GameScene: SKScene, SurrenderDelegate {
     }
     
     func updateModel() {
-        self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
-        if gameManagement.isNewTurn() {
+        if gameManagement.playerOne.isActive {
+            self.model.updateStatus(allyPlayer: gameManagement.playerOne, enemyPlayer: gameManagement.playerTwo)
+        } else {
+            self.model.updateStatus(allyPlayer: gameManagement.playerTwo, enemyPlayer: gameManagement.playerOne)
+        }
+        if gameManagement.isNewTurn() { 
             self.model?.localPlayerMana += 1
             self.model?.remotePlayerMana += 1
         }
         updateRemote()
+        endGameIf(playerOneLife: gameManagement.playerOne.life, playerTwoLife: gameManagement.playerTwo.life)
     }
     
     func updateRemote() {
           GameCenterHelper.helper.endTurn(self.model) {  error in print("Erro ao finalizar rodada: \(error)") }
+    }
+    
+    @objc func presentGame(_ notification: Notification) {
+        guard let match = notification.object as? GKTurnBasedMatch else {
+          return
+        }
+        loadModel(match: match)
+    }
+    
+    func loadModel(match: GKTurnBasedMatch) {
+     match.loadMatchData { data, _ in
+       let model: GameModel
+       
+       if let data = data {
+           
+         do {
+           model = try JSONDecoder().decode(GameModel.self, from: data)
+           
+         } catch {
+           model = GameModel()
+         }
+       } else {
+         model = GameModel()
+       }
+       
+       GameCenterHelper.helper.currentMatch = match
+
+       let scene: SKScene = GameScene(size: self.size, model: model)
+       self.view?.presentScene(scene)
+     }
+   }
+    
+    func endGameIf(playerOneLife: Int, playerTwoLife: Int ) {
+        if playerOneLife <= 0 {
+            GameCenterHelper.helper.lost{_ in }
+        } else if playerTwoLife <= 0{
+            GameCenterHelper.helper.win{_ in }
+        }
+    }
+    
+    @objc func endGame() {
+        //apresentar tela de fim de jogo
     }
 }
 
