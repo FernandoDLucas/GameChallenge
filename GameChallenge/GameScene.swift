@@ -15,9 +15,9 @@ class GameScene: SKScene, SurrenderDelegate {
         transition = SKTransition.fade(withDuration: 1)
         let scene: SKScene = SurrenderScene(size: self.size, model: self.model)
         self.view?.presentScene(scene, transition: transition)
-//        loadPauseBGScreen()
     }
-    
+    private let maxBlurRadius: Double = 50
+    private let unblurDuration: TimeInterval = 5
     var label: SKLabelNode!
     var displayCard: DisplayCardHelper!
     var grid: Grid!
@@ -30,6 +30,7 @@ class GameScene: SKScene, SurrenderDelegate {
     var gameManagement: GameManagement!
     var model: GameModel!
     var canPlay: Bool = false
+    var gridRect: SKShapeNode!
     
     init(size: CGSize, model: GameModel) {
         super.init(size: size)
@@ -58,6 +59,14 @@ class GameScene: SKScene, SurrenderDelegate {
         )
         
         GameCenterHelper.helper.becameActiveDelegate = self 
+        
+        self.gridRect = SKShapeNode.init(rectOf: CGSize.init(width: self.size.width * 0.63, height:  self.size.height * 0.73), cornerRadius: 0)
+       // gridRect.physicsBody.
+        gridRect.position = .init(x: size.width/2, y: size.height/2 + 30)
+        self.gridRect.fillColor = UIColor.grid
+        self.gridRect.zPosition = Zpositions.gridRect.rawValue
+       // addChild(gridRect)
+        
         itemsPlayer = ItemsPlayer(superView: view)
         itemsPlayer.zPosition = Zpositions.tableau.rawValue
         addChild(itemsPlayer)

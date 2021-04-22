@@ -17,7 +17,7 @@ class ItemsEnemy: SKSpriteNode {
         self.superView = superView
         
         super.init(texture: SKTexture(imageNamed: "bgPlayer"), color: .clear, size: TABLEAU_SIZE)
-        self.position = CGPoint(x: self.frame.width/2 + 6, y: superView.frame.size.height/2 + 63)
+        self.position = CGPoint(x: self.frame.width/2 + 40, y: superView.frame.size.height/2 + 63)
         
         self.setupHandsCards()
         self.setupLife()
